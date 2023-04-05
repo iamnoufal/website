@@ -97,7 +97,9 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(`/api/blog`)
+  const ghost_key = process.env.GHOST_CONTENT_API_KEY
+  const ghost_url = process.env.GHOST_URL
+  const res = await fetch(`${ghost_url}/ghost/api/content/posts?key=${ghost_key}`)
   const data = await res.json()
   return {
     paths: data.posts.map(post => {
