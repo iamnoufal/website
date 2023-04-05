@@ -35,7 +35,7 @@ export default function Home() {
         .then(data => setPosts({ ...posts, blogs: data.posts}))
     }
   }, [posts])
-  useEffect(() => setBlogs(posts.blogs))
+  useEffect(() => setBlogs(posts.blogs), [blogs, posts])
   return (
     <>
       <Head>
