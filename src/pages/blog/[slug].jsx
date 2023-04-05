@@ -9,7 +9,7 @@ import Head from "next/head"
 import Layout from "@/components/layout"
 import Script from "next/script"
 
-export default function Post() {
+export default function Post(props) {
   const blogShare = {
     title: props.title,
     text: props.excerpt,
