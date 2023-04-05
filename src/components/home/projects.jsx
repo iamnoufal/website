@@ -15,7 +15,7 @@ const ProjectsComponent = () => {
   return (
     <Box sx={{ p:4 }} className='bg-darkblue text-white' id='projects'>
       <Typography variant='h4' component='div' className="lora" textAlign={'center'} sx={{my:2}}><Tag>Projects</Tag></Typography>
-      <Comment>Projects are the best ways to practice what we've learnt</Comment>
+      <Comment>Projects are the best ways to practice what we&apos;ve learnt</Comment>
       <Container maxWidth="md" >
         <Swiper
           slidesPerView={"auto"}
