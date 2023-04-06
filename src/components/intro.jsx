@@ -11,7 +11,7 @@ const IntroComponent = ({ title, subtitle, style, children }) => {
       <Box sx={{ display: 'flex', alignItems: 'center', height: children ? '80vh' : "100vh", justifyContent: 'center', flexFlow: 'column', textAlign: 'center' }}>
         <motion.div 
           initial={{ y: 20, opacity: 0 }} 
-          whileInView={{ y: 0, opacity: 1 }}
+          animate={{ y: 0, opacity: 1 }}
           transition={{
             duration: 0.8,
             delay: 0,
@@ -22,7 +22,7 @@ const IntroComponent = ({ title, subtitle, style, children }) => {
         </motion.div>
         <motion.div 
           initial={{ y: 20, opacity: 0 }} 
-          whileInView={{ y: 0, opacity: 1 }}
+          animate={{ y: 0, opacity: 1 }}
           transition={{
             duration: 0.8,
             delay: 0.5,

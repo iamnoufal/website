@@ -55,13 +55,6 @@ const learningsData = [
     full: false
   },
   {
-    abbr: 'gw',
-    name: 'Google Workspace Tools',
-    img: `${gwImg.src}`,
-    year: '2021',
-    full: true
-  },
-  {
     abbr: 'firebase',
     name: 'Firebase',
     img: `${firebaseImg.src}`,

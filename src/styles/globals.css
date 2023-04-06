@@ -34,14 +34,14 @@ html, body {
 
 .button {
   background: radial-gradient(#4a5253, #012d4e);
-  color: white;
+  color: white !important;
   transition: 0.2s;
 }
 
 .button:hover {
   background: radial-gradient(#5f8b92, #5f8b92);
   transition: 0.2s;
-  color: #041e31
+  color: #041e31 !important
 }
 
 .text-grey {
