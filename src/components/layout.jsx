@@ -1,47 +1,19 @@
 import Nav from "./nav"
 import Footer from "./footer"
 import Head from 'next/head'
-import { useEffect } from "react"
-// import { createTheme, ThemeProvider } from "@mui/material"
 
 const Layout = ({ children }) => {
-  // const darkTheme = createTheme({
-  //   palette: {
-  //     mode: 'dark'
-  //   }
-  // })
-  useEffect(() => {
-    function removeGhostPowered() {
-      let portal = document.getElementById("ghost-portal-root");
-      try {
-        let frame = portal.querySelector('[title="portal-popup"]');
-        if (frame !== null) {
-          const styleElement = document.createElement("style");
-          if (styleElement != null || styleElement != undefined) {
-            styleElement.innerHTML = `.gh-portal-powered { display: none; } .gh-portal-closeicon {color: rgba(0, 0, 0, 0.8)}`;
-            frame.contentDocument.head.appendChild(styleElement);
-          }
-        } else {
-          frame = null
-        }
-        removeGhostPowered()
-      } catch(e) {
-        removeGhostPowered()
-      }
-    }
-  })
   return (
-    // <ThemeProvider theme={darkTheme}>
     <>
       <Head>
-        <script defer="" src="https://cdn.jsdelivr.net/ghost/portal@~2.25/umd/portal.min.js" data-ghost="https://noufal.digitalpress.blog/" data-key="a9c30dd93d7e07c6577e0430ba" data-api="https://noufal.digitalpress.blog/ghost/api/content/" crossOrigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg==" crossOrigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-fTl/qcO1VgvKtOMApX2PdZzkziyr2stM65GYPLGuYMnuMm1z2JLJG6XVU7C/mR+E7xBUqCivykuhlzfqxXBXbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       </Head>
       <Nav />
       {children}
-      <div id="ghost-portal-root"></div>
       <Footer />
     </>
-    // </ThemeProvider>
   )
 }
 

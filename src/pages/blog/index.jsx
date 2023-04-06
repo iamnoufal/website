@@ -34,7 +34,7 @@ export default function Home() {
         .then(res => res.json())
         .then(data => setPosts({ ...posts, blogs: data.posts}))
     }
-  }, [posts])
+  }, [blogs])
   useEffect(() => setBlogs(posts.blogs), [blogs, posts])
   return (
     <>

@@ -13,6 +13,7 @@ import {
 } from '@mui/material'
 import { LoadingButton } from '@mui/lab'
 import { Close } from '@mui/icons-material'
+import darkTheme from '@/themes/dark'
 
 const Subscribe = () => {const [email, setEmail] = useState("")
   const [emailError, setEmailError] = useState(false)
@@ -20,11 +21,11 @@ const Subscribe = () => {const [email, setEmail] = useState("")
   const [success, setSuccess] = useState(false)
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState("")
-  const darkTheme = createTheme({
-    palette: {
-      mode: 'dark'
-    }
-  })
+  // const darkTheme = createTheme({
+  //   palette: {
+  //     mode: 'dark'
+  //   }
+  // })
   const subscribe = () => {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       setLoading(true)
@@ -60,7 +61,7 @@ const Subscribe = () => {const [email, setEmail] = useState("")
       <Typography variant='h5' textAlign="center" className='text-teal mw'>Interested to read more? Subscribe to the newsletter</Typography>
       <Box sx={{width:'100%',mt:3}}>
         <Box sx={{width:{xs:'100%',md:'50%'},mx:'auto'}}>
-          <ThemeProvider theme={darkTheme}>
+          {/* <ThemeProvider theme={darkTheme}> */}
             <TextField 
               variant="filled"
               sx={{width:'100%'}}
@@ -88,7 +89,7 @@ const Subscribe = () => {const [email, setEmail] = useState("")
                 }
               >{message}</Alert>
             </Collapse>
-          </ThemeProvider>
+          {/* </ThemeProvider> */}
         </Box>
       </Box>
     </Container>

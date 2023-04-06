@@ -1,7 +1,7 @@
 import timelineData from '@/data/timeline';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import { useEffect, useState } from "react";
-import { Box, Backdrop, SpeedDial, SpeedDialAction, useScrollTrigger } from "@mui/material";
+import { Box, Backdrop, SpeedDial, SpeedDialAction, useScrollTrigger, IconButton } from "@mui/material";
 
 const TimelineSpeedDialComponent = () => {
   const [open, setOpen] = useState(false);
@@ -17,7 +17,7 @@ const TimelineSpeedDialComponent = () => {
   })
   useEffect(() => {
     scrollTrigger ? setShowSD(true) : setShowSD(false)
-    scrollTrigger ? document.querySelector(".MuiSpeedDial-fab")?.classList.add('bg-darkblue') : console.log();
+    // scrollTrigger ? document.querySelector(".MuiSpeedDial-fab")?.style.background = : console.log();
   })
   return (
     <Box>
@@ -25,7 +25,7 @@ const TimelineSpeedDialComponent = () => {
         <Backdrop open={open} />
         <SpeedDial
           ariaLabel="Timeline Speeddail"
-          sx={{ position: 'absolute', bottom: 16, right: 16, color: '#018891' }}
+          sx={{ position: 'absolute', bottom: 16, right: 16, color: 'white' }}
           icon={<TimelineIcon />}
           onClose={() => {setOpen(false)}}
           onOpen={handleTimelineOpen}

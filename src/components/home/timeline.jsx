@@ -21,7 +21,7 @@ const TimelineComponent = () => {
           ease: [0, 0.71, 0.2, 1.01],
         }}
       >
-        <Button variant='contained' className='text-white bg-darkblue' onClick={handleTimelineOpen} sx={{px: 5}}>my timeline</Button>
+        <Button variant='contained' className='button' onClick={handleTimelineOpen} sx={{px: 5}} size="large">my timeline</Button>
       </motion.div>
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>

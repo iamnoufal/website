@@ -9,25 +9,24 @@ import Link from 'next/link';
 const ContactComponent = () => {
   const small = useMediaQuery('(max-width: 600px)');
   const cardWidth = small ? 300 : 250;
-  const cardMargin = small ? 8 : 4
   return (
-    <Box sx={{ width: '100%', backgroundPosition: 'top center' }} id='contact'>
-      <Container maxWidth='md' sx={{mt: 4}}>
+    <Box  id='contact'>
+      <Container maxWidth='md' sx={{py: 4}}>
         <Typography variant='h4' className='text-darkblue lora' textAlign='center' sx={{mb: 3}}><Tag>Contact</Tag></Typography>
         <Comment>Lemme know what you think</Comment>
         <Box sx={{px: 2, display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
           {contactData.map((list) => {
             return (
-              <motion.div key={list.name}>
-                <ListItem button onClick={() => window.open(`${list.link}`, '_blank')} sx={{mx: 'auto', my: 1, px: Number(`${cardMargin}`), width: Number(`${cardWidth}`)}}>
+              // <motion.div >
+                <ListItem key={list.name} button onClick={() => window.open(`${list.link}`, '_blank')} sx={{mx: 'auto', my: 1, width: Number(`${cardWidth}`)}}>
                   <ListItemAvatar>
-                    <Avatar className='bg-darkblue'>
+                    <Avatar sx={{ background: "linear-gradient(50deg, #6610f2 10%, #6f42c1 20%, #d63384 35%, #dc3545 65%, #fd7e14 83%, #ffc107 91%)", color: "white" }}>
                       {list.icon}
                     </Avatar>
                   </ListItemAvatar>
-                  <ListItemText primary={list.name} secondary={list.text} />
+                  <ListItemText primary={<Typography className="text-white">{list.name}</Typography>} secondary={list.text} />
                 </ListItem>
-              </motion.div>
+              // </motion.div>
             )
           })}
         </Box>

@@ -17,24 +17,25 @@ import educationData from "@/data/education";
 const EducationComponent = () => {
   const edu = useRef(null);
   const small = useMediaQuery('(max-width: 600px)');
+  const medium = useMediaQuery('(max-width: 950px)');
   return (
-    <Box sx={{my: 10}} id='edu'>
+    <Box sx={{py: 10, background: "linear-gradient(10deg, #53245f 0%, transparent 15%), linear-gradient(350deg, #53245f 0%, transparent 45%), linear-gradient(0deg, transparent, #061622), linear-gradient(150deg, yellow, transparent), linear-gradient(300deg, #012d4e, #063a50)" }} id='edu'>
       <Timeline position={`${small ? 'right' : 'alternate'}`} ref={edu}>
-        <Typography variant='h4' component='div' className="text-darkblue lora" textAlign={'center'} sx={{my:2}}><Tag>Education</Tag></Typography>
+        <Tag>Education</Tag>
         <Comment>Purpose of education is to replace an empty mind with an open one</Comment>
         {educationData.map((edu, index) => {
           return (
             <TimelineItem key={edu.bgColor}>
-              {!small && <TimelineOppositeContent>{edu.year}</TimelineOppositeContent>}
+              {!small && <TimelineOppositeContent className="text-white">{edu.year}</TimelineOppositeContent>}
               {small && <TimelineOppositeContent sx={{display:'none'}} />}
               <TimelineSeparator>
                 <TimelineDot className="bg-darkblue" />
                 <TimelineConnector className="bg-darkblue" />
               </TimelineSeparator>
               <TimelineContent>
-                {small && <Typography variant='caption'>{edu.year}</Typography>}
+                {small && <Typography variant='caption' className="text-white">{edu.year}</Typography>}
                 <motion.div
-                  initial={{ x: index%2==0 ? -70 : small ? -70 : 70, opacity: 0 }}
+                  initial={{ x: index%2==0 ? -75 : small ? -75 : 75, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   transition={{
                     duration: 1,
@@ -42,16 +43,16 @@ const EducationComponent = () => {
                     ease: [0, 0.71, 0.2, 1.01]
                   }}
                 >
-                  <Card sx={{ background: `${edu.bgColor}`, mb: 3, mt: 1, display: `${small ? 'block' : 'flex'}`, flexDirection: `${educationData.indexOf(edu)%2!==0 ? "row-reverse" : "row"}`, alignItems: "center" }}>
+                  <Card sx={{ background: `${edu.bgColor}`, mb: 3, mt: 1, display: `${medium ? 'block' : 'flex'}`, flexDirection: `${educationData.indexOf(edu)%2!==0 ? "row-reverse" : "row"}`, alignItems: "center" }}>
                     <CardMedia 
                       component='img' 
                       image={edu.img}
-                      sx={{width: `${small ? "100%": "40%"}`}}
+                      sx={{width: `${medium ? "100%": "40%"}`}}
                     />
                     <CardContent>
-                      <Typography variant='h6' className="text-darkblue">{edu.name}</Typography>
-                      <Typography variant='caption'>{edu.degree}</Typography>
-                      <Typography variant='body2' sx={{mt:1}}>{edu.caption}</Typography>
+                      <Typography variant='h6' className="text-blue">{edu.name}</Typography>
+                      <Typography variant='caption' component="div" color="black" sx={{my:1}}>{edu.degree}</Typography>
+                      <Typography variant='body2' color="black">{edu.caption}</Typography>
                     </CardContent>
                   </Card>
                 </motion.div>

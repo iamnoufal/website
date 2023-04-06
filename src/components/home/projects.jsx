@@ -10,11 +10,12 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Autoplay, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
+import ContactComponent from "./contact";
 
 const ProjectsComponent = () => {
   return (
-    <Box sx={{ p:4 }} className='bg-darkblue text-white' id='projects'>
-      <Typography variant='h4' component='div' className="lora" textAlign={'center'} sx={{my:2}}><Tag>Projects</Tag></Typography>
+    <Box sx={{ p:4, background: 'linear-gradient(0deg, #080808 5%, transparent 40%), linear-gradient(180deg, #018891, transparent), linear-gradient(130deg, #6610f2 10%, #6f42c1 20%, #d63384 35%, #dc3545 65%, #fd7e14 83%, #ffc107 91%)' }} id='projects'>
+      <Tag>Projects</Tag>
       <Comment>Projects are the best ways to practice what we&apos;ve learnt</Comment>
       <Container maxWidth="md" >
         <Swiper
@@ -53,6 +54,7 @@ const ProjectsComponent = () => {
           })}
         </Swiper>
       </Container>
+      <ContactComponent />
     </Box>
   )
 }

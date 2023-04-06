@@ -2,14 +2,13 @@ import {
   Box, 
   Typography 
 } from '@mui/material';
-import Fade from './fade';
 import Comment from './comment';
 import { motion } from 'framer-motion'
 
-const IntroComponent = ({ title, subtitle }) => {
+const IntroComponent = ({ title, subtitle, style, children }) => {
   return (
-    // <Box sx={{ background: `url(${IntroImg})`, height: '100vh', width: '100%', backgroundPosition: 'center' }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', height: '80vh', justifyContent: 'center', flexFlow: 'column', textAlign: 'center' }} id='intro'>
+    <Box sx={{ height: '100vh', width: '100%', backgroundPosition: 'center', ...style }} id='intro'>
+      <Box sx={{ display: 'flex', alignItems: 'center', height: children ? '80vh' : "100vh", justifyContent: 'center', flexFlow: 'column', textAlign: 'center' }}>
         <motion.div 
           initial={{ y: 20, opacity: 0 }} 
           whileInView={{ y: 0, opacity: 1 }}
@@ -19,7 +18,7 @@ const IntroComponent = ({ title, subtitle }) => {
             ease: [0, 0.71, 0.2, 1.01]
           }}
         >
-          <Typography variant='h3' component='div' fontWeight={500} className="text-darkblue lora" mb={2}>{title}</Typography>
+          <Typography variant='h3' component='div' fontWeight={500} className="text-white text-shadow lora" mb={2}>{title}</Typography>
         </motion.div>
         <motion.div 
           initial={{ y: 20, opacity: 0 }} 
@@ -30,10 +29,11 @@ const IntroComponent = ({ title, subtitle }) => {
             ease: [0, 0.71, 0.2, 1.01]
           }}
         >
-          <Typography  variant='h4' component='div' fontStyle={'italic'} className='grandhotel'><Comment>{subtitle}</Comment></Typography>
+          <Comment>{subtitle}</Comment>
         </motion.div>
       </Box>
-    // </Box>
+      {children}
+    </Box>
   )
 }
 

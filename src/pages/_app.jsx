@@ -1,5 +1,7 @@
 import '@/styles/globals.css'
 import BlogContext from '@/contexts/blog'
+import { ThemeProvider } from '@mui/material'
+import darkTheme from '@/themes/dark'
 import { useState } from 'react'
 
 export default function App({ Component, pageProps }) {
@@ -10,8 +12,10 @@ export default function App({ Component, pageProps }) {
     docPosts: {}
   })
   return (
-    <BlogContext.Provider value={{ posts, setPosts }}>
-      <Component {...pageProps} />
-    </BlogContext.Provider>
+    <ThemeProvider theme={darkTheme}>
+      <BlogContext.Provider value={{ posts, setPosts }}>
+        <Component {...pageProps} />
+      </BlogContext.Provider>
+    </ThemeProvider>
   )
 }
