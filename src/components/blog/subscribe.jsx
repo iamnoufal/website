@@ -26,7 +26,6 @@ const Subscribe = () => {
       fetch("/api/subscribe", {method: "POST", body: JSON.stringify({email: email})})
         .then(res => {
           if (res.status == 200) {
-            console.log(res)
             res.text().then(res => console.log(res))
             setSuccess(true)
             setOpen(true)

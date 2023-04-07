@@ -6,7 +6,6 @@ import {
 import { WhatsApp, LinkedIn, Twitter, FacebookOutlined, Share } from '@mui/icons-material'
 
 const PostIntro = (props) => {
-  console.log(props)
   const blogShare = {
     title: props.title,
     text: props.excerpt,

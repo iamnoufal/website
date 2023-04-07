@@ -1,10 +1,7 @@
 import { 
   Box,
-  Container,
-  Typography,
-  Link
+  Container
 } from "@mui/material"
-import { WhatsApp, LinkedIn, Twitter, FacebookOutlined, Share } from '@mui/icons-material'
 import Head from "next/head"
 import Layout from "@/components/layout"
 import Script from "next/script"
