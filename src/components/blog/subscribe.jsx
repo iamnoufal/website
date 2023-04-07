@@ -50,8 +50,8 @@ const Subscribe = () => {
     }
   }
   return (
-    <Container maxWidth="md" sx={{py:5}}>
-      <Typography variant='h5' textAlign="center" className='text-teal mw'>Interested to read more? Subscribe to the newsletter</Typography>
+    <Container maxWidth="md" sx={{py:10}}>
+      <Typography variant='h4' textAlign="center" className='text-white text-shadow lora'>Be the first to know.</Typography>
       <Box sx={{width:'100%',mt:3}}>
         <Box sx={{width:{xs:'100%',md:'50%'},mx:'auto'}}>
           <TextField 

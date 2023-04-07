@@ -47,9 +47,9 @@ const ProjectsComponent = () => {
           {projectsData.map(project => {
             return (
               <SwiperSlide key={project.name} style={{display: 'flex', justifyContent: 'center', backgroundImage: `url("${project.img}")`, backgroundSize: 'cover', backgroundPosition: 'top center'}}>
-                <Box sx={{position: "absolute", left: 0, background: "linear-gradient(160deg, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.2) 75%, rgba(0,0,0,0.6) 93%) ", top: 0, height: "100%", width: "100%" }}>
-                  <Typography variant="h5" color={"white"} p={3}>{project.name}</Typography>
-                  <Typography variant="body1" color={"white"} px={3}>{project.desc}</Typography>
+                <Box sx={{position: "absolute", left: 0, background: "linear-gradient(160deg, rgba(0,0,0,0.7) 35%, rgba(0,0,0,0.2) 75%, rgba(0,0,0,0.6) 93%) ", top: 0, height: "100%", width: "100%" }}>
+                  <Typography variant="h5" className="text-white lora text-shadow" p={3}>{project.name}</Typography>
+                  <Typography variant="body1" className="text-white ms" px={3}>{project.desc}</Typography>
                 </Box>
                 <Box sx={{position: "absolute", bottom: 0, right: 0}}>
                   <Box sx={{display: "flex"}}>

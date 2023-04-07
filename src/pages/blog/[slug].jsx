@@ -8,13 +8,10 @@ import { WhatsApp, LinkedIn, Twitter, FacebookOutlined, Share } from '@mui/icons
 import Head from "next/head"
 import Layout from "@/components/layout"
 import Script from "next/script"
+import Subscribe from "@/components/blog/subscribe"
+import PostIntro from "@/components/blog/intro"
 
 export default function Post(props) {
-  const blogShare = {
-    title: props.title,
-    text: props.excerpt,
-    url: "https://blog.noufal.engineer/"+props.slug
-  }
   return (
     <>
       <Head>
@@ -25,59 +22,21 @@ export default function Post(props) {
         <meta property="og:title" content={props.title} />
         <meta property="og:description" content={props.excerpt} />
         <meta property="og:image" content={props.feature_image} />
-        <meta property="og:url" content={"https://blog.noufal.engineer/"+props.slug} />
+        <meta property="og:url" content={"https://noufal.engineer/blog/"+props.slug} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Noufal's Blog" />
+        <link rel="stylesheet" href="/assets/prism.css" />
+        <script src="/assets/prism.js"></script>
       </Head>
       <Layout>
         <Box>
-          <Box
-            sx={{
-              minHeight: '100vh', 
-              width: '100%', 
-              backgroundImage: `url(${props.feature_image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center center'
-            }}
-            className="bg-blue"
-          >
-            <Box 
-              sx={{
-                minHeight: '100vh', 
-                width: '100%', 
-                display: 'flex', 
-                flexDirection: 'column', 
-                justifyContent: 'end',
-                p: {xs:2,md:4,lg:8},
-                pt: {xs:8,lg:0},
-                background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1))'
-              }}
-            >
-              <Typography variant='h3' component="h1" sx={{mb:2}} className='text-white mw text-blue'>{props.title}</Typography>
-              <Typography variant='h6' component="h4" className='ms' sx={{color:'rgba(255,255,255,0.8)'}}>{props.excerpt}</Typography>
-              <Typography variant='body2' sx={{mt:1}} className='text-white ms'>{props.reading_time} mins read • {(new Date(props.published_at).toDateString())}</Typography>
-              <Box sx={{display: 'flex', mt:2}}>
-                <Link sx={{mr:2}} target="_blank" rel="noreferrer" href={`https://api.whatsapp.com/send?text=${blogShare.title.replaceAll(" ", "+")}%0A${blogShare.text.replaceAll(" ", "+")}%0A${blogShare.url}`}>
-                  <Typography color="white"><WhatsApp /></Typography>
-                </Link>
-                <Link sx={{mr:2}} target="_blank" rel="noreferrer" href={`http://www.facebook.com/sharer.php?u=${blogShare.url}`}>
-                  <Typography color="white"><FacebookOutlined /></Typography>
-                </Link>
-                <Link sx={{mr:2}} target="_blank" rel="noreferrer" href={`https://twitter.com/intent/tweet?url=${blogShare.url}&text=${blogShare.title.replaceAll(" ", "+")}%0A${blogShare.text.replaceAll(" ", "+")}%0A`}>
-                  <Typography color="white"><Twitter /></Typography>
-                </Link>
-                <Link sx={{mr:2}} target="_blank" rel="noreferrer" href={`https://www.linkedin.com/sharing/share-offsite/?url=${blogShare.url}`}>
-                  <Typography color="white"><LinkedIn /></Typography>
-                </Link>
-                <Link sx={{cursor:"pointer"}} onClick={() => navigator.share(blogShare)}>
-                  <Typography color="white"><Share /></Typography>
-                </Link>
-              </Box>
-            </Box>
+          <PostIntro {...props} />
+          <Box sx={{ pt:10, bgcolor: 'rgb(10, 10, 10)', color: 'white' }}>
+            <Container maxWidth="md" className="post">
+              <div dangerouslySetInnerHTML={{__html: props.html}}></div>
+            </Container>
+            <Subscribe />
           </Box>
-          <Container maxWidth="md" className="post" sx={{py:2}}>
-            <div dangerouslySetInnerHTML={{__html: props.html}}></div>
-          </Container>
         </Box>
       </Layout>
     </>

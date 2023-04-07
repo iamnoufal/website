@@ -63,54 +63,13 @@ html, body {
   src: url('../assets/fonts/Montserrat-VariableFont_wght.ttf');
 }
 
-.ms, .ms * {
-  font-family: "montserrat" !important;
-}
 
-.mwi, .mwi * {
-  font-family: 'merriweather-italic' !important;
-}
 
 .mw {
   font-family: 'merriweather' !important;
 }
 
-.post p, .post li {
-  font-family: 'montserrat';
-  font-size: 1rem;
-  text-align: justify;
-}
 
-.post h3 {
-  font-family: 'merriweather';
-  font-size: 1.2rem;
-  margin-top: 2vw
-}
-
-.post img {
-  width: 100% !important;
-  height: auto !important
-}
-
-.post figure {
-  margin: auto 0
-}
-
-.post figcaption {
-  text-align: center;
-  font-size: 0.8rem;
-  font-family: 'montserrat';
-}
-
-@font-face {
-  font-family: lora;
-  src: url('../assets/fonts/Lora-Italic-VariableFont_wght.ttf');
-}
-
-@font-face {
-  font-family: grandhotel;
-  src: url('../assets/fonts/GrandHotel-Regular.ttf');
-}
 
 .bg-lightblue {
   background-color: #AEE8E2 !important;
@@ -136,6 +95,25 @@ html, body {
   color: #fff !important;
 }
 
+@font-face {
+  font-family: lora;
+  src: url('../assets/fonts/Lora-Italic-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: grandhotel;
+  src: url('../assets/fonts/GrandHotel-Regular.ttf');
+}
+
+@font-face {
+  font-family: "montserrat";
+  src: url('../assets/fonts/Montserrat-VariableFont_wght.ttf');
+}
+
+.ms, .ms * {
+  font-family: "montserrat" !important;
+}
+
 .grandhotel {
   font-family: grandhotel !important;
 }
@@ -143,6 +121,8 @@ html, body {
 .lora {
   font-family: lora !important;
 }
+
+/* home project carousel */
 
 .projectsCarousel .swiper-pagination-bullet {
   background-color: #AEE8E2;
@@ -155,6 +135,8 @@ html, body {
 .swiper {
   z-index: 0 !important
 }
+
+/* home speeddial button */
 
 .MuiSpeedDial-fab {
   background: linear-gradient(200deg, #6610f2 10%, #6f42c1 20%, #d63384 35%, #dc3545 65%, #fd7e14 83%, #ffc107 91%);
@@ -171,4 +153,104 @@ html, body {
 .MuiSpeedDial-fab:hover > svg {
   rotate: -180deg;
   transition: 0.3s;
+}
+
+/* post */
+
+.post img {
+  width: 100% !important;
+  height: auto !important;
+  margin-top: 1rem;
+}
+
+.post figure {
+  margin: auto 0
+}
+
+.post p > code {
+  background-color: #2d2d2d;
+  padding: 0 5px;
+  border-radius: 5px;
+}
+
+.post figcaption {
+  text-align: center;
+  font-size: 0.8rem;
+  font-family: 'montserrat';
+}
+
+.post pre {
+  border-radius: 8px;
+  border: none;
+  margin-top: 1rem !important;
+}
+
+.post pre::-webkit-scrollbar {
+  height: 10px;
+}
+
+.post pre::-webkit-scrollbar-track {
+  background-color: #353535;
+  padding: 1px 0;
+}
+
+.post pre::-webkit-scrollbar-thumb {
+  background-color: #555555;
+  height: 8px;
+  border-radius: 1vw;
+}
+
+.post .toolbar-item {
+  font-family: montserrat;
+}
+
+.post .toolbar-item > span, .post .toolbar-item > button {
+  margin: 5px;
+  padding: 2px 10px !important
+}
+
+.post p, .post li {
+  font-family: 'montserrat';
+  font-size: 1rem;
+  text-align: justify;
+  line-height: 1.5rem;
+}
+
+.post p {
+  margin-bottom: 0;
+}
+
+.post li {
+  margin-top: 0.5rem;
+}
+
+.post a {
+  color: #fff;
+}
+
+.post h1, .post h2, .post h3, .post h4, .post h5, .post h6 {
+  font-family: lora;
+  margin-bottom: 0;
+}
+
+.post h1 {
+  font-size: 2.2rem;
+}
+
+.post h2 {
+  font-size: 1.9rem;
+}
+
+.post h3 {
+  font-size: 1.7rem;
+  margin-top: 2.5rem;
+}
+
+.post h4 {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+}
+
+.post h5 {
+  font-size: 1.2rem;
 }
