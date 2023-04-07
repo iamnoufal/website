@@ -1,5 +1,15 @@
-import { Box, Typography, Button } from "@mui/material"
-import { WhatsApp, LinkedIn, Twitter, FacebookOutlined, Share } from '@mui/icons-material'
+import { 
+  Box, 
+  Typography, 
+  Button 
+} from "@mui/material"
+import { 
+  WhatsApp, 
+  LinkedIn, 
+  Twitter, 
+  FacebookOutlined, 
+  Share 
+} from '@mui/icons-material'
 
 const ShareComponent = () => {
   const shareData = {

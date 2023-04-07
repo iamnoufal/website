@@ -7,7 +7,14 @@ import {
   TimelineDot,
   TimelineOppositeContent
 } from "@mui/lab";
-import { Card, CardContent, CardMedia, Typography, useMediaQuery, Box } from "@mui/material";
+import { 
+  Card, 
+  CardContent, 
+  CardMedia, 
+  Typography, 
+  useMediaQuery, 
+  Box 
+} from "@mui/material";
 import { useRef } from "react";
 import Tag from "../tag";
 import Comment from "../comment";

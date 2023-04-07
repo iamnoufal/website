@@ -1,5 +1,16 @@
 import { useState } from 'react';
-import { Avatar, Button, Box, Dialog, DialogTitle, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
+import { 
+  Avatar, 
+  Button, 
+  Box, 
+  Dialog, 
+  DialogTitle, 
+  List, 
+  ListItem, 
+  ListItemAvatar, 
+  ListItemText, 
+  Typography 
+} from '@mui/material';
 import timelineData from '@/data/timeline';
 import { motion } from 'framer-motion';
 

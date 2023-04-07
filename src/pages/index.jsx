@@ -8,19 +8,18 @@ import EducationComponent from '@/components/home/education'
 import SkillsComponent from '@/components/home/skills'
 import LearningsComponent from '@/components/home/learnings'
 import ProjectsComponent from '@/components/home/projects'
-import ContactComponent from '@/components/home/contact'
 
 export default function Home(props) {
   return (
     <>
       <Head>
         <title>Noufal Rahman</title>
-        <meta name="description" content="Read< Inspire, Share" />
+        <meta name="description" content="Noufal Rahman is an aspiring full stack engineer who wishes to build high end solutions that could possibly help the people to boost their productivity." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:title" content="Noufal Rahman" />
-        <meta property="og:description" content="Read, Inspire, Learn from the posts written by Noufal Rahman. This blog features topics from tech to science, from ground to space and from you to me" />
-        <meta property="og:image" content="/assets/images/logo.webp" />
+        <meta property="og:description" content="Noufal Rahman is an aspiring full stack engineer who wishes to build high end solutions that could possibly help the people to boost their productivity." />
+        <meta property="og:image" content="/assets/logo.webp" />
         <meta property="og:url" content="https://noufal.engineer" />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Noufal Rahman" />
@@ -30,27 +29,7 @@ export default function Home(props) {
           title="I'm Noufal Rahman" 
           subtitle="a self-taught full stack developer" 
           style={{
-            background: `linear-gradient(
-                          0deg,
-                          black,
-                          transparent 100%
-                        ), linear-gradient(
-                          300deg, 
-                          #08083a, 
-                          transparent 21%
-                        ), linear-gradient(
-                          198deg, 
-                          rgba(255, 193, 7, 0.2) 11%, 
-                          transparent 0%
-                        ), linear-gradient(
-                          50deg, 
-                          #6610f2 10%,
-                          #6f42c1 20%, 
-                          #d63384 35%, 
-                          #dc3545 65%, 
-                          #fd7e14 83%, 
-                          #ffc107 91%
-                        )`
+            background: `linear-gradient(0deg, black, transparent 100%), linear-gradient(300deg, #08083a, transparent 21%), linear-gradient(198deg, rgba(255, 193, 7, 0.2) 11%, transparent 0%), linear-gradient(50deg, #6610f2 10%, #6f42c1 20%, #d63384 35%, #dc3545 65%, #fd7e14 83%, #ffc107 91%)`
           }}
         >
           <TimelineComponent />
@@ -61,7 +40,6 @@ export default function Home(props) {
         <LearningsComponent />
         <SkillsComponent />
         <ProjectsComponent />
-        {/* <ContactComponent /> */}
       </Layout>
     </>
   )

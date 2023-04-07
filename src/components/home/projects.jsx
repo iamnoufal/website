@@ -1,15 +1,24 @@
 import Tag from "../tag";
 import Comment from "../comment";
-import { Container, Typography, IconButton } from "@mui/material";
-import Box from "@mui/material/Box";
-import projectsData from "@/data/projects";
+import { 
+  Container, 
+  Typography, 
+  IconButton,
+  Box
+} from "@mui/material";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LanguageIcon from '@mui/icons-material/Language';
 import ArticleIcon from '@mui/icons-material/Article';
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination, Autoplay, Navigation } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
+import { 
+  Swiper, 
+  SwiperSlide 
+} from 'swiper/react'
+import { 
+  Pagination, 
+  Autoplay, 
+  Navigation 
+} from "swiper";
+import projectsData from "@/data/projects";
 import ContactComponent from "./contact";
 
 const ProjectsComponent = () => {

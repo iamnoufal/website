@@ -1,6 +1,5 @@
 import Nav from "./nav"
 import Footer from "./footer"
-import Head from 'next/head'
 import Script from "next/script"
 
 const Layout = ({ children }) => {

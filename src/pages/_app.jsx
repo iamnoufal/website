@@ -3,6 +3,8 @@ import BlogContext from '@/contexts/blog'
 import { ThemeProvider } from '@mui/material'
 import darkTheme from '@/themes/dark'
 import { useState } from 'react'
+import "swiper/css";
+import "swiper/css/pagination";
 
 export default function App({ Component, pageProps }) {
   const [posts, setPosts] = useState({
