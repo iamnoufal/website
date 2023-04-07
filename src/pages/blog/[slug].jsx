@@ -25,9 +25,8 @@ export default function Post(props) {
         <meta property="og:url" content={"https://noufal.engineer/blog/"+props.slug} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Noufal's Blog" />
-        <link rel="stylesheet" href="/assets/prism.css" />
-        <script src="/assets/prism.js"></script>
       </Head>
+      <Script src="/assets/prism.js"></Script>
       <Layout>
         <Box>
           <PostIntro {...props} />
