@@ -34,7 +34,7 @@ export default function Post(props) {
           </Box>
         </Box>
       </Layout>
-      <Script src="/assets/prism.js" strategy="afterInteractive" />
+      <Script src="/assets/prism.js" />
     </>
   )
 }
