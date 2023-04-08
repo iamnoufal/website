@@ -1,8 +1,6 @@
 import { 
   Avatar,
   Box, 
-  List,
-  ListItem, 
   Typography 
 } from '@mui/material'
 import { 

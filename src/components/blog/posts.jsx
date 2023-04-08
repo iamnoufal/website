@@ -14,7 +14,6 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 
 const PostList = ({ posts }) => {
-  console.log(posts)
   return (
     <Container maxWidth="md" sx={{py:5}}>
       <Box sx={{display: "flex"}}>

@@ -1,7 +1,5 @@
 import { 
   Box, 
-  Typography, 
-  Button, 
   Avatar,
   Link
 } from "@mui/material"
