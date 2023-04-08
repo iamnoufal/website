@@ -1,5 +1,3 @@
-@import '/assets/prism.css';
-
 * {
   box-sizing: border-box;
 }
@@ -183,7 +181,8 @@ html, body {
 
 .post pre {
   border-radius: 8px;
-  border: none;
+  border: none !important;
+  background-color: hsl(0, 0%, 8%) !important;
   margin-top: 1rem !important;
 }
 

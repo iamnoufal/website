@@ -4,11 +4,16 @@ import {
 } from "@mui/material"
 import Head from "next/head"
 import Layout from "@/components/layout"
-import Script from "next/script"
 import Subscribe from "@/components/blog/subscribe"
 import PostIntro from "@/components/blog/intro"
+import Prism from "prismjs"
+import "prismjs/themes/prism-tomorrow.css";
+import { useEffect } from "react"
 
 export default function Post(props) {
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
   return (
     <>
       <Head>
@@ -34,7 +39,6 @@ export default function Post(props) {
           </Box>
         </Box>
       </Layout>
-      <Script src="/assets/prism.js" />
     </>
   )
 }
