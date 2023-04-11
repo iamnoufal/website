@@ -6,7 +6,7 @@ const AboutComponent = () => {
     <Box style={{ background: "linear-gradient(0deg, #061622 50%, black 50%)" }} id='about'>
       <Container maxWidth='md' sx={{ py: 5 }}>
         <motion.div
-          initial={{ y: 150, opacity: 0 }} 
+          initial={{ y: 60, opacity: 0 }} 
           whileInView={{ y: 0, opacity: 1 }}
           transition={{
             duration: 0.6,

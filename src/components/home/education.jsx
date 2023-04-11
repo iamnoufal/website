@@ -42,7 +42,7 @@ const EducationComponent = () => {
               <TimelineContent>
                 {small && <Typography variant='caption' className="text-white">{edu.year}</Typography>}
                 <motion.div
-                  initial={{ x: index%2==0 ? -75 : small ? -75 : 75, opacity: 0 }}
+                  initial={small ? {x: -75, opacity: 0} : {x: index%1==0 ? -75 : 75, opacity: 0}}
                   whileInView={{ x: 0, opacity: 1 }}
                   transition={{
                     duration: 1,
@@ -50,6 +50,8 @@ const EducationComponent = () => {
                     ease: [0, 0.71, 0.2, 1.01]
                   }}
                 >
+                  {small ? 'true' : 'false'} 
+                  {index}
                   <Card sx={{ background: `${edu.bgColor}`, mb: 3, mt: 1, display: `${medium ? 'block' : 'flex'}`, flexDirection: `${educationData.indexOf(edu)%2!==0 ? "row-reverse" : "row"}`, alignItems: "center" }}>
                     <CardMedia 
                       component='img' 
