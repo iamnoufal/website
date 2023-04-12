@@ -50,8 +50,6 @@ const EducationComponent = () => {
                     ease: [0, 0.71, 0.2, 1.01]
                   }}
                 >
-                  {small ? 'true' : 'false'} 
-                  {index}
                   <Card sx={{ background: `${edu.bgColor}`, mb: 3, mt: 1, display: `${medium ? 'block' : 'flex'}`, flexDirection: `${educationData.indexOf(edu)%2!==0 ? "row-reverse" : "row"}`, alignItems: "center" }}>
                     <CardMedia 
                       component='img' 
