@@ -47,13 +47,13 @@ const learningsData = [
     year: '2020',
     full: false
   },
-  {
-    abbr: 'c',
-    name: 'Objective C',
-    img: `${cImg.src}`,
-    year: '2021',
-    full: false
-  },
+  // {
+  //   abbr: 'c',
+  //   name: 'Objective C',
+  //   img: `${cImg.src}`,
+  //   year: '2021',
+  //   full: false
+  // },
   {
     abbr: 'firebase',
     name: 'Firebase',
@@ -68,13 +68,13 @@ const learningsData = [
     year: '2021',
     full: false
   },
-  {
-    abbr: 'cpp',
-    name: 'C++',
-    img: `${cppImg.src}`,
-    year: '2022',
-    full: false
-  },
+  // {
+  //   abbr: 'cpp',
+  //   name: 'C++',
+  //   img: `${cppImg.src}`,
+  //   year: '2022',
+  //   full: false
+  // },
   {
     abbr: 'jinja',
     name: 'Jinja',

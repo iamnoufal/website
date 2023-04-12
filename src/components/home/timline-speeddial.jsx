@@ -1,7 +1,16 @@
 import timelineData from '@/data/timeline';
 import TimelineIcon from '@mui/icons-material/Timeline';
-import { useEffect, useState } from "react";
-import { Box, Backdrop, SpeedDial, SpeedDialAction, useScrollTrigger, IconButton } from "@mui/material";
+import { 
+  useEffect, 
+  useState 
+} from "react";
+import { 
+  Box,
+  Backdrop, 
+  SpeedDial, 
+  SpeedDialAction, 
+  useScrollTrigger 
+} from "@mui/material";
 
 const TimelineSpeedDialComponent = () => {
   const [open, setOpen] = useState(false);
@@ -15,10 +24,9 @@ const TimelineSpeedDialComponent = () => {
     disableHysteresis: true,
     threshold: 500,
   })
-  useEffect(() => {
-    scrollTrigger ? setShowSD(true) : setShowSD(false)
-    // scrollTrigger ? document.querySelector(".MuiSpeedDial-fab")?.style.background = : console.log();
-  })
+  const handleSDOpen = () => setShowSD(true)
+  const handleSDClose = () => setShowSD(false)
+  useEffect(() => scrollTrigger ? handleSDOpen() : handleSDClose())
   return (
     <Box>
       {showSD && (<Box sx={{ height: '100vh', transform: 'translateZ(0px)', flexGrow: 1, position: 'fixed', bottom: 0, right: 0, zIndex: 1 }}>

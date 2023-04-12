@@ -7,7 +7,14 @@ import {
   TimelineDot,
   TimelineOppositeContent
 } from "@mui/lab";
-import { Card, CardContent, CardMedia, Typography, useMediaQuery, Box } from "@mui/material";
+import { 
+  Card, 
+  CardContent, 
+  CardMedia, 
+  Typography, 
+  useMediaQuery, 
+  Box 
+} from "@mui/material";
 import { useRef } from "react";
 import Tag from "../tag";
 import Comment from "../comment";
@@ -50,7 +57,7 @@ const EducationComponent = () => {
                       sx={{width: `${medium ? "100%": "40%"}`}}
                     />
                     <CardContent>
-                      <Typography variant='h6' className="text-blue">{edu.name}</Typography>
+                      <Typography variant='h6' className="text-blue ms">{edu.name}</Typography>
                       <Typography variant='caption' component="div" color="black" sx={{my:1}}>{edu.degree}</Typography>
                       <Typography variant='body2' color="black">{edu.caption}</Typography>
                     </CardContent>
