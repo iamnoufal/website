@@ -42,8 +42,9 @@ const EducationComponent = () => {
               <TimelineContent>
                 {small && <Typography variant='caption' className="text-white">{edu.year}</Typography>}
                 <motion.div
-                  initial={small ? {x: -75, opacity: 0} : {x: index%1==0 ? -75 : 75, opacity: 0}}
-                  whileInView={{ x: 0, opacity: 1 }}
+                  // initial={small ? {x: -75, opacity: 0} : {x: index%2==0 ? -75 : 75, opacity: 0}}
+                  initial={{ y: 70, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
                   transition={{
                     duration: 1,
                     delay: 0,
