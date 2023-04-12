@@ -17,6 +17,7 @@ import nodejsImg from "@/assets/images/nodejs.webp";
 import postgresImg from "@/assets/images/postgres.webp";
 import sqliteImg from "@/assets/images/sqlite.webp";
 import threejsImg from "@/assets/images/threejs.webp";
+import vuejsImg from "@/assets/images/vue.webp"
 
 const learningsData = [
   {
@@ -143,6 +144,13 @@ const learningsData = [
     name: 'Material UI',
     img: `${muiImg.src}`,
     year: '2022',
+    full: false
+  },
+  {
+    abbr: 'vue',
+    name: 'Vue JS',
+    img: `${vuejsImg.src}`,
+    year: '2023',
     full: false
   },
 ];

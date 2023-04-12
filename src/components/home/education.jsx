@@ -15,10 +15,10 @@ import {
   useMediaQuery, 
   Box 
 } from "@mui/material";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Tag from "../tag";
 import Comment from "../comment";
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import educationData from "@/data/education";
 
 const EducationComponent = () => {
@@ -30,7 +30,7 @@ const EducationComponent = () => {
       <Timeline position={`${small ? 'right' : 'alternate'}`} ref={edu}>
         <Tag>Education</Tag>
         <Comment>Purpose of education is to replace an empty mind with an open one</Comment>
-        {educationData.map((edu, index) => {
+        {educationData.map(edu => {
           return (
             <TimelineItem key={edu.bgColor}>
               {!small && <TimelineOppositeContent className="text-white">{edu.year}</TimelineOppositeContent>}
@@ -42,15 +42,15 @@ const EducationComponent = () => {
               <TimelineContent>
                 {small && <Typography variant='caption' className="text-white">{edu.year}</Typography>}
                 <motion.div
-                  initial={{ y: 70, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
+                  initial={{ x: -75, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
                   transition={{
                     duration: 1,
                     delay: 0,
                     ease: [0, 0.71, 0.2, 1.01]
                   }}
                 >
-                  <Card sx={{ background: `${edu.bgColor}`, mb: 3, mt: 1, display: `${medium ? 'block' : 'flex'}`, flexDirection: `${educationData.indexOf(edu)%2!==0 ? "row-reverse" : "row"}`, alignItems: "center" }}>
+                  <Card sx={{ background: `${edu.bgColor}`, mb: 3, mt: 1, display: `${medium ? 'block' : 'flex'}`, flexDirection: `$educationDatf(edu)%2!==0 ? "row-reverse" : "row"}`, alignItems: "center" }}>
                     <CardMedia 
                       component='img' 
                       image={edu.img}
