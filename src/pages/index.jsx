@@ -19,7 +19,7 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:title" content="Noufal Rahman" />
         <meta property="og:description" content="Noufal Rahman is an aspiring full stack engineer who wishes to build high end solutions that could possibly help the people to boost their productivity." />
-        <meta property="og:image" content="home.webp" />
+        <meta property="og:image" content="https://noufal.engineer/assets/home.webp" />
         <meta property="og:url" content="https://noufal.engineer" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Noufal Rahman" />
