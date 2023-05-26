@@ -118,41 +118,41 @@ const learningsData = [
     year: '2022',
     full: false
   },
-  {
-    abbr: 'postgres',
-    name: 'PostgreSQL',
-    img: `${postgresImg.src}`,
-    year: '2022',
-    full: false
-  },
-  {
-    abbr: 'nodejs',
-    name: 'NodeJS',
-    img: `${nodejsImg.src}`,
-    year: '2022',
-    full: true
-  },
-  {
-    abbr: 'mysql',
-    name: 'MySql',
-    img: `${mysqlImg.src}`,
-    year: '2022',
-    full: true
-  },
-  {
-    abbr: 'mui',
-    name: 'Material UI',
-    img: `${muiImg.src}`,
-    year: '2022',
-    full: false
-  },
-  {
-    abbr: 'vue',
-    name: 'Vue JS',
-    img: `${vuejsImg.src}`,
-    year: '2023',
-    full: false
-  },
+  // {
+  //   abbr: 'postgres',
+  //   name: 'PostgreSQL',
+  //   img: `${postgresImg.src}`,
+  //   year: '2022',
+  //   full: false
+  // },
+  // {
+  //   abbr: 'nodejs',
+  //   name: 'NodeJS',
+  //   img: `${nodejsImg.src}`,
+  //   year: '2022',
+  //   full: true
+  // },
+  // {
+  //   abbr: 'mysql',
+  //   name: 'MySql',
+  //   img: `${mysqlImg.src}`,
+  //   year: '2022',
+  //   full: true
+  // },
+  // {
+  //   abbr: 'mui',
+  //   name: 'Material UI',
+  //   img: `${muiImg.src}`,
+  //   year: '2022',
+  //   full: false
+  // },
+  // {
+  //   abbr: 'vue',
+  //   name: 'Vue JS',
+  //   img: `${vuejsImg.src}`,
+  //   year: '2023',
+  //   full: false
+  // },
 ];
 
 export default learningsData;

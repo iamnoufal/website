@@ -34,7 +34,7 @@ export default function Home(props) {
         >
           <TimelineComponent />
         </IntroComponent>
-        <TimelineSpeedDialComponent />
+        {/* <TimelineSpeedDialComponent /> */}
         <AboutComponent />
         <EducationComponent />
         <LearningsComponent />

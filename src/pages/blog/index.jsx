@@ -38,7 +38,7 @@ export default function Home(props) {
 }
 
 export async function getStaticProps() {
-  const ghost_key=process.env.GHOST_CONTENT_API_KEY  
+  const ghost_key = process.env.GHOST_CONTENT_API_KEY  
   const ghost_url = process.env.GHOST_URL
   let includes = "tags"
   let tags = "blog"
