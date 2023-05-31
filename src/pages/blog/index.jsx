@@ -15,7 +15,7 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:title" content="Noufal's Blog" />
         <meta property="og:description" content="Read, Inspire, Learn from the posts written by Noufal Rahman. This blog features topics from tech to science, from ground to space and from you to me" />
-        <meta property="og:image" content='https://noufal.engineer/assets/blog.webp' />
+        <meta property="og:image" content='/assets/blog.webp' />
         <meta property="og:url" content="https://noufal.engineer/blog" />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Noufal's Blog" />

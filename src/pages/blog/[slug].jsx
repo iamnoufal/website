@@ -23,7 +23,7 @@ export default function Post(props) {
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:title" content={props.title} />
         <meta property="og:description" content={props.excerpt} />
-        <meta property="og:image" content={props.feature_image || 'https://noufal.engineer/assets/blog.webp'} />
+        <meta property="og:image" content={props.feature_image || '/assets/blog.webp'} />
         <meta property="og:url" content={"https://noufal.engineer/blog/"+props.slug} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Noufal's Blog" />
