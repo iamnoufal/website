@@ -9,7 +9,7 @@ const PostIntro = (props) => {
   const blogShare = {
     title: props.title,
     text: props.excerpt,
-    url: "https://noufal.engineer/blog/"+props.slug
+    url: "https://blog.noufal.engineer/"+props.slug
   }
   return (
     <Box

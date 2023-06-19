@@ -30,7 +30,7 @@ const projectsData = [
   },
   {
     name: "Certificate Verification System",
-    stack: "HTML, Bootstrap, Flask, Firebase, Python",
+    stack: "HTML, Bootstrap",
     git: "https://github.com/iamnoufal/cvs-front-end",
     url: "https://verify.iitmbsc.org",
     img: `${cvsImg.src}`,
