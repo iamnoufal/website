@@ -5,7 +5,6 @@ import Script from "next/script"
 const Layout = ({ children }) => {
   return (
     <main>
-      <Nav />
       {children}
       <Footer />
     </main>

@@ -8,37 +8,37 @@ import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt
 const timelineData = [
   {
     name: 'About',
-    icon: <InfoIcon />,
+    icon: <InfoIcon sx={{color: 'white'}} />,
     param: 'about'
   },
   {
     name: 'Education',
     year: 'Till 2025',
-    icon: <SchoolIcon />,
+    icon: <SchoolIcon sx={{color: 'white'}} />,
     param: 'edu'
   },
   {
     name: 'Learnings',
     year: 'Since 2016',
-    icon: <CodeIcon />,
+    icon: <CodeIcon sx={{color: 'white'}} />,
     param: 'learnings'
   },
   {
     name: 'Skills',
     year: 'All time',
-    icon: <SentimentSatisfiedAltIcon />,
+    icon: <SentimentSatisfiedAltIcon sx={{color: 'white'}} />,
     param: 'skills'
   },
   {
     name: 'Projects',
     year: 'Since 2020',
-    icon: <DevicesIcon />,
+    icon: <DevicesIcon sx={{color: 'white'}} />,
     param: 'projects'
   },
   {
     name: 'Contact',
     year: 'Anytime',
-    icon: <ContactPageIcon />,
+    icon: <ContactPageIcon sx={{color: 'white'}} />,
     param: 'contact'
   }
 ];
