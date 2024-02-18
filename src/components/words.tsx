@@ -56,7 +56,15 @@ const Words = ({
     return temp;
   }, [count, radius]);
 
-  const WordWrap = ({ pos, word, index } : { pos: any, word: any, index: any }) => {
+  const WordWrap = ({
+    pos,
+    word,
+    index,
+  }: {
+    pos: any;
+    word: any;
+    index: any;
+  }) => {
     let ref = useRef<Mesh<
       BufferGeometry<NormalBufferAttributes>,
       Material | Material[]
@@ -68,25 +76,27 @@ const Words = ({
     return (
       <mesh key={index} position={pos}>
         <Billboard>
-          <Text
-            fontSize={1.5}
-            children={word}
-            color={color}
-            fillOpacity={opacity}
-          />
+          <Text fontSize={1.5} color={color} fillOpacity={opacity}>
+            {word}
+          </Text>
           <meshBasicMaterial attach="material" color="black" />
         </Billboard>
       </mesh>
     );
-  }
+  };
 
   return (
-    <Canvas camera={{ position: [0, 0, 20], far: 1000}} style={{ ...style, position: "absolute", top: 0, left: 0 }}>
+    <Canvas
+      camera={{ position: [0, 0, 20], far: 1000 }}
+      style={{ ...style, position: "absolute", top: 0, left: 0 }}
+    >
       <fog attach="fog" args={["#012E4E", 0, 100]} />
       <OrbitControls />
       <Suspense fallback={null}>
         <group rotation={[0, 0, Math.PI / 4]}>
-          {wordMap.map(([pos, word], index) => <WordWrap pos={pos} word={word} index={index} key={word+index} />)}
+          {wordMap.map(([pos, word], index) => (
+            <WordWrap pos={pos} word={word} index={index} key={word + index} />
+          ))}
         </group>
       </Suspense>
     </Canvas>
