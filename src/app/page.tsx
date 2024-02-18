@@ -1,4 +1,4 @@
-import { Box, Card, Container, Paper, Typography } from "@mui/material";
+import { Card, Container, Paper, Typography } from "@mui/material";
 // import { Swiper, SwiperSlide } from 'swiper/react';
 import Link from "next/link";
 import Image from "next/image";
@@ -71,10 +71,10 @@ export default async function Home() {
   // const featuredPosts = await getFeaturedPosts();
   // console.log(featuredPosts)
   return (
-    <Box>
+    <main>
       <HomeCover />
-      <Box
-        sx={{
+      <div
+        style={{
           height: '100vh',
           width: '100%',
           display: 'flex',
@@ -90,22 +90,22 @@ export default async function Home() {
         <Typography component="div" variant="h6">
           Penning my life story with nothing but 1s and 0s
         </Typography> */}
-      </Box>
-      <Box sx={{height: '100vh', width: '100%'}}>
+      </div>
+      <div style={{height: '100vh', width: '100%'}}>
         <Typography variant="h1" textAlign="center" className={satisfy.className}>This is the journey of a kid who dreamed to fly when others crawled </Typography>
-      </Box>
+      </div>
       {/* <Paper elevation={12} sx={{ p: 2, mb: 2 }}>
-        <Box>
+        <div>
           <Typography variant="h5">About Me</Typography>
           {about.map((para: string, index: number) => (
             <Typography variant="body1" key={`about-para-${index}`} sx={{ my: 2 }}>{para}</Typography>
           ))}
-        </Box>
+        </div>
       </Paper> */}
-      {/* <Box>
+      {/* <div>
       <FeaturedPosts featured={featuredPosts}/>
-      </Box> */}
+      </div> */}
     
-    </Box>
+    </main>
   );
 }
