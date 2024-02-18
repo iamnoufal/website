@@ -1,6 +1,6 @@
 "use client";
 
-import { Grid, Card, Box, Typography } from "@mui/material";
+import { Grid, Card, Typography } from "@mui/material";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -94,22 +94,22 @@ const Nav = () => {
                     height: "100%",
                   }}
                 >
-                  <Box sx={{ my: 2 }}>
+                  <div style={{ marginTop: 2, marginBottom: 2 }}>
                     <Typography variant="body2">{route.label}</Typography>
                     <Typography variant="h5">{route.title}</Typography>
-                  </Box>
-                  <Box sx={{ position: "relative", display: "flex" }}>
-                    <Box
-                      sx={{
+                  </div>
+                  <div style={{ position: "relative", display: "flex" }}>
+                    <div
+                      style={{
                         height: "100%",
                         width: "100%",
                         position: "absolute",
                         background:
                           `linear-gradient(90deg, rgba(16, 67, 98, 0.7), rgba(16, 67, 98, 0.2))`,
                       }}
-                    ></Box>
+                    ></div>
                     {route.icon}
-                  </Box>
+                  </div>
                 </Card>
               </Link>
             </Grid>
