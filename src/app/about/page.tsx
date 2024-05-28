@@ -1,0 +1,74 @@
+import PortfolioLayout from "@/components/PortfolioLayout";
+import { Box, Container } from "@mui/material";
+import Heading from "@/components/Heading";
+import Emoji from "@/components/Emoji";
+import Paragraph from "@/components/Paragraph";
+import Image from "next/image";
+import aboutBg from "@/assets/images/about-bg.webp";
+import meImg from "@/assets/images/me-color.webp";
+
+export default async function Home() {
+  return (
+    <main>
+      <PortfolioLayout
+        title="About me"
+        subtitle="I just code in my free time 🙃"
+        style={{
+          background: `
+            linear-gradient(0deg, black, transparent 100%), 
+            linear-gradient(300deg, #08083a, transparent 21%), 
+            linear-gradient(198deg, rgba(255, 193, 7, 0.2) 11%, transparent 0%), 
+            linear-gradient(50deg, #6610f2 10%, #6f42c1 20%, #d63384 35%, #dc3545 65%, #fd7e14 83%, #ffc107 91%)
+          `,
+        }}
+      />
+      <Container maxWidth="md" sx={{ p: 6, textAlign: "center" }}>
+        <Box sx={{ pt: 6 }}>
+          <Heading variant="h6" component="h2">
+            I'm just kidding. I code almost all the time
+          </Heading>
+          {/* <Paragraph>
+            I code all the time
+          </Paragraph> */}
+        </Box>
+        <Box sx={{ position: "relative" }}>
+          <Box
+            sx={{
+              position: "absolute",
+              height: "100%",
+              width: "100%",
+              background: "linear-gradient(to bottom, transparent, black)",
+              zIndex: 4
+            }}
+          ></Box>
+          <Image
+            src={meImg}
+            alt="Noufal Rahman"
+            style={{ height: "auto", width: "100%", opacity: 0.5 }}
+          />
+        </Box>
+        <Box sx={{ py: 6 }}>
+          <Heading variant="h6" component="h2">
+            You should've known my name <Emoji>😉</Emoji>
+          </Heading>
+          <Paragraph>
+            I just assume, because you're here. Just in case if you didn't notice, I'm Noufal Rahman <Emoji>👋</Emoji>
+          </Paragraph>
+        </Box>
+        <Image
+          src={aboutBg}
+          alt="Noufal Rahman | About image vector"
+          style={{ height: "auto", width: "100%", opacity: 0.6 }}
+        />
+        <Box sx={{ py: 6 }}>
+          <Heading variant="h6" component="h2">
+            The joy of creating something....
+          </Heading>
+          <Paragraph>
+            ...is what drives me to code.
+          </Paragraph>
+        </Box>
+      </Container>
+    </main>
+  );
+}

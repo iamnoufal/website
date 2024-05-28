@@ -1,0 +1,27 @@
+import Typography, { TypographyTypeMap } from "@mui/material/Typography";
+import { lora, shadowsIntoLight } from "@/theme/fonts";
+import { SxProps } from "@mui/material";
+
+const Heading = ({
+  children,
+  variant,
+  component = "div",
+  sx
+}: {
+  children: React.ReactNode;
+  variant: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  component?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "div";
+  sx?: SxProps
+}) => (
+  <Typography
+    variant={variant}
+    component={component}
+    className={`text-white text-shadow pd`}
+    textAlign={"center"}
+    sx={{ mb: 3, ...sx }}
+  >
+    {children}
+  </Typography>
+);
+
+export default Heading;
