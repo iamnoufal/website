@@ -11,7 +11,7 @@ export default function Home() {
     <main>
       <PortfolioLayout
         title="I'm Noufal Rahman"
-        subtitle="01101001 01100101 01101100 01100100 01100110 01110100 1000001 "
+        subtitle="01001000 01100101 01101100 01101100 01101111 00100000 11110000 10011111 10010001 10001011"
         style={{
           background: `
             linear-gradient(0deg, black, transparent 100%), 
