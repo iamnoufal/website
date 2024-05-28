@@ -115,7 +115,7 @@ const PortfolioNav = () => {
                             width: "100%",
                             position: "absolute",
                             background:
-                              `linear-gradient(90deg, rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.1))`,
+                              `linear-gradient(90deg, rgba(30, 30, 30, 0.9), rgba(30, 30, 30, 0.2))`,
                           }}
                         ></Box>
                         {route.icon}

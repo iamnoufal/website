@@ -28,25 +28,32 @@ export const themeOptions: ThemeOptions = {
     h1: {
       fontFamily: lora.style.fontFamily,
       fontSize: "3rem",
+      textAlign: "center"
     },
     h2: {
       fontFamily: lora.style.fontFamily,
+      textAlign: "center"
     },
     h3: {
       fontFamily: lora.style.fontFamily,
+      textAlign: "center"
     },
     h6: {
       fontFamily: shadowsIntoLight.style.fontFamily,
       letterSpacing: "0.2rem",
       fontSize: "2rem",
+      textAlign: "center"
     },
     body1: {
       fontSize: "1.125rem",
       lineHeight: 1.8,
       wordSpacing: "0.1rem",
+      mt: 3,
+      fontFamily: montserrat.style.fontFamily,
     },
     body2: {
       fontSize: "1rem",
+      fontFamily: montserrat.style.fontFamily,
     },
   },
 };

@@ -5,7 +5,7 @@ import Emoji from "@/components/Emoji";
 import Paragraph from "@/components/Paragraph";
 import Image from "next/image";
 import aboutBg from "@/assets/images/about-bg.webp";
-import meImg from "@/assets/images/me-color.webp";
+import meImg from "@/assets/images/me.webp";
 
 export default async function Home() {
   return (

@@ -5,6 +5,7 @@ import PortfolioNav from "@/components/PortfolioNav";
 import Theme from "@/theme/Provider";
 import Footer from "@/components/Footer";
 import favicon from "@/assets/images/favicon.ico"
+import ScrollBehaviour from "@/helpers/ScrollBehaviour";
 
 export const metadata: Metadata = {
   icons: {
@@ -20,12 +21,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={[montserrat.variable, lora.variable].join(" ")}>
-        <Theme>
-          <Nav />
-          {children}
-          <PortfolioNav />
-          <Footer />
-        </Theme>
+        <ScrollBehaviour>
+          <Theme>
+            <Nav />
+            {children}
+            <PortfolioNav />
+            <Footer />
+          </Theme>
+        </ScrollBehaviour>
       </body>
     </html>
   );

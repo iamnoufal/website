@@ -1,5 +1,3 @@
-"use client";
-
 import { Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import Heading from "./Heading";
@@ -35,30 +33,12 @@ const PortfolioLayout = ({
           textAlign: "center",
         }}
       >
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{
-            duration: 0.8,
-            delay: 0,
-            ease: [0, 0.71, 0.2, 1.01],
-          }}
-        >
-          <Heading variant="h1" component="h1">
-            {title}
-          </Heading>
-        </motion.div>
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{
-            duration: 0.8,
-            delay: 0.5,
-            ease: [0, 0.71, 0.2, 1.01],
-          }}
-        >
-          <Heading variant="h6" component="h2">{subtitle}</Heading>
-        </motion.div>
+        <Heading variant="h1" component="h1">
+          {title}
+        </Heading>
+        <Heading variant="h6" component="h2" delay={0.5}>
+          {subtitle}
+        </Heading>
       </Box>
       {children}
     </Box>
