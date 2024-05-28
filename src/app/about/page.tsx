@@ -25,7 +25,7 @@ export default async function Home() {
       <Container maxWidth="md" sx={{ p: 6, textAlign: "center" }}>
         <Box sx={{ pt: 6 }}>
           <Heading variant="h6" component="h2">
-            I'm just kidding. I code almost all the time
+            I&apos;m just kidding. I code almost all the time
           </Heading>
           {/* <Paragraph>
             I code all the time
@@ -49,10 +49,10 @@ export default async function Home() {
         </Box>
         <Box sx={{ py: 6 }}>
           <Heading variant="h6" component="h2">
-            You should've known my name <Emoji>😉</Emoji>
+            You should&apos;ve known my name <Emoji>😉</Emoji>
           </Heading>
           <Paragraph>
-            I just assume, because you're here. Just in case if you didn't notice, I'm Noufal Rahman <Emoji>👋</Emoji>
+            I just assume, because you&apos;re here. Just in case if you didn&apos;t notice, I&apos;m Noufal Rahman <Emoji>👋</Emoji>
           </Paragraph>
         </Box>
         <Image
