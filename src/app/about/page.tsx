@@ -25,7 +25,7 @@ export default async function Home() {
       <Container maxWidth="md" sx={{ p: 6, textAlign: "center" }}>
         <Box sx={{ pt: 6, height: "80vh", display: "flex", alignItems: 'center', justifyContent: "center" }}>
           <Heading variant="h6" component="h2">
-            I'm just kidding. I code almost all the time
+            I&apos;m just kidding. I code almost all the time
           </Heading>
         </Box>
         <Box sx={{ position: "relative" }}>
