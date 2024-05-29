@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Typography, { TypographyTypeMap } from "@mui/material/Typography";
 import { lora, shadowsIntoLight } from "@/theme/fonts";
@@ -18,18 +18,15 @@ const Heading = ({
 }) => (
   <motion.div
     initial={{ y: 20, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
+    whileInView={{ y: 0, opacity: 1 }}
+    viewport={{ once: true }}
     transition={{
       duration: 0.8,
       delay: delay,
       ease: [0, 0.71, 0.2, 1.01],
     }}
   >
-    <Typography
-      variant={variant}
-      component={component}
-      sx={{ mb: 3 }}
-    >
+    <Typography variant={variant} component={component} sx={{ mb: 3 }}>
       {children}
     </Typography>
   </motion.div>

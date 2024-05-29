@@ -13,7 +13,8 @@ const Paragraph = ({
 }) => (
   <motion.div
     initial={{ y: 20, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
+    whileInView={{ y: 0, opacity: 1 }}
+    viewport={{ once: true }}
     transition={{
       duration: 0.8,
       delay: delay,

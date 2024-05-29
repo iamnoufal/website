@@ -49,7 +49,7 @@ export default async function Home() {
             You should&apos;ve known my name <Emoji>😉</Emoji>
           </Heading>
           <Paragraph delay={0.5}>
-            I just assume, because you&apos;re here. Just in case if you didn&apos;t notice, I&apos;m Noufal Rahman <Emoji>👋</Emoji>
+            I just assumed, because you&apos;re here. Just in case if you didn&apos;t notice, I&apos;m Noufal Rahman <Emoji>👋</Emoji>
           </Paragraph>
         </Box>
         <Image
@@ -64,6 +64,19 @@ export default async function Home() {
           <Paragraph delay={0.5}>
             ...is what drives me to code.
           </Paragraph>
+        </Box>
+        <Box sx={{ py: 6 }}>
+          <Heading variant="h6" component="h2">
+            Questions I hear often..
+          </Heading>
+          <Paragraph delay={0.5}>
+            ...are "How many fingers do you see 🖐🏽" and "Can you use your sixth finger?".
+          </Paragraph>
+        </Box>
+        <Box sx={{ pt: 6, height: "80vh", display: "flex", alignItems: 'center', justifyContent: "center" }}>
+          <Heading variant="h6" component="h2">
+            Yes I have 6 fingers. SURPRISE
+          </Heading>
         </Box>
       </Container>
     </main>
