@@ -70,7 +70,7 @@ export default async function Home() {
             Questions I hear often..
           </Heading>
           <Paragraph delay={0.5}>
-            ...are "How many fingers do you see 🖐🏽" and "Can you use your sixth finger?".
+            ...are &ldquo;How many fingers do you see 🖐🏽&rdquo; and &ldquo;Can you use your sixth finger?&rdquo;.
           </Paragraph>
         </Box>
         <Box sx={{ pt: 6, height: "80vh", display: "flex", alignItems: 'center', justifyContent: "center" }}>
