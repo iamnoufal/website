@@ -41,7 +41,7 @@ export default async function Home() {
           <Image
             src={meImg}
             alt="Noufal Rahman"
-            style={{ height: "auto", width: "100%", opacity: 0.7 }}
+            style={{ height: "auto", width: "100%", opacity: 1 }}
           />
         </Box>
         <Box sx={{ py: 6 }}>
