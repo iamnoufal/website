@@ -18,7 +18,7 @@ const Nav = () => {
   const NavItem = ({ to, label } : { to: string; label: string}) => {
     return (
       <Link href={to} style={{ textDecoration: 'none' }}>
-        <Typography variant='h5' my={3} textAlign='center' className='text-white text-shadow lora'>{label}</Typography>
+        <Typography variant='h5' my={3} textAlign='center'>{label}</Typography>
       </Link>
     )
   }

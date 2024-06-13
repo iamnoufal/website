@@ -5,7 +5,13 @@ import Emoji from "@/components/Emoji";
 import Paragraph from "@/components/Paragraph";
 import Image from "next/image";
 import aboutBg from "@/assets/images/about-bg.webp";
-import meImg from "@/assets/images/me-color.webp";
+import meImg from "@/assets/images/me-bitmoji.webp";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About me | Noufal",
+  description: "This text is meant for web crawlers. In case you're reading this, this is the about page.",
+};
 
 export default async function Home() {
   return (
@@ -28,8 +34,8 @@ export default async function Home() {
             I&apos;m just kidding. I code almost all the time
           </Heading>
         </Box>
-        <Box sx={{ position: "relative" }}>
-          <Box
+        <Box sx={{ position: "relative", px: { sm: 10, md: 20, lg: 30 } }}>
+          {/* <Box
             sx={{
               position: "absolute",
               height: "100%",
@@ -37,7 +43,7 @@ export default async function Home() {
               background: "linear-gradient(to bottom, transparent, black)",
               zIndex: 4
             }}
-          ></Box>
+          ></Box> */}
           <Image
             src={meImg}
             alt="Noufal Rahman"
@@ -70,7 +76,7 @@ export default async function Home() {
             Questions I hear often..
           </Heading>
           <Paragraph delay={0.5}>
-            ...are &ldquo;How many fingers do you see 🖐🏽&rdquo; and &ldquo;Can you use your sixth finger?&rdquo;.
+            ...are &ldquo;How many fingers do you see 🖐🏽&rdquo; and &ldquo;Do you use your sixth finger to type?&rdquo;.
           </Paragraph>
         </Box>
         <Box sx={{ pt: 6, height: "80vh", display: "flex", alignItems: 'center', justifyContent: "center" }}>

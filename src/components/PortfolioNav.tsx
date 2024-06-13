@@ -77,7 +77,7 @@ const PortfolioNav = () => {
         boxShadow: "inset 0 0 20px 3px rgba(255, 255, 255, 0.3)",
         borderRadius: "20px"
       }}>
-        <Heading variant="h6">{path === "/" ? "Beyond my journey!!" : "And there's more!"}</Heading>
+        <Heading variant="h6">{path === "/" ? "You could click one of these.." : "And there's more!"}</Heading>
         <Grid container id="nav" sx={{ justifyContent: "center" }}>
           {ROUTES.map(
             (route) =>
