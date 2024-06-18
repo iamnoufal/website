@@ -45,7 +45,7 @@ export default async function Home() {
         <Box sx={{ py: 6 }}>
           <Heading variant="h6" component="h2">
             You should&apos;ve known my name <Emoji>😉</Emoji>
-          </Heading>,
+          </Heading>
           <Paragraph delay={0.5}>
             I just assumed, because you&apos;re here. Just in case if you didn&apos;t notice, I&apos;m Noufal Rahman <Emoji>👋</Emoji>
           </Paragraph>
