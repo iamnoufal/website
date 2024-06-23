@@ -4,13 +4,13 @@ import Link from "next/link";
 
 const SpotifyCurrentlyPlaying = async () => {
   const data = await getCurrentlyPlaying();
+  if (!data.is_playing) return null;
   return (
     <Link
       style={{
         position: "absolute",
         top: "100vh",
-        right: "5vw",
-        display: data.is_playing ? "block" : "none",
+        right: "5vw"
       }}
       id="spotifyPlayingWidgetWrapper"
       href={data.url}
