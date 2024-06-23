@@ -8,6 +8,7 @@ import about1Pic from "@/assets/images/about-1.webp";
 import about2Pic from "@/assets/images/about-2.webp";
 import meImg from "@/assets/images/me-bitmoji.webp";
 import { Metadata } from "next";
+import SpotifyCurrentlyPlaying from "@/components/Spotify";
 
 export const metadata: Metadata = {
   title: "About me | Noufal",
@@ -108,6 +109,7 @@ export default async function Home() {
           <img style={{ width: "100%", height: "auto" }} src="https://raw.githubusercontent.com/iamnoufal/iamnoufal/output/github-contribution-grid-snake-dark.svg" alt="GitHub contributions of Noufal Rahman" />
         </Box>
       </Container>
+      <SpotifyCurrentlyPlaying />
     </main>
   );
 }
