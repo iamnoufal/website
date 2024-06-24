@@ -29,7 +29,7 @@ const SpotifyCurrentlyPlaying = async () => {
         >
           <defs>
             <path
-              id="circle"
+              id="spotifyPlayingTextPath"
               d="
                 M 100, 100
                 m -100, 0  
@@ -40,7 +40,7 @@ const SpotifyCurrentlyPlaying = async () => {
           </defs>
           <text width="400">
             <textPath
-              xlinkHref="#circle"
+              xlinkHref="#spotifyPlayingTextPath"
               className="spotifyPlayingText"
             >
               now playing • now playing • now playing • now playing •
