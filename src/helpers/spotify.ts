@@ -1,5 +1,3 @@
-import { url } from "inspector";
-
 const getAccessToken = async () => {
   const response = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
@@ -13,6 +11,9 @@ const getAccessToken = async () => {
       grant_type: "refresh_token",
       refresh_token: process.env.SPOTIFY_REFRESH_TOKEN || "",
     }),
+    next: {
+      revalidate: 3600,
+    }
   });
   const data = await response.json();
   return data.access_token;

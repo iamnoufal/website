@@ -40,8 +40,6 @@ const SpotifyCurrentlyPlaying = async () => {
           </defs>
           <text width="400">
             <textPath
-              alignment-baseline="top"
-              color="white"
               xlinkHref="#circle"
               className="spotifyPlayingText"
             >
