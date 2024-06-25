@@ -38,6 +38,7 @@ const getCurrentlyPlaying = async () => {
     album: data.item.album.name,
     album_art: data.item.album.images[0].url,
     url: data.item.external_urls.spotify,
+    preview: data.item.preview_url
   };
 }
 

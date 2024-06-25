@@ -1,6 +1,7 @@
 import getCurrentlyPlaying from "@/helpers/spotify";
 import { Box } from "@mui/material";
 import Link from "next/link";
+import SpotifyAudio from "./SpotifyAudio";
 
 const SpotifyCurrentlyPlaying = async () => {
   const data = await getCurrentlyPlaying();
@@ -48,6 +49,7 @@ const SpotifyCurrentlyPlaying = async () => {
           </text>
         </svg>
       </Box>
+      <SpotifyAudio audio_url={data.preview} />
     </Link>
   );
 };

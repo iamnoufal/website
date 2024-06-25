@@ -4,8 +4,9 @@ import { montserrat, lora } from "@/theme/fonts";
 import PortfolioNav from "@/components/PortfolioNav";
 import Theme from "@/theme/Provider";
 import Footer from "@/components/Footer";
-import ScrollBehaviour from "@/helpers/ScrollBehaviour";
+import ScrollBehaviour from "@/components/ScrollBehaviour";
 import "./globals.css";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function RootLayout({
   children,
@@ -21,6 +22,7 @@ export default function RootLayout({
             {children}
             <PortfolioNav />
             <Footer />
+            <ScrollToTop />
           </Theme>
         </ScrollBehaviour>
       </body>

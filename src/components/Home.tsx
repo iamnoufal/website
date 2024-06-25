@@ -4,6 +4,7 @@ import { Fragment, useState } from "react";
 import PortfolioLayout from "@/components/PortfolioLayout";
 import { Box, Button, Container } from "@mui/material";
 import Heading from "@/components/Heading";
+import Fade from "./Fade";
 
 export default function HomeContent() {
   const [msg, setMsg] = useState<string>(
@@ -81,16 +82,18 @@ export default function HomeContent() {
               justifyContent: "center",
             }}
           >
-            <Heading variant="h6" component="h2">
+            <Heading variant="h6" component="h2" delay={0.5}>
               You couldn&apos;t read binary, could ya?
             </Heading>
-            <Button
-              onClick={iterateChangeText}
-              variant="contained"
-              sx={{ mt: 4 }}
-            >
-              Let&apos;s translate
-            </Button>
+            <Fade delay={0.7}>
+              <Button
+                onClick={iterateChangeText}
+                variant="contained"
+                sx={{ mt: 4 }}
+              >
+                Let&apos;s translate
+              </Button>
+            </Fade>
           </Box>
         ) : (
           <Box
@@ -103,7 +106,7 @@ export default function HomeContent() {
               justifyContent: "center",
             }}
           >
-            <Heading variant="h6" component="h2">
+            <Heading variant="h6" component="h2" delay={0.5}>
               Enough of this game, let&apos;s get to the real stuff.
             </Heading>
           </Box>

@@ -4,6 +4,7 @@ import Typography, { TypographyTypeMap } from "@mui/material/Typography";
 import { lora, shadowsIntoLight } from "@/theme/fonts";
 import { SxProps } from "@mui/material";
 import { motion } from "framer-motion";
+import Fade from "./Fade";
 
 const Heading = ({
   children,
@@ -16,20 +17,11 @@ const Heading = ({
   component?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "div";
   delay?: number;
 }) => (
-  <motion.div
-    initial={{ y: 20, opacity: 0 }}
-    whileInView={{ y: 0, opacity: 1 }}
-    viewport={{ once: true }}
-    transition={{
-      duration: 0.8,
-      delay: delay,
-      ease: [0, 0.71, 0.2, 1.01],
-    }}
-  >
+  <Fade delay={delay}>
     <Typography variant={variant} component={component} sx={{ mb: 3 }}>
       {children}
     </Typography>
-  </motion.div>
+  </Fade>
 );
 
 export default Heading;
