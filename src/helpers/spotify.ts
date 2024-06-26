@@ -1,4 +1,16 @@
-const getAccessToken = async () => {
+export interface SpotifyData {
+  current_time: number;
+  duration: number;
+  is_playing: boolean;
+  title: string;
+  artist: string;
+  album: string;
+  album_art: string;
+  url: string;
+  preview: string;
+}
+
+const getAccessToken = async () : Promise<string> => {
   const response = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
     headers: {
@@ -16,10 +28,10 @@ const getAccessToken = async () => {
     }
   });
   const data = await response.json();
-  return data.access_token;
+  return data.access_token as string;
 }
 
-const getCurrentlyPlaying = async () => {
+const getCurrentlyPlaying = async () : Promise<SpotifyData> => {
   const accessToken = await getAccessToken();
   const response = await fetch("https://api.spotify.com/v1/me/player/currently-playing", {
     headers: {
@@ -27,7 +39,7 @@ const getCurrentlyPlaying = async () => {
     },
     cache: "no-store"
   });
-  if (response.status !== 200) return {is_playing: false};
+  if (response.status !== 200) return {is_playing: false} as SpotifyData;
   const data = await response.json();
   return {
     current_time: data.progress_ms,

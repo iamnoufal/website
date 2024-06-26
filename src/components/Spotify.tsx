@@ -1,33 +1,28 @@
-import getCurrentlyPlaying from "@/helpers/spotify";
+import getCurrentlyPlaying, { SpotifyData } from "@/helpers/spotify";
 import { Box } from "@mui/material";
 import Link from "next/link";
 import SpotifyAudio from "./SpotifyAudio";
 
 const SpotifyCurrentlyPlaying = async () => {
-  const data = await getCurrentlyPlaying();
+  const data : SpotifyData = await getCurrentlyPlaying();
   if (!data.is_playing) return null;
   return (
-    <Link
+    <Box
       style={{
         position: "absolute",
         top: "100vh",
-        right: "5vw"
+        right: "5vw",
       }}
       id="spotifyPlayingWidgetWrapper"
-      href={data.url}
-      target="_blank"
     >
       <Box sx={{ position: "relative" }}>
         <img src={data.album_art} alt={data.title} />
         <Box component="span">
           <Box>{data.title}</Box>
         </Box>
-        <svg
-          id="spotifyPlayingWidget"
-          viewBox="0 0 200 200"
-          width="200"
-          height="200"
-        >
+        <Link href={data.url} target="_blank">
+        </Link>
+        <svg viewBox="0 0 200 200" width="200" height="200">
           <defs>
             <path
               id="spotifyPlayingTextPath"
@@ -40,17 +35,14 @@ const SpotifyCurrentlyPlaying = async () => {
             ></path>
           </defs>
           <text width="400">
-            <textPath
-              xlinkHref="#spotifyPlayingTextPath"
-              className="spotifyPlayingText"
-            >
+            <textPath xlinkHref="#spotifyPlayingTextPath">
               now playing • now playing • now playing • now playing •
             </textPath>
           </text>
         </svg>
       </Box>
       <SpotifyAudio audio_url={data.preview} />
-    </Link>
+    </Box>
   );
 };
 

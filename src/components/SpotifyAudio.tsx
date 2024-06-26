@@ -8,8 +8,13 @@ const SpotifyAudio = ({ audio_url }: { audio_url: string }) => {
       const audio = document.querySelector("audio");
       const wrapper = document.getElementById("spotifyPlayingWidgetWrapper");
       if (audio && wrapper) {
-        wrapper.onmouseover = () => audio.play();
-        wrapper.onmouseout = () => audio.pause();
+        if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+          wrapper.ontouchstart = () => audio.play();
+          wrapper.ontouchend = () => audio.pause();
+        } else {
+          wrapper.onmouseover = () => audio.play();
+          wrapper.onmouseout = () => audio.pause();
+        }
       }
     }
   }, []);
