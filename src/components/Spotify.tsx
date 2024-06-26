@@ -4,7 +4,7 @@ import Link from "next/link";
 import SpotifyAudio from "./SpotifyAudio";
 
 const SpotifyCurrentlyPlaying = async () => {
-  const data : SpotifyData = await getCurrentlyPlaying();
+  const data: SpotifyData = await getCurrentlyPlaying();
   if (!data.is_playing) return null;
   return (
     <Box
@@ -20,8 +20,17 @@ const SpotifyCurrentlyPlaying = async () => {
         <Box component="span">
           <Box>{data.title}</Box>
         </Box>
-        <Link href={data.url} target="_blank">
-        </Link>
+        <Link
+          href={data.url}
+          target="_blank"
+          style={{
+            position: "absolute",
+            display: "none",
+            width: "100%",
+            height: "100%",
+            zIndex: 10,
+          }}
+        ></Link>
         <svg viewBox="0 0 200 200" width="200" height="200">
           <defs>
             <path

@@ -7,9 +7,17 @@ const SpotifyAudio = ({ audio_url }: { audio_url: string }) => {
     if (document) {
       const audio = document.querySelector("audio");
       const wrapper = document.getElementById("spotifyPlayingWidgetWrapper");
-      if (audio && wrapper) {
-        wrapper.onmouseover = () => audio.play();
-        wrapper.onmouseout = () => audio.pause();
+      const audioLink = wrapper?.getElementsByTagName('a')[0];
+      if (audio && wrapper && audioLink) {
+        wrapper.onmouseover = () => {
+          audio.play();
+          setTimeout(() => audioLink.style.display = "block", 700);
+        };
+        wrapper.onmouseout = () => {
+          audio.pause();
+          audioLink.style.display = "none";
+          setTimeout(() => audioLink.style.display = "none", 700);
+        };
       }
     }
   }, []);
