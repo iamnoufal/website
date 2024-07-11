@@ -1,7 +1,7 @@
 export interface SpotifyData {
-  current_time: number;
+  current_time?: number;
   duration: number;
-  is_playing: boolean;
+  is_playing: boolean | null;
   title: string;
   artist: string;
   album: string;
@@ -31,6 +31,28 @@ const getAccessToken = async () : Promise<string> => {
   return data.access_token as string;
 }
 
+const getLastPlayed = async (token : string) : Promise<SpotifyData> => {
+  const response = await fetch("https://api.spotify.com/v1/me/player/recently-played", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    cache: "no-store"
+  });
+  if (response.status !== 200) return {is_playing: null} as SpotifyData;
+  const data = await response.json();
+  const track = data.items[0].track
+  return {
+    duration: track.duration_ms,
+    is_playing: false,
+    title: track.name,
+    artist: track.artists.map((artist: { name: string }) => artist.name).join(", "),
+    album: track.album.name,
+    album_art: track.album.images[0].url,
+    url: track.external_urls.spotify,
+    preview: track.preview_url
+  };
+}
+
 const getCurrentlyPlaying = async () : Promise<SpotifyData> => {
   const accessToken = await getAccessToken();
   const response = await fetch("https://api.spotify.com/v1/me/player/currently-playing", {
@@ -39,7 +61,7 @@ const getCurrentlyPlaying = async () : Promise<SpotifyData> => {
     },
     cache: "no-store"
   });
-  if (response.status !== 200) return {is_playing: false} as SpotifyData;
+  if (response.status !== 200) return await getLastPlayed(accessToken);
   const data = await response.json();
   return {
     current_time: data.progress_ms,

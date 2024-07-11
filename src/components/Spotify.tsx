@@ -5,7 +5,8 @@ import SpotifyAudio from "./SpotifyAudio";
 
 const SpotifyCurrentlyPlaying = async () => {
   const data: SpotifyData = await getCurrentlyPlaying();
-  if (!data.is_playing) return null;
+  if (data.is_playing == null) return null;
+  const playingText = data.is_playing ? "now playing" : "last  played";
   return (
     <Box
       style={{
@@ -31,7 +32,12 @@ const SpotifyCurrentlyPlaying = async () => {
             zIndex: 10,
           }}
         ></Link>
-        <svg viewBox="0 0 200 200" width="200" height="200">
+        <svg
+          viewBox="0 0 200 200"
+          width="200"
+          height="200"
+          style={{ animationName: data.is_playing ? "rotate-circle" : "" }}
+        >
           <defs>
             <path
               id="spotifyPlayingTextPath"
@@ -44,8 +50,14 @@ const SpotifyCurrentlyPlaying = async () => {
             ></path>
           </defs>
           <text width="400">
-            <textPath xlinkHref="#spotifyPlayingTextPath">
-              now playing • now playing • now playing • now playing •
+            <textPath
+              xlinkHref="#spotifyPlayingTextPath"
+              style={{
+                fill: "white",
+                letterSpacing: data.is_playing ? "1.9px" : "2.9px",
+              }}
+            >
+              {playingText} • {playingText} • {playingText} • {playingText} •
             </textPath>
           </text>
         </svg>
