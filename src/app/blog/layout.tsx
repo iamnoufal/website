@@ -22,7 +22,6 @@ export default function BlogLayout({
   return (
     <Fragment>
       {children}
-      <p>Hello World</p>
     </Fragment>
   );
 }

@@ -1,4 +1,4 @@
-import getCurrentlyPlaying, { SpotifyData } from "@/helpers/spotify";
+import getCurrentlyPlaying, { SpotifyData } from "@/utils/spotify";
 import { Box } from "@mui/material";
 import Link from "next/link";
 import SpotifyAudio from "./SpotifyAudio";

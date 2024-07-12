@@ -28,7 +28,7 @@ export const themeOptions: ThemeOptions = {
     h1: {
       fontFamily: lora.style.fontFamily,
       fontSize: "3rem",
-      textAlign: "center"
+      textAlign: "center",
     },
     h2: {
       fontFamily: lora.style.fontFamily,
@@ -54,7 +54,7 @@ export const themeOptions: ThemeOptions = {
     body2: {
       fontSize: "1rem",
       fontFamily: montserrat.style.fontFamily,
-    },
+    }
   },
 };
 

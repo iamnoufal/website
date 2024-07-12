@@ -11,14 +11,16 @@ const Heading = ({
   variant,
   component = "div",
   delay = 0,
+  sx
 }: {
   children: React.ReactNode;
   variant: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   component?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "div";
   delay?: number;
+  sx?: SxProps;
 }) => (
   <Fade delay={delay}>
-    <Typography variant={variant} component={component} sx={{ mb: 3 }}>
+    <Typography variant={variant} component={component} sx={{ mb: 3, ...sx }}>
       {children}
     </Typography>
   </Fade>

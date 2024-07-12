@@ -6,7 +6,7 @@ import PortfolioLayout from "@/components/PortfolioLayout";
 import { lora, montserrat } from "@/theme/fonts";
 import Footer from "@/components/Footer";
 
-export default function Home() {
+export default function BlogsPage() {
   return (
     <main>
       <PortfolioLayout
