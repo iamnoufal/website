@@ -4,11 +4,6 @@ const ghostContentAPI = async (
   endpoint: string,
   params?: Record<string, string>
 ) => {
-  console.log(
-    `${process.env.GHOST_URI}/ghost/api/v3/content/${endpoint}?key=${
-      process.env.GHOST_CONTENT_API_KEY
-    }&${params ? new URLSearchParams(params) : ""}`
-  );
   const res = await fetch(
     `${process.env.GHOST_URI}/ghost/api/v3/content/${endpoint}?key=${
       process.env.GHOST_CONTENT_API_KEY
@@ -16,7 +11,6 @@ const ghostContentAPI = async (
   );
   const data = await res.json();
   if (data.errors) {
-    console.error(data.errors);
     return null;
   }
   return data;
@@ -27,18 +21,7 @@ const getPosts = async () => {
     limit: "all",
     include: "tags,authors",
   });
-  return posts.map(
-    (p : PostSchema) =>
-      new Object({
-        title: p.title,
-        excerpt: p.excerpt,
-        slug: p.slug,
-        feature_image: p.feature_image,
-        published_at: p.published_at,
-        authors: p.authors,
-        tags: p.tags,
-      })
-  );
+  return posts as PostSchema[];
 };
 
 const getPostBySlug = async (slug: string) : Promise<PostSchema> => {

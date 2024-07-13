@@ -1,13 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Nav from "@/components/Nav";
-import { montserrat, lora } from "@/theme/fonts";
-import PortfolioNav from "@/components/PortfolioNav";
-import Theme from "@/theme/Provider";
-import Footer from "@/components/Footer";
 import { Fragment } from "react";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
