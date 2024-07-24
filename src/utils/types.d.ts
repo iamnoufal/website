@@ -5,7 +5,11 @@ export interface PostSchema {
   published_at: string;
   feature_image: string;
   excerpt: string;
-  tags: Array<String>;
+  tags: Array<{
+    id: string,
+    name: string
+  }>;
   authors: Array<String>;
   reading_time: number;
+  featured: true;
 }

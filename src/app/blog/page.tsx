@@ -1,17 +1,19 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import Theme from "@/theme/Provider";
-import PortfolioNav from "@/components/PortfolioNav";
 import PortfolioLayout from "@/components/PortfolioLayout";
-import { lora, montserrat } from "@/theme/fonts";
-import Footer from "@/components/Footer";
+import { PostSchema } from "@/utils/types";
+import { getPosts } from "@/utils/ghost";
+import FeaturedPosts from "@/components/FeaturedPosts";
+import Posts from "@/components/Posts";
 
-export default function BlogsPage() {
+export default async function BlogsPage() {
+  const posts: Array<PostSchema> = await getPosts();
+  console.log(posts)
+  const featuredPosts = posts.filter((post) => post.featured);
+
   return (
     <main>
       <PortfolioLayout
-        title="Blog"
-        subtitle="Turning Coffee into Code, One Cup at a Time"
+        title="Noufal's Blog"
+        subtitle="Penning down my thoughts in 0s and 1s"
         style={{
           background: `
             linear-gradient(0deg, black, transparent 100%), 
@@ -21,6 +23,8 @@ export default function BlogsPage() {
         `,
         }}
       />
+      <FeaturedPosts posts={featuredPosts} />
+      <Posts posts={posts} />
     </main>
   );
 }

@@ -181,3 +181,17 @@ a {
 .post h5 {
   font-size: 1rem;
 }
+
+.featuredPostCardContent {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.swiper-slide-active .featuredPostCardContent {
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.swiper-wrapper {
+  transition-timing-function: cubic-bezier(0.45, 0.03, 0.56, 0.99) !important;
+}
