@@ -6,7 +6,6 @@ import Posts from "@/components/Posts";
 
 export default async function BlogsPage() {
   const posts: Array<PostSchema> = await getPosts();
-  console.log(posts)
   const featuredPosts = posts.filter((post) => post.featured);
 
   return (
