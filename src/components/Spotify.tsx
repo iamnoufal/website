@@ -1,7 +1,8 @@
-import getCurrentlyPlaying, { SpotifyData } from "@/utils/spotify";
+import getCurrentlyPlaying from "@/utils/spotify";
 import { Box } from "@mui/material";
 import Link from "next/link";
 import SpotifyAudio from "./SpotifyAudio";
+import { SpotifyData } from "@/utils/types";
 
 const SpotifyCurrentlyPlaying = async () => {
   const data: SpotifyData = await getCurrentlyPlaying();

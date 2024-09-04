@@ -13,3 +13,15 @@ export interface PostSchema {
   reading_time: number;
   featured: true;
 }
+
+export interface SpotifyData {
+  current_time?: number;
+  duration: number;
+  is_playing: boolean | null;
+  title: string;
+  artist: string;
+  album: string;
+  album_art: string;
+  url: string;
+  preview: string;
+}

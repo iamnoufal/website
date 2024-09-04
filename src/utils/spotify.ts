@@ -1,14 +1,4 @@
-export interface SpotifyData {
-  current_time?: number;
-  duration: number;
-  is_playing: boolean | null;
-  title: string;
-  artist: string;
-  album: string;
-  album_art: string;
-  url: string;
-  preview: string;
-}
+import { SpotifyData } from "./types";
 
 const getAccessToken = async () : Promise<string> => {
   const response = await fetch("https://accounts.spotify.com/api/token", {
