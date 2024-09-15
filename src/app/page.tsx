@@ -23,7 +23,7 @@ export default function Home() {
           borderRadius: "20px",
         }}
       >
-        <Heading variant="h6">"You could click one of these.."</Heading>
+        <Heading variant="h6">You could click one of these..</Heading>
         <Routes />
       </Container>
     </main>
