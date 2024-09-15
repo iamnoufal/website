@@ -45,11 +45,7 @@ const PostIntro = (props: PostSchema) => {
         <Heading variant="h1" component="h1" sx={{ mb: 2 }}>
           {props.title}
         </Heading>
-        <Heading
-          variant="h6"
-          component="h4"
-          sx={{ opacity: 0.8 }}
-        >
+        <Heading variant="h6" component="h4" sx={{ opacity: 0.8 }}>
           {props.excerpt}
         </Heading>
         <Typography variant="body2" sx={{ mt: 1 }} textAlign="center">

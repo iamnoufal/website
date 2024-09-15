@@ -6,7 +6,7 @@ export const themeOptions: ThemeOptions = {
   palette: {
     mode: "dark",
     background: {
-      default: "#000"
+      default: "#0d283b"
     }
     // primary: {
     //   main: '#012E4E',

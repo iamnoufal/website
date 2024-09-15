@@ -195,3 +195,7 @@ a {
 .swiper-wrapper {
   transition-timing-function: cubic-bezier(0.45, 0.03, 0.56, 0.99) !important;
 }
+
+.swiper-slide-shadow-right, .swiper-slide-shadow-left {
+  scale: 0.9
+}

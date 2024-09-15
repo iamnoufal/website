@@ -1,7 +1,5 @@
-import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import { montserrat, lora } from "@/theme/fonts";
-import PortfolioNav from "@/components/PortfolioNav";
 import Theme from "@/theme/Provider";
 import Footer from "@/components/Footer";
 import ScrollBehaviour from "@/components/ScrollBehaviour";
@@ -20,7 +18,6 @@ export default function RootLayout({
           <Theme>
             <Nav />
             {children}
-            <PortfolioNav />
             <Footer />
             <ScrollToTop />
           </Theme>

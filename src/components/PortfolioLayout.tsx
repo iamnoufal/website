@@ -10,13 +10,13 @@ const PortfolioLayout = ({
 }: {
   title: string;
   subtitle: string;
-  style: Object;
+  style?: Object;
   children?: React.ReactNode;
 }) => {
   return (
     <Box
       sx={{
-        height: "100vh",
+        minHeight: "100vh",
         width: "100%",
         backgroundPosition: "center",
         ...style,

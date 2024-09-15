@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const Posts = ({ posts }: { posts: PostSchema[] }) => {
   return (
-    <Container maxWidth="lg" sx={{mb: 10}}>
+    <Container maxWidth="lg" sx={{ py: 2 }}>
       <Grid container spacing={2} sx={{ justifyContent: "center"}}>
         {posts.map((post) => (
           <Grid item xs={12} md={6} xl={4} key={post.slug}>

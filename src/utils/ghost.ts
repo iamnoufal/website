@@ -8,7 +8,7 @@ const ghostContentAPI = async (
     `${process.env.GHOST_URI}/ghost/api/v3/content${endpoint}?key=${
       process.env.GHOST_CONTENT_API_KEY
     }&${params ? new URLSearchParams(params) : ""}`,
-    { next: { revalidate: 86400 } }
+    { next: { revalidate: 3600 } }
   );
   const data = await res.json();
   if (data.errors) {

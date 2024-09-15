@@ -3,6 +3,7 @@
 import { 
   Avatar,
   Box, 
+  Container, 
   Typography 
 } from '@mui/material'
 import { 
@@ -11,6 +12,7 @@ import {
 import Link from 'next/link'
 import { useState } from 'react'
 import logo from "@/assets/images/logo.webp"
+import Routes from './Routes'
 // import ShareComponent from './share'
 
 const Nav = () => {
@@ -53,14 +55,15 @@ const Nav = () => {
           boxShadow: '2px 2px 16px inset black'
         }}
       >
-        <Box sx={{height: '100%', width: '100%', display: 'flex', flexWrap: 'wrap', flexFlow: 'column', justifyContent: 'center', alignItems: 'center'}}>
-          <Box sx={{height: '100%', width: '100%', position: 'fixed', display: 'flex', justifyContent: 'center', flexFlow: 'column'}}>
+        <Container maxWidth={"md"} sx={{height: '100%', width: '100%', display: 'flex', flexWrap: 'wrap', flexFlow: 'column', justifyContent: 'center', alignItems: 'center'}}>
+          {/* <Box sx={{height: '100%', width: '100%', position: 'fixed', display: 'flex', justifyContent: 'center', flexFlow: 'column'}}>
             <NavItem to="/" label="Home" />
             <NavItem to="/blog" label="Blog" />
           </Box>
-          <Box sx={{height: '80%'}}></Box>
+          <Box sx={{height: '80%'}}></Box> */}
+          <Routes />
           {/* <ShareComponent sx={{ py: 10, width: {xs:'80%', md: '40%'} }} /> */}
-        </Box>
+        </Container>
       </Box>
     </>
   )

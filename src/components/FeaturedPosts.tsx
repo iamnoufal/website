@@ -12,7 +12,16 @@ import Link from "next/link";
 
 const FeaturedPosts = ({ posts }: { posts: PostSchema[] }) => {
   return (
-    <Box sx={{ my: 30 }}>
+    <Box
+      sx={{
+        py: 30,
+        background: `
+          linear-gradient(rgb(37 36 36), transparent), 
+          linear-gradient(transparent, rgb(37 36 36)), 
+          linear-gradient(130deg, #6610f2 10%, #6f42c1 20%, #d63384 35%, #dc3545 65%, #fd7e14 83%, #ff5607 96%)
+        `,
+      }}
+    >
       <Swiper
         effect="coverflow"
         centeredSlides={true}
@@ -46,7 +55,7 @@ const FeaturedPosts = ({ posts }: { posts: PostSchema[] }) => {
           return (
             <SwiperSlide
               key={post.slug}
-              style={{ width: "300px", height: "300px" }}
+              style={{ width: "300px", height: "300px", background: "transparent" }}
             >
               {({ isActive }: { isActive: boolean }) => (
                 <Link href={`/blog/${post.slug}`}>
@@ -69,7 +78,7 @@ const FeaturedPosts = ({ posts }: { posts: PostSchema[] }) => {
                         p: 3,
                         display: "flex",
                         justifyContent: "space-between",
-                        flexDirection: "column",
+                        flexDirection: "column"
                       }}
                     >
                       <Box>
@@ -81,6 +90,12 @@ const FeaturedPosts = ({ posts }: { posts: PostSchema[] }) => {
                         </Typography>
                       </Box>
                       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+                        <Chip
+                          key="featured"
+                          label="featured"
+                          sx={{ mr: 1, mt: 1 }}
+                          size="small"
+                        />
                         {post.tags
                           .filter((tag) => tag.name.toLowerCase() !== "blog")
                           .map((tag) => (

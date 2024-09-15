@@ -4,8 +4,6 @@ import {
   Lora,
   Merriweather,
   Montserrat,
-  Montserrat_Alternates,
-  Montserrat_Subrayada,
   Satisfy,
   Shadows_Into_Light,
 } from "next/font/google";

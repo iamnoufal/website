@@ -57,20 +57,18 @@ export default function HomeContent() {
   }
 
   return (
-    <Fragment>
+    <Box style={{
+      background: `
+        linear-gradient(0deg, #0d283b 2%, rgba(0, 0, 0, 0.5) 30%, transparent 60%), 
+        linear-gradient(180deg, #012e4f 5%, transparent 80%), 
+        linear-gradient(130deg, #6610f2 10%, #6f42c1 20%, #d63384 35%, #dc3545 65%, #fd7e14 83%, #ffc107 91%)
+      `,
+    }}>
       <PortfolioLayout
         title="I'm Noufal Rahman"
         subtitle={msg}
-        style={{
-          background: `
-            linear-gradient(0deg, black, transparent 100%), 
-            linear-gradient(300deg, #08083a, transparent 21%), 
-            linear-gradient(198deg, rgba(255, 193, 7, 0.2) 11%, transparent 0%), 
-            linear-gradient(50deg, #6610f2 10%, #6f42c1 20%, #d63384 35%, #dc3545 65%, #fd7e14 83%, #ffc107 91%)
-          `,
-        }}
       />
-      <Container maxWidth="md" sx={{ p: 6, textAlign: "center" }}>
+      <Container maxWidth="md" sx={{ py: 8, px: 3, textAlign: "center" }}>
         {!translated ? (
           <Box
             sx={{
@@ -112,6 +110,6 @@ export default function HomeContent() {
           </Box>
         )}
       </Container>
-    </Fragment>
+    </Box>
   );
 }
