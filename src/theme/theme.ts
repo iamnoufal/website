@@ -47,7 +47,7 @@ export const themeOptions: ThemeOptions = {
     h6: {
       fontFamily: shadowsIntoLight.style.fontFamily,
       letterSpacing: "0.2rem",
-      fontSize: "2rem",
+      fontSize: "2.2rem",
       textAlign: "center"
     },
     body1: {

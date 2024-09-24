@@ -1,15 +1,18 @@
 "use client";
 
-import { montserrat } from "@/theme/fonts";
-import { Typography } from "@mui/material";
+import { SxProps, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 
 const Paragraph = ({
   children,
+  variant = "body1",
   delay = 0,
+  sx
 }: {
   children: React.ReactNode;
+  variant?: "body1" | "body2"
   delay?: number;
+  sx?: SxProps;
 }) => (
   <motion.div
     initial={{ y: 20, opacity: 0 }}
@@ -21,7 +24,7 @@ const Paragraph = ({
       ease: [0, 0.71, 0.2, 1.01],
     }}
   >
-    <Typography variant="body1">{children}</Typography>
+    <Typography sx={sx} variant={variant}>{children}</Typography>
   </motion.div>
 );
 

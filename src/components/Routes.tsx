@@ -1,64 +1,57 @@
 "use client";
 
-import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import SchoolRoundedIcon from "@mui/icons-material/SchoolRounded";
-import CodeRoundedIcon from "@mui/icons-material/CodeRounded";
-import DevicesRoundedIcon from "@mui/icons-material/DevicesRounded";
-import AlternateEmailRoundedIcon from "@mui/icons-material/AlternateEmailRounded";
-import LaptopWindowsRoundedIcon from "@mui/icons-material/LaptopWindowsRounded";
-import ImportContactsRoundedIcon from "@mui/icons-material/ImportContactsRounded";
 import { usePathname } from "next/navigation";
 import { Grid, Card, Box, Typography } from "@mui/material";
 import Link from "next/link";
+import Icon from "./Icon";
 
 const ROUTES = [
   {
     title: "Home",
     label: "Go back to",
-    icon: <HomeRoundedIcon fontSize="large" />,
+    icon: "home",
     link: "/",
   },
   {
     title: "About me",
     label: "Learn more",
-    icon: <InfoOutlinedIcon fontSize="large" />,
+    icon: "info",
     link: "/about",
   },
   {
     title: "Blogs",
     label: "Read some",
-    icon: <ImportContactsRoundedIcon fontSize="large" />,
+    icon: "import_contacts",
     link: "/blog",
   },
   {
     title: "Schools",
     label: "I went to awesome",
-    icon: <SchoolRoundedIcon fontSize="large" />,
+    icon: "school",
     link: "/schools",
   },
   {
     title: "Experience",
     label: "Gained worthy",
-    icon: <LaptopWindowsRoundedIcon fontSize="large" />,
+    icon: "laptop_windows",
     link: "/experience",
   },
   {
     title: "Skills",
     label: "Learned challenging",
-    icon: <CodeRoundedIcon fontSize="large" />,
+    icon: "code",
     link: "/skills",
   },
   {
     title: "Projects",
     label: "Some wonderful",
-    icon: <DevicesRoundedIcon fontSize="large" />,
+    icon: "devices",
     link: "/projects",
   },
   {
     title: "Connect",
     label: "To say Hi,",
-    icon: <AlternateEmailRoundedIcon fontSize="large" />,
+    icon: "alternate_email",
     link: "/connect",
   },
 ];
@@ -105,7 +98,7 @@ const Routes = () => {
                         background: `linear-gradient(90deg, rgba(30, 30, 30, 0.9), rgba(30, 30, 30, 0.2))`,
                       }}
                     ></Box>
-                    {route.icon}
+                    <Icon name={route.icon} />
                   </Box>
                 </Card>
               </Link>
