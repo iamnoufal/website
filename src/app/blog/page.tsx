@@ -1,16 +1,16 @@
 import PortfolioLayout from "@/components/PortfolioLayout";
-import { PostSchema } from "@/utils/types";
-import { getPosts } from "@/utils/ghost";
+import { getFeaturedPosts, getPosts } from "@/utils/ghost";
 import FeaturedPosts from "@/components/FeaturedPosts";
 import Posts from "@/components/Posts";
 import { Box } from "@mui/material";
+import { Fragment } from "react";
 
 export default async function BlogsPage() {
-  const posts: Array<PostSchema> = await getPosts();
-  const featuredPosts = posts.filter((post) => post.featured);
+  const posts = await getPosts();
+  const featuredPosts = await getFeaturedPosts();
 
   return (
-    <main>
+    <Fragment>
       <Box>
         <PortfolioLayout
           title="Noufal's Blog"
@@ -19,6 +19,6 @@ export default async function BlogsPage() {
       </Box>
       <FeaturedPosts posts={featuredPosts} />
       <Posts posts={posts} />
-    </main>
+    </Fragment>
   );
 }

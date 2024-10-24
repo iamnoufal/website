@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import PortfolioLayout from "@/components/PortfolioLayout";
 import { Box, Button, Container } from "@mui/material";
 import Heading from "@/components/Heading";
@@ -80,7 +80,7 @@ export default function HomeContent() {
               justifyContent: "center",
             }}
           >
-            <Heading variant="h6" component="h2" delay={0.5}>
+            <Heading variant="h6" component="h2" delay={0.3}>
               You couldn&apos;t read binary, could ya?
             </Heading>
             <Fade delay={0.7}>
@@ -104,7 +104,7 @@ export default function HomeContent() {
               justifyContent: "center",
             }}
           >
-            <Heading variant="h6" component="h2" delay={0.5}>
+            <Heading variant="h6" component="h2" delay={0.3}>
               Enough of this game, let&apos;s get to the real stuff.
             </Heading>
           </Box>

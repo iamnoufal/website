@@ -1,54 +1,38 @@
+"use client"
+
+import { useEffect, useState } from "react";
 import { PostSchema } from "@/utils/types";
-import {
-  Box,
-  Container,
-  Grid,
-  Paper,
-  Typography,
-} from "@mui/material";
+import { Box } from "@mui/material";
 import Heading from "./Heading";
-import Link from "next/link";
+import { constructGridAreaTemplate } from "@/utils/grid";
+import Paragraph from "./Paragraph";
 
 const Posts = ({ posts }: { posts: PostSchema[] }) => {
+  const [page, setPage] = useState<number>(0);
+  const LIMIT = parseInt(process.env.NEXT_PUBLIC_GHOST_POST_LIMIT as string);
+  const [postsList, setPosts] = useState<PostSchema[]>(posts?.slice(0, LIMIT));
+  useEffect(() => {
+    setPosts(posts.slice(0, (page * LIMIT) + LIMIT));
+  }, [page]);
   return (
-    <Container maxWidth="lg" sx={{ py: 2 }}>
-      <Grid container spacing={2} sx={{ justifyContent: "center"}}>
-        {posts.map((post) => (
-          <Grid item xs={12} md={6} xl={4} key={post.slug}>
-            <Paper
-              elevation={2}
-              sx={{
-                p: 2,
-                height: "100%",
-                background:
-                  "linear-gradient(rgb(37 36 36), transparent), linear-gradient(transparent, rgb(37 36 36)), linear-gradient(130deg, #6610f2 10%, #6f42c1 20%, #d63384 35%, #dc3545 65%, #fd7e14 83%, #ff5607 96%)",
-              }}
-            >
-              <Link href={"/blog/" + post.slug}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    height: "100%",
-                    flexDirection: "column",
-                  }}
-                >
-                  <Box>
-                    <Heading variant="h5">{post.title}</Heading>
-                    <Typography variant="body2">
-                      {post.excerpt}
-                    </Typography>
-                  </Box>
-                  <Typography variant="caption" sx={{ mt: 3 }}>
-                    {new Date(post.published_at).toDateString()}
-                  </Typography>
-                </Box>
-              </Link>
-            </Paper>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+    <Box sx={{display: "grid", gridTemplateColumns: 'repeat(2, 1fr)', gridTemplateAreas: constructGridAreaTemplate(postsList)}}>
+      <Box sx={{gridArea: "filter"}}>
+        <Heading variant="h3">Recent Posts</Heading>
+      </Box>
+      {postsList.map((post) => (
+        <Box key={post.id} sx={{gridArea: post.slug}}>
+          <Box sx={{ height: "100%", background: `url(${post.feature_image})` }}>
+            <Box sx={{background: "rgba(0, 0, 0, 0.6)", p: 3, height: "100%"}}>
+              <Heading variant="h5">{post.title}</Heading>
+              <Paragraph>{post.excerpt}</Paragraph>
+            </Box>
+          </Box>
+        </Box>
+      ))}
+      <Box onClick={() => setPage(page+1)} sx={{gridArea: "next", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", p: 4}}>
+        <Paragraph>Load more..</Paragraph>
+      </Box>
+    </Box>
   );
 };
 

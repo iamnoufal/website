@@ -8,7 +8,7 @@ import about1Pic from "@/assets/images/about-1.webp";
 import meImg from "@/assets/images/me-bitmoji.webp";
 import { Metadata } from "next";
 import SpotifyCurrentlyPlaying from "@/components/Spotify";
-import Icon from "@/components/Icon";
+import { Fragment } from "react";
 
 export const metadata: Metadata = {
   title: "About me | Noufal",
@@ -56,7 +56,7 @@ const RANDOM_FACTS = [
 
 export default async function Home() {
   return (
-    <Box component="main">
+    <Fragment>
       <SpotifyCurrentlyPlaying />
       <Box
         style={{
@@ -146,8 +146,7 @@ export default async function Home() {
                 >
                   <Card sx={{ display: "flex", justifyContent: "space-between", flexDirection: "column", p: 3, height: "100%" }}>
                     <Emoji style={{ fontSize: "2rem" }}>{fact.emoji}</Emoji>
-                    {/* <Icon name={fact.icon} /> */}
-                    <Paragraph variant="body2" delay={0.5} sx={{ pt: 2 }}>{fact.text}</Paragraph>
+                    <Paragraph variant="body2" delay={0.3} sx={{ pt: 2 }}>{fact.text}</Paragraph>
                   </Card>
                 </Grid>
               );
@@ -155,6 +154,6 @@ export default async function Home() {
           </Grid>
         </Container>
       </Box>
-    </Box>
+    </Fragment>
   );
 }

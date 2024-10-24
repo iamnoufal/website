@@ -3,6 +3,7 @@ import HomeContent from "@/components/Home";
 import Heading from "@/components/Heading";
 import Routes from "@/components/Routes";
 import { Container } from "@mui/material";
+import { Fragment } from "react";
 
 export const metadata: Metadata = {
   title: "Noufal's Portfolio",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main>
+    <Fragment>
       <HomeContent />
       <Container
         maxWidth="md"
@@ -26,6 +27,6 @@ export default function Home() {
         <Heading variant="h6">You could click one of these..</Heading>
         <Routes />
       </Container>
-    </main>
+    </Fragment>
   );
 }

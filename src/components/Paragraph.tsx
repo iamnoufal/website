@@ -1,7 +1,8 @@
 "use client";
 
 import { SxProps, Typography } from "@mui/material";
-import { motion } from "framer-motion";
+import Fade from "./Fade";
+import { Variant } from "@mui/material/styles/createTypography";
 
 const Paragraph = ({
   children,
@@ -10,22 +11,13 @@ const Paragraph = ({
   sx
 }: {
   children: React.ReactNode;
-  variant?: "body1" | "body2"
+  variant?: Variant
   delay?: number;
   sx?: SxProps;
 }) => (
-  <motion.div
-    initial={{ y: 20, opacity: 0 }}
-    whileInView={{ y: 0, opacity: 1 }}
-    viewport={{ once: true }}
-    transition={{
-      duration: 0.8,
-      delay: delay,
-      ease: [0, 0.71, 0.2, 1.01],
-    }}
-  >
+  <Fade delay={delay}>
     <Typography sx={sx} variant={variant}>{children}</Typography>
-  </motion.div>
+  </Fade>
 );
 
 export default Paragraph;

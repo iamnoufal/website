@@ -12,7 +12,7 @@ const SpotifyCurrentlyPlaying = async () => {
     <Box
       style={{
         position: "absolute",
-        top: "100vh",
+        top: "90vh",
         right: "5vw",
       }}
       id="spotifyPlayingWidgetWrapper"

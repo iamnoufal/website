@@ -205,3 +205,19 @@ a {
 .material-symbols-rounded {
   font-size: 2rem;
 }
+
+.MuiTimelineOppositeContent-root, .MuiTimelineContent-root {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.MuiTimelineItem-root > .MuiTimelineOppositeContent-root > .MuiBox-root {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.MuiTimelineItem-root:nth-of-type(odd) > .MuiTimelineOppositeContent-root > .MuiBox-root {
+  justify-content: end;
+}

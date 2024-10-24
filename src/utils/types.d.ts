@@ -1,4 +1,5 @@
 export interface PostSchema {
+  id: string,
   title: string;
   slug: string;
   html: string;

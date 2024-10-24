@@ -51,6 +51,7 @@ const getCurrentlyPlaying = async () : Promise<SpotifyData> => {
     },
     cache: "no-store"
   });
+  if (response.status === 401) return await getCurrentlyPlaying();
   if (response.status !== 200) return await getLastPlayed(accessToken);
   const data = await response.json();
   return {

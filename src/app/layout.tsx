@@ -17,7 +17,7 @@ export default function RootLayout({
         <ScrollBehaviour>
           <Theme>
             <Nav />
-            {children}
+            <main>{children}</main>
             <Footer />
             <ScrollToTop />
           </Theme>
