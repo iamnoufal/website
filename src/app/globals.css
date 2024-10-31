@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 
 html,
@@ -207,8 +207,8 @@ a {
 }
 
 .MuiTimelineOppositeContent-root, .MuiTimelineContent-root {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
 }
 
 .MuiTimelineItem-root > .MuiTimelineOppositeContent-root > .MuiBox-root {

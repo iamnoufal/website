@@ -1,5 +1,5 @@
 import PortfolioLayout from "@/components/PortfolioLayout";
-import { getFeaturedPosts, getPosts } from "@/utils/ghost";
+import { getPosts } from "@/utils/ghost";
 import FeaturedPosts from "@/components/FeaturedPosts";
 import Posts from "@/components/Posts";
 import { Box } from "@mui/material";
@@ -7,7 +7,7 @@ import { Fragment } from "react";
 
 export default async function BlogsPage() {
   const posts = await getPosts();
-  const featuredPosts = await getFeaturedPosts();
+  const featuredPosts = posts.filter(post => post.featured)
 
   return (
     <Fragment>

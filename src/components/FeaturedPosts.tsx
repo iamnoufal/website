@@ -65,6 +65,7 @@ const FeaturedPosts = ({ posts }: { posts: PostSchema[] }) => {
                       height: "100%",
                       backgroundImage: `url(${post.feature_image})`,
                       backgroundSize: "cover",
+                      backgroundPosition: "center",
                       transform: isActive ? "scale(1)" : "scale(0.9)",
                       transition: "transform 0.5s ease-in-out",
                     }}

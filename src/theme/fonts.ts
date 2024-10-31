@@ -1,6 +1,5 @@
 import {
   Dancing_Script,
-  Inter,
   Lora,
   Merriweather,
   Montserrat,
@@ -10,16 +9,15 @@ import {
 
 const dancing_script = Dancing_Script({
   subsets: ['latin'],
-  display: "auto",
+  display: "swap",
   variable: "--font-dancing-script",
   preload: true,
 })
-const inter = Inter({ subsets: ["latin"] });
 
 const satisfy = Satisfy({
   subsets: ['latin'],
   weight: "400",
-  display: "auto",
+  display: "swap",
   preload: true,
   variable: "--font-satisfy"
 })
@@ -27,7 +25,7 @@ const satisfy = Satisfy({
 const lora = Lora({
   subsets: ["latin"],
   style: ["italic"],
-  display: "auto",
+  display: "swap",
   preload: true,
   variable: "--font-lora",
 });
@@ -35,7 +33,7 @@ const lora = Lora({
 const merriweather = Merriweather({
   subsets: ["latin"],
   weight: "700",
-  display: "auto",
+  display: "swap",
   preload: true,
   variable: "--font-merriweather",
 });
@@ -44,7 +42,7 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
   preload: true,
-  display: "auto",
+  display: "swap",
   variable: "--font-montserrat"
 })
 
@@ -53,7 +51,7 @@ const shadowsIntoLight = Shadows_Into_Light({
   variable: "--font-shadows-into-light",
   preload: true,
   weight: "400",
-  display: "auto"
+  display: "swap"
 })
 
 export { dancing_script, lora, merriweather, montserrat, shadowsIntoLight}

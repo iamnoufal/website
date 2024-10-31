@@ -25,14 +25,6 @@ const getPosts = async (): Promise<PostSchema[]> => {
   return posts as PostSchema[];
 };
 
-const getFeaturedPosts = async (): Promise<PostSchema[]> => {
-  const { posts } = await ghostContentAPI("/posts", {
-    include: "tags",
-    filters: "featured:true"
-  });
-  return posts as PostSchema[];
-}
-
 const getPostBySlug = async (slug: string): Promise<PostSchema> => {
   const post = await ghostContentAPI(`/posts/slug/${slug}`);
   return post ? post.posts[0] : null;
@@ -46,4 +38,4 @@ const getPostBySlug = async (slug: string): Promise<PostSchema> => {
 //   return resp;
 // };
 
-export { getPostBySlug, getPosts, getFeaturedPosts };
+export { getPostBySlug, getPosts };
