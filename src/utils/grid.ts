@@ -19,7 +19,6 @@ const constructGridAreaTemplate = (posts: PostSchema[]) : string => {
   } else {
     gridAreaTemplate += ` "${prev} next"`;
   }
-  console.log(gridAreaTemplate)
   return gridAreaTemplate;
 }
 

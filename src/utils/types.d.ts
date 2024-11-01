@@ -26,3 +26,16 @@ export interface SpotifyData {
   url: string;
   preview: string;
 }
+
+export interface FlowData {
+  title: string;
+  description: string;
+  emoji: string;
+  single: boolean;
+  time: string;
+  order: number;
+  image: {
+    url: string;
+    alternativeText: string;
+  }
+}
