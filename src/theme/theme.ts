@@ -28,15 +28,12 @@ export const themeOptions: ThemeOptions = {
     h1: {
       fontFamily: lora.style.fontFamily,
       fontSize: "3rem",
-      textAlign: "center",
     },
     h2: {
       fontFamily: lora.style.fontFamily,
-      textAlign: "center"
     },
     h3: {
       fontFamily: lora.style.fontFamily,
-      textAlign: "center"
     },
     h4: {
       fontFamily: lora.style.fontFamily,
@@ -47,8 +44,7 @@ export const themeOptions: ThemeOptions = {
     h6: {
       fontFamily: shadowsIntoLight.style.fontFamily,
       letterSpacing: "0.2rem",
-      fontSize: "2.2rem",
-      textAlign: "center"
+      fontSize: "2rem",
     },
     body1: {
       fontSize: "1.125rem",

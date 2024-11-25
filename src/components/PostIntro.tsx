@@ -42,10 +42,10 @@ const PostIntro = (props: PostSchema) => {
             "linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(10, 10, 10, 1))",
         }}
       >
-        <Heading variant="h1" component="h1" sx={{ mb: 2 }}>
+        <Heading variant="h4" component="h1" sx={{ mb: 2, textAlign: "center" }}>
           {props.title}
         </Heading>
-        <Heading variant="h6" component="h4" sx={{ opacity: 0.8 }}>
+        <Heading variant="h6" component="h2" sx={{ opacity: 0.8, textAlign: "center", fontSize: "1.5rem" }}>
           {props.excerpt}
         </Heading>
         <Typography variant="body2" sx={{ mt: 1 }} textAlign="center">

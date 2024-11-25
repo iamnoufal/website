@@ -1,4 +1,15 @@
 import { PostSchema } from "./types";
+import jwt from "jsonwebtoken";
+
+const getSignedGhostAdminToken = () => {
+  const [id, secret] = process.env.GHOST_ADMIN_API_KEY?.split(":") || ["", ""];
+  return jwt.sign({}, Buffer.from(secret, "hex"), {
+    keyid: id,
+    algorithm: "HS256",
+    expiresIn: "5m",
+    audience: `/admin/`,
+  });
+};
 
 const ghostContentAPI = async (
   endpoint: string,
@@ -11,16 +22,39 @@ const ghostContentAPI = async (
     { next: { revalidate: 3600 } }
   );
   const data = await res.json();
-  if (data.errors) {
-    return null;
-  }
+  if (data.errors) return null;
+  return data;
+};
+
+const ghostAdminAPI = async (
+  endpoint: string,
+  method: string,
+  params?: Record<string, string>,
+  body?: Object
+) => {
+  const res = await fetch(
+    `${process.env.GHOST_URI}/ghost/api/admin${endpoint}?${
+      params ? new URLSearchParams(params) : ""
+    }`,
+    {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Ghost ${getSignedGhostAdminToken()}`,
+      },
+      body: method === "POST" ? JSON.stringify(body) : undefined,
+    }
+  );
+  const data = await res.json();
+  console.log(data);
+  if (data.errors) return null;
   return data;
 };
 
 const getPosts = async (): Promise<PostSchema[]> => {
   const { posts } = await ghostContentAPI("/posts", {
     limit: "all",
-    include: "tags,authors"
+    include: "tags,authors",
   });
   return posts as PostSchema[];
 };
@@ -30,12 +64,12 @@ const getPostBySlug = async (slug: string): Promise<PostSchema> => {
   return post ? post.posts[0] : null;
 };
 
-// const subscribeMember = async (email) => {
-//   const resp = await ghostAdmin.members.add(
-//     { email: body.email },
-//     { send_email: true, email_type: "subscribe" }
-//   );
-//   return resp;
-// };
+const subscribeMember = async (email: string, name: string) => {
+  const resp = await ghostAdminAPI("/members", "POST", undefined, {
+    members: [{ email, name }],
+  });
+  console.log(resp);
+  return resp;
+};
 
-export { getPostBySlug, getPosts };
+export { getPostBySlug, getPosts, subscribeMember };
