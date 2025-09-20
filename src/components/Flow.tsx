@@ -1,102 +1,124 @@
-"use client";
+"use client"
 
-import {
-  Timeline,
-  TimelineConnector,
-  TimelineContent,
-  TimelineDot,
-  TimelineItem,
-  TimelineOppositeContent,
-  TimelineSeparator,
-} from "@mui/lab";
-import { Box, Container, useMediaQuery } from "@mui/material";
-import Emoji from "./Emoji";
-import Paragraph from "./Paragraph";
-import { FlowData } from "@/utils/types";
+import { FlowData } from "@/utils/types"
+import { motion } from "framer-motion"
+import Emoji from "./Emoji"
 
 const TimeLineItemComponent = ({
   children,
   date,
   emoji,
-  small,
+  isLeft,
+  index,
 }: {
-  children: React.ReactNode;
-  date: string;
-  emoji: string;
-  small: boolean;
+  children: React.ReactNode
+  date: string
+  emoji: string
+  isLeft: boolean
+  index: number
 }) => {
   return (
-    <TimelineItem>
-      {!small && (
-        <TimelineOppositeContent>
-          <Box>
-            <Paragraph variant="caption">
-              {date}
-            </Paragraph>
-          </Box>
-        </TimelineOppositeContent>
-      )}
-      {small && <TimelineOppositeContent sx={{ display: "none" }} />}
-      <TimelineSeparator>
-        <TimelineConnector />
-        <TimelineDot sx={{ background: "transparent" }}>
-          <Emoji style={{ fontSize: "1.5rem" }}>{emoji}</Emoji>
-        </TimelineDot>
-        <TimelineConnector />
-      </TimelineSeparator>
-      <TimelineContent>
-        {small && (
-          <Paragraph variant="caption">
-            {date}
-          </Paragraph>
+    <motion.div
+      initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="relative flex items-center w-full mb-8"
+    >
+      {/* Desktop Layout - Alternating */}
+      <div className="hidden md:flex w-full items-center">
+        {isLeft ? (
+          <>
+            <div className="w-6/12 text-right pr-8">
+              <div className="text-sm text-gray-400 mb-2">{date}</div>
+              {children}
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center">
+                <Emoji className="text-lg">{emoji}</Emoji>
+              </div>
+              <div className="w-0.5 h-16 bg-gradient-to-b from-blue-500 to-transparent"></div>
+            </div>
+            <div className="w-6/12"></div>
+          </>
+        ) : (
+          <>
+            <div className="w-6/12"></div>
+            <div className="flex flex-col items-center">
+              <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center">
+                <Emoji className="text-lg">{emoji}</Emoji>
+              </div>
+              <div className="w-0.5 h-16 bg-gradient-to-b from-blue-500 to-transparent"></div>
+            </div>
+            <div className="w-6/12 pl-8">
+              <div className="text-sm text-gray-400 mb-2">{date}</div>
+              {children}
+            </div>
+          </>
         )}
-        {children}
-      </TimelineContent>
-    </TimelineItem>
-  );
-};
+      </div>
 
-const Flow = ({ data }: { data: FlowData[] }) => {
-  const small = useMediaQuery("(max-width: 600px)");
+      {/* Mobile Layout - Centered */}
+      <div className="md:hidden flex w-full flex-col items-center">
+        <div className="flex flex-col items-center mb-4">
+          <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center">
+            <Emoji className="text-lg">{emoji}</Emoji>
+          </div>
+          <div className="w-0.5 h-16 bg-gradient-to-b from-blue-500 to-transparent"></div>
+        </div>
+        <div className="text-center">
+          <div className="text-sm text-gray-400 mb-2">{date}</div>
+          {children}
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+export default function Flow({ data }: { data: FlowData[] }) {
   return (
-    <Container maxWidth="md">
-      <Timeline position="alternate">
-        {data.map((flow: FlowData) => {
+    <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="relative">
+        {/* Central line for desktop */}
+        {/* <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-blue-500 via-purple-500 to-blue-500"></div> */}
+        
+        {data.map((flow: FlowData, index) => {
           return flow.single ? (
-            <Box sx={{ textAlign: "center", p: 4 }} key={`flow-${flow.order}`}>
-              <Paragraph variant="caption">{flow.time}</Paragraph>
-              <Paragraph sx={{fontWeight: "bold"}}>{flow.title}</Paragraph>
-              <Paragraph variant="body2">{flow.description}</Paragraph>
-            </Box>
+            <motion.div
+              key={`flow-${flow.order}`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="text-center py-8 mb-8 bg-white/5 rounded-lg border border-white/10"
+            >
+              <div className="text-sm text-gray-400 mb-2">{flow.time}</div>
+              <h3 className="text-xl font-bold mb-4 text-white">{flow.title}</h3>
+              <p className="text-gray-300">{flow.description}</p>
+            </motion.div>
           ) : (
             <TimeLineItemComponent
+              key={`flow-${flow.order}`}
               date={flow.time}
               emoji={flow.emoji}
-              small={small}
-              key={`flow-${flow.order}`}
+              isLeft={index % 2 === 0}
+              index={index}
             >
-              <Box>
-                <Paragraph sx={{fontWeight: "bold"}}>{flow.title}</Paragraph>
-                <Paragraph variant="body2">{flow.description}</Paragraph>
+              <div>
+                <h3 className="text-lg font-bold mb-2 text-white">{flow.title}</h3>
+                <p className="text-gray-300 text-sm mb-4">{flow.description}</p>
                 {flow.image && (
                   <img
                     src={flow.image.url}
                     alt={flow.image.alternativeText}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      marginTop: "1rem",
-                      borderRadius: "0.5vw",
-                    }}
+                    className="w-full h-auto mt-4 rounded-lg"
                   />
                 )}
-              </Box>
+              </div>
             </TimeLineItemComponent>
-          );
+          )
         })}
-      </Timeline>
-    </Container>
-  );
-};
-
-export default Flow;
+      </div>
+    </div>
+  )
+}

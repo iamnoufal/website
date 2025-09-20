@@ -1,32 +1,20 @@
-import { Metadata } from "next";
-import HomeContent from "@/components/Home";
-import Heading from "@/components/Heading";
-import Routes from "@/components/Routes";
-import { Container } from "@mui/material";
-import { Fragment } from "react";
+import dynamic from 'next/dynamic'
 
-export const metadata: Metadata = {
-  title: "Noufal's Portfolio",
-  description: "A well crafted portfolio of Noufal Rahman",
-};
+// Lazy load heavy components to reduce initial bundle size and prevent server startup memory issues
+const GreetingScreen = dynamic(() => import('@/components/GreetingScreen'), {
+  ssr: false, // Client-side only to prevent server memory issues with animations
+  loading: () => <div className="min-h-screen bg-black" /> // Minimal loading state
+})
+
+const NewHome = dynamic(() => import('@/components/Home'), {
+  ssr: false, // Client-side only due to heavy animations and API calls
+  loading: () => null
+})
 
 export default function Home() {
   return (
-    <Fragment>
-      <HomeContent />
-      <Container
-        maxWidth="md"
-        sx={{
-          my: 4,
-          py: 6,
-          px: 6,
-          boxShadow: "inset 0 0 20px 3px rgba(255, 255, 255, 0.3)",
-          borderRadius: "20px",
-        }}
-      >
-        <Heading variant="h6">You could click one of these..</Heading>
-        <Routes />
-      </Container>
-    </Fragment>
-  );
+    <GreetingScreen>
+      <NewHome />
+    </GreetingScreen>
+  )
 }

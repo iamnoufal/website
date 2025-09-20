@@ -1,24 +1,29 @@
-import PortfolioLayout from "@/components/PortfolioLayout";
-import { getPosts } from "@/utils/ghost";
-import FeaturedPosts from "@/components/FeaturedPosts";
-import Posts from "@/components/Posts";
-import { Box } from "@mui/material";
-import { Fragment } from "react";
+import Heading from "@/components/Heading"
+import Posts from "@/components/Posts"
+import { getPosts } from "@/utils/ghost"
+import { PostSchema } from "@/utils/types"
+import { Metadata } from "next"
 
-export default async function BlogsPage() {
-  const posts = await getPosts();
-  const featuredPosts = posts.filter(post => post.featured)
+export const metadata: Metadata = {
+  title: "Blog - Noufal Rahman",
+  description: "Read my latest thoughts, tutorials, and insights on web development, technology, and more.",
+}
+
+export default async function Blog() {
+  const posts: PostSchema[] = await getPosts()
 
   return (
-    <Fragment>
-      <Box>
-        <PortfolioLayout
-          title="Noufal's Blog"
-          subtitle="Penning down my thoughts in 0s and 1s"
-        />
-      </Box>
-      <FeaturedPosts posts={featuredPosts} />
+    <div className="min-h-screen bg-black text-white pt-20">
+      <div className="text-center py-16">
+        <Heading variant="h1" className="mb-6">
+          Blog
+        </Heading>
+        <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          Thoughts, tutorials, and insights on web development, technology, and life.
+        </p>
+      </div>
+      
       <Posts posts={posts} />
-    </Fragment>
-  );
+    </div>
+  )
 }

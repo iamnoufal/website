@@ -1,118 +1,59 @@
-"use client";
+"use client"
 
-import { Box, Typography, Link } from "@mui/material";
-import {
-  WhatsApp,
-  LinkedIn,
-  Twitter,
-  FacebookOutlined,
-  Share,
-} from "@mui/icons-material";
-import { PostSchema } from "@/utils/types";
-import Heading from "./Heading";
+import { PostSchema } from "@/utils/types"
+import { Calendar, Clock, Tag } from "lucide-react"
+import Heading from "./Heading"
+import Paragraph from "./Paragraph"
 
-const PostIntro = (props: PostSchema) => {
-  const blogShare = {
-    title: props.title,
-    text: props.excerpt,
-    url: "https://noufal.dev/blog/" + props.slug,
-  };
+export default function PostIntro({ post }: { post: PostSchema }) {
   return (
-    <Box
-      sx={{
-        minHeight: "100vh",
-        width: "100%",
-        backgroundImage: props.feature_image
-          ? `url(${props.feature_image})`
-          : `linear-gradient(0deg, black, transparent 100%), linear-gradient(300deg, #08083a, transparent 21%), linear-gradient(198deg, rgba(255, 193, 7, 0.2) 11%, transparent 0%), linear-gradient(50deg, #6610f2 10%, #6f42c1 20%, #d63384 35%, #dc3545 65%, #fd7e14 83%, #ffc107 91%)`,
-        backgroundSize: "cover",
-        backgroundPosition: "center center",
-      }}
-    >
-      <Box
-        sx={{
-          minHeight: "100vh",
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "end",
-          p: { xs: 2, md: 4, lg: 8 },
-          pt: { xs: 8, lg: 0 },
-          background:
-            "linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(10, 10, 10, 1))",
-        }}
-      >
-        <Heading variant="h4" component="h1" sx={{ mb: 2, textAlign: "center" }}>
-          {props.title}
+    <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="text-center mb-12">
+        <Heading variant="h1" className="mb-6">
+          {post.title}
         </Heading>
-        <Heading variant="h6" component="h2" sx={{ opacity: 0.8, textAlign: "center", fontSize: "1.5rem" }}>
-          {props.excerpt}
-        </Heading>
-        <Typography variant="body2" sx={{ mt: 1 }} textAlign="center">
-          {props.reading_time} mins read •{" "}
-          {new Date(props.published_at).toDateString()}
-        </Typography>
-        <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-          <Link
-            sx={{ mr: 2 }}
-            target="_blank"
-            rel="noreferrer"
-            href={`https://api.whatsapp.com/send?text=${blogShare.title.replaceAll(
-              " ",
-              "+"
-            )}%0A${blogShare.text.replaceAll(" ", "+")}%0A${blogShare.url}`}
-          >
-            <Typography color="white">
-              <WhatsApp />
-            </Typography>
-          </Link>
-          <Link
-            sx={{ mr: 2 }}
-            target="_blank"
-            rel="noreferrer"
-            href={`http://www.facebook.com/sharer.php?u=${blogShare.url}`}
-          >
-            <Typography color="white">
-              <FacebookOutlined />
-            </Typography>
-          </Link>
-          <Link
-            sx={{ mr: 2 }}
-            target="_blank"
-            rel="noreferrer"
-            href={`https://twitter.com/intent/tweet?url=${
-              blogShare.url
-            }&text=${blogShare.title.replaceAll(
-              " ",
-              "+"
-            )}%0A${blogShare.text.replaceAll(" ", "+")}%0A`}
-          >
-            <Typography color="white">
-              <Twitter />
-            </Typography>
-          </Link>
-          <Link
-            sx={{ mr: 2 }}
-            target="_blank"
-            rel="noreferrer"
-            href={`https://www.linkedin.com/sharing/share-offsite/?url=${blogShare.url}`}
-          >
-            <Typography color="white">
-              <LinkedIn />
-            </Typography>
-          </Link>
-          <Link
-            sx={{ cursor: "pointer" }}
-            onClick={() => navigator.share(blogShare)}
-          >
-            <Typography color="white">
-              <Share />
-            </Typography>
-          </Link>
-        </Box>
-      </Box>
-    </Box>
-  );
-};
+        
+        <div className="flex flex-wrap justify-center gap-6 text-gray-400 text-sm mb-8">
+          <div className="flex items-center gap-2">
+            <Calendar size={16} />
+            <span>{new Date(post.published_at).toDateString()}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Clock size={16} />
+            <span>{post.reading_time} min read</span>
+          </div>
+        </div>
 
-export default PostIntro;
+        {post.feature_image && (
+          <div className="mb-8">
+            <img 
+              src={post.feature_image} 
+              alt={post.title}
+              className="w-full h-64 md:h-96 object-cover rounded-xl"
+            />
+          </div>
+        )}
+
+        {post.excerpt && (
+          <Paragraph className="text-xl text-gray-300 leading-relaxed mb-8">
+            {post.excerpt}
+          </Paragraph>
+        )}
+
+        {post.tags && post.tags.length > 0 && (
+          <div className="flex flex-wrap justify-center gap-2">
+            {post.tags.map((tag) => (
+              <span
+                key={tag.id}
+                className="inline-flex items-center gap-1 px-3 py-1 bg-white/10 text-gray-300 text-sm rounded-full"
+              >
+                <Tag size={12} />
+                {tag.name}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}

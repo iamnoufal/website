@@ -1,35 +1,38 @@
-import Heading from "@/components/Heading";
-import { Box } from "@mui/material";
-import { Metadata } from "next";
+"use client"
 
-export const metadata: Metadata = {
-  title: "Noufal's Portfolio",
-  description: "A well crafted portfolio of Noufal Rahman",
-};
+import { ArrowLeft, Home } from 'lucide-react'
+import Link from 'next/link'
 
-export default function NotFoundPage() {
+export default function NotFound() {
   return (
-    <Box
-      sx={{
-        height: "100vh",
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        background: `
-          linear-gradient(180deg, transparent, black),
-          linear-gradient(rgb(37 36 36), transparent), 
-          linear-gradient(transparent, rgb(37 36 36)), 
-          linear-gradient(130deg, #6610f2 10%, #6f42c1 20%, #d63384 35%, #dc3545 65%, #fd7e14 83%, #ff5607 96%)
-        `,
-      }}
-    >
-      <Box>
-        <Heading variant={"h1"}>Seems you&apos;re lost!!</Heading>
-        <Heading variant="h6">
-          Don&apos;t worry, I won&apos;t tell anyone
-        </Heading>
-      </Box>
-    </Box>
-  );
+    <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="text-center px-6">
+        <div className="mb-8">
+          <h1 className="text-9xl font-bold text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text mb-4">404</h1>
+          <h2 className="text-3xl font-bold mb-4">Page Not Found</h2>
+          <p className="text-gray-400 text-lg mb-8 max-w-md mx-auto">
+            Sorry, the page you&apos;re looking for doesn&apos;t exist or has been moved.
+          </p>
+        </div>
+        
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-medium hover:shadow-xl hover:shadow-blue-500/25 transition-all duration-300"
+          >
+            <Home size={18} />
+            Go Home
+          </Link>
+          
+          <button
+            onClick={() => window.history.back()}
+            className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white/20 rounded-full text-white font-medium hover:bg-white/10 transition-all duration-300"
+          >
+            <ArrowLeft size={18} />
+            Go Back
+          </button>
+        </div>
+      </div>
+    </div>
+  )
 }

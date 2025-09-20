@@ -1,23 +1,36 @@
-"use client";
+"use client"
 
-import { SxProps, Typography } from "@mui/material";
-import Fade from "./Fade";
-import { Variant } from "@mui/material/styles/createTypography";
+import { cn } from "@/utils/cn"
+import { motion } from "framer-motion"
 
-const Paragraph = ({
+interface ParagraphProps {
+  children: React.ReactNode
+  delay?: number
+  className?: string
+}
+
+export default function Paragraph({
   children,
-  variant = "body1",
   delay = 0,
-  sx
-}: {
-  children: React.ReactNode;
-  variant?: Variant
-  delay?: number;
-  sx?: SxProps;
-}) => (
-  <Fade delay={delay}>
-    <Typography sx={sx} variant={variant}>{children}</Typography>
-  </Fade>
-);
-
-export default Paragraph;
+  className
+}: ParagraphProps) {
+  return (
+    <motion.div
+      initial={{ y: 20, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.8,
+        delay: delay,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
+    >
+      <p className={cn(
+        "text-base md:text-lg text-gray-300 leading-relaxed mb-4",
+        className
+      )}>
+        {children}
+      </p>
+    </motion.div>
+  )
+}

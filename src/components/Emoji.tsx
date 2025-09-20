@@ -1,8 +1,21 @@
-import { montserrat } from "@/theme/fonts"
+import { cn } from "@/utils/cn"
 import { CSSProperties } from "react"
 
-const Emoji = ({ children, style } : { children: React.ReactNode, style?: CSSProperties}) => {
-  return <span role="img" aria-label="emoji" style={style} className={montserrat.className}>{children}</span>
+interface EmojiProps {
+  children: React.ReactNode
+  style?: CSSProperties
+  className?: string
 }
 
-export default Emoji
+export default function Emoji({ children, style, className }: EmojiProps) {
+  return (
+    <span 
+      role="img" 
+      aria-label="emoji" 
+      style={style} 
+      className={cn("font-sans", className)}
+    >
+      {children}
+    </span>
+  )
+}

@@ -1,17 +1,22 @@
 "use client"
 
-import { usePathname } from "next/navigation"
+import { useScrollTo } from "@/hooks/useLenis";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 const ScrollToTop = () => {
   const pathname = usePathname();
+  const { scrollToTop } = useScrollTo();
+  
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth"
-    });
-  }, [pathname])
+    // Small delay to ensure the page has rendered
+    const timer = setTimeout(() => {
+      scrollToTop({ duration: 0.8 });
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [pathname, scrollToTop])
+  
   return null;
 }
 

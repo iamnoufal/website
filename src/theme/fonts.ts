@@ -54,4 +54,4 @@ const shadowsIntoLight = Shadows_Into_Light({
   display: "swap"
 })
 
-export { dancing_script, lora, merriweather, montserrat, shadowsIntoLight}
+export { dancing_script, lora, merriweather, montserrat, satisfy, shadowsIntoLight };

@@ -1,5 +1,5 @@
-import { PostSchema } from "./types";
 import jwt from "jsonwebtoken";
+import { PostSchema } from "./types";
 
 const getSignedGhostAdminToken = () => {
   const [id, secret] = process.env.GHOST_ADMIN_API_KEY?.split(":") || ["", ""];
@@ -55,12 +55,15 @@ const getPosts = async (): Promise<PostSchema[]> => {
   const { posts } = await ghostContentAPI("/posts", {
     limit: "all",
     include: "tags,authors",
+    filter: "tag:blog",
   });
   return posts as PostSchema[];
 };
 
-const getPostBySlug = async (slug: string): Promise<PostSchema> => {
-  const post = await ghostContentAPI(`/posts/slug/${slug}`);
+const getPostBySlug = async (slug: string): Promise<PostSchema | null> => {
+  const post = await ghostContentAPI(`/posts/slug/${slug}`, {
+    include: "tags,authors",
+  });
   return post ? post.posts[0] : null;
 };
 

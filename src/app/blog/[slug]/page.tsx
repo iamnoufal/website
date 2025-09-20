@@ -1,41 +1,60 @@
-import PostIntro from "@/components/PostIntro";
-import PrismWrapper from "@/theme/PrismWrapper";
-import { getPostBySlug } from "@/utils/ghost";
-import { PostSchema } from "@/utils/types";
-import { Box, Container } from "@mui/material";
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import PostIntro from "@/components/PostIntro"
+import { getPostBySlug, getPosts } from "@/utils/ghost"
+import { PostSchema } from "@/utils/types"
+import { Metadata } from "next"
+import { notFound } from "next/navigation"
+import '../../../styles/blog-content.css'
+import PrismWrapper from "@/theme/PrismWrapper"
 
-export async function generateMetadata({ params } : { params: { slug: string } }): Promise<Metadata> {
-  const post: PostSchema = await getPostBySlug(params.slug);
-  if (!post) {
-    notFound();
-  }
-  return {
-    title: post.title,
-    description: post.excerpt
-  };
+interface Props {
+  params: { slug: string }
 }
 
-export default async function BlogPostPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const post: PostSchema = await getPostBySlug(params.slug);
-  if (!post) {
-    notFound();
-  }
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = await getPostBySlug(params.slug)
   
+  if (!post) {
+    return {
+      title: 'Post Not Found',
+    }
+  }
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      images: post.feature_image ? [post.feature_image] : [],
+    },
+  }
+}
+
+export async function generateStaticParams() {
+  const posts = await getPosts()
+  return posts.map((post: PostSchema) => ({
+    slug: post.slug,
+  }))
+}
+
+export default async function BlogPost({ params }: Props) {
+  const post = await getPostBySlug(params.slug)
+
+  if (!post) {
+    notFound()
+  }
+
   return (
-    <Box>
+    <div className="min-h-screen bg-black text-white pt-20">
       <PrismWrapper />
-      <PostIntro {...post} />
-      <Box sx={{ pt: 10, color: "white", background: "black" }}>
-        <Container maxWidth="md" className="post">
-          <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
-        </Container>
-      </Box>
-    </Box>
-  );
+      <PostIntro post={post} />
+      
+      <div className="max-w-4xl mx-auto px-6 pb-12">
+        <article 
+          className="blog-content"
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        />
+      </div>
+    </div>
+  )
 }
