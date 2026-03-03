@@ -1,11 +1,19 @@
+import type { Metadata } from "next";
 import { getPosts } from "@/utils/ghost";
 import { BlogGrid } from "@/components/blog/BlogGrid";
 
 export const revalidate = 60;
 
-export const metadata = {
-  title: "Blog | Noufal",
-  description: "Thoughts on technology, life, and everything in between.",
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Thoughts on technology, life, and everything in between. Insights, tutorials, and stories from my journey as a developer.",
+  openGraph: {
+    title: "Blog | Noufal Rahman",
+    description:
+      "Thoughts on technology, life, and everything in between. Insights, tutorials, and stories from my journey.",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://noufal.dev"}/blog`,
+  },
 };
 
 export default async function BlogPage() {

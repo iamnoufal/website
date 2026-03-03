@@ -3,12 +3,8 @@
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
-  BookOpen,
-  Briefcase,
-  Code2,
   GraduationCap,
-  MapPin,
-  Sparkles,
+  MapPin
 } from "lucide-react";
 import Link from "next/link";
 

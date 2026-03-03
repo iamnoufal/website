@@ -1,4 +1,3 @@
-// import { Container } from "@/components/layout/Container";
 import { getPostBySlug } from "@/utils/ghost";
 import { Calendar, Clock } from "lucide-react";
 import PrismLoader from "@/components/blog/PrismLoader";
@@ -19,17 +18,29 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
 
   if (!post) {
     return {
-      title: "Post Not Found | Noufal",
+      title: "Post Not Found",
     };
   }
 
+  const postUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://noufal.dev"}/blog/${slug}`;
+
   return {
-    title: `${post.title} | Noufal`,
+    title: post.title,
     description: post.excerpt,
     openGraph: {
+      type: "article",
       title: post.title,
       description: post.excerpt,
-      images: [post.feature_image],
+      url: postUrl,
+      publishedTime: post.published_at,
+      authors: ["Noufal Rahman"],
+      ...(post.feature_image && { images: [{ url: post.feature_image }] }),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      ...(post.feature_image && { images: [post.feature_image] }),
     },
   };
 }

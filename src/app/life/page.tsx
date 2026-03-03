@@ -1,11 +1,19 @@
+import type { Metadata } from "next";
 import RandomFacts from "@/components/life/RandomFacts";
 import Library from "@/components/life/Library";
 import TravelLogs from "@/components/life/TravelLogs";
 import dynamic from "next/dynamic";
 
-export const metadata = {
-  title: "Life | Noufal",
-  description: "OfflineMode.exe: A glimpse into my personal journey.",
+export const metadata: Metadata = {
+  title: "Life",
+  description:
+    "OfflineMode.exe — A glimpse into my world beyond code. Random facts, travel logs, reading list, and what I'm currently listening to.",
+  openGraph: {
+    title: "Life | Noufal Rahman",
+    description:
+      "A glimpse into my world beyond code. Random facts, travel logs, reading list, and what I'm currently listening to.",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://noufal.dev"}/life`,
+  },
 };
 
 // Lazy load SpotifyWidget to prevent server-side loading and reduce initial bundle
