@@ -1,24 +1,28 @@
-import PortfolioLayout from "@/components/PortfolioLayout";
 import { getPosts } from "@/utils/ghost";
-import FeaturedPosts from "@/components/FeaturedPosts";
-import Posts from "@/components/Posts";
-import { Box } from "@mui/material";
-import { Fragment } from "react";
+import { BlogGrid } from "@/components/blog/BlogGrid";
 
-export default async function BlogsPage() {
+export const revalidate = 60;
+
+export const metadata = {
+  title: "Blog | Noufal",
+  description: "Thoughts on technology, life, and everything in between.",
+};
+
+export default async function BlogPage() {
   const posts = await getPosts();
-  const featuredPosts = posts.filter(post => post.featured)
 
   return (
-    <Fragment>
-      <Box>
-        <PortfolioLayout
-          title="Noufal's Blog"
-          subtitle="Penning down my thoughts in 0s and 1s"
-        />
-      </Box>
-      <FeaturedPosts posts={featuredPosts} />
-      <Posts posts={posts} />
-    </Fragment>
+    <div className="min-h-screen pt-20 pb-24 bg-background">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl mx-auto mb-16 text-center py-16">
+          <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-foreground tracking-tight">Writing</h1>
+          <p className="text-xl text-muted leading-relaxed">
+            Insights, tutorials, and stories from my journey.
+          </p>
+        </div>
+
+        <BlogGrid posts={posts || []} />
+      </div>
+    </div>
   );
 }
