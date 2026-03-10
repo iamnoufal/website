@@ -25,6 +25,7 @@ export default function Navbar() {
       document.body.style.overflow = "unset";
     }
   }
+  console.log(pathname, pathname === "")
 
   return (
     <>
@@ -39,18 +40,21 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:gap-8">
-            {navItems.map((item) => (
-              <TransitionLink
-                key={item.name}
-                href={item.href}
-                className={cn(
-                  "relative text-sm font-medium transition-colors hover:text-primary",
-                  pathname === item.href.split("/")[1] ? "text-primary" : "text-text-muted"
-                )}
-              >
-                {item.name}
-              </TransitionLink>
-            ))}
+            {navItems.map((item) => {
+              console.log("==> debug", item.href, pathname, pathname === item.href.split("/")[1])
+              return (
+                <TransitionLink
+                  key={item.name}
+                  href={item.href}
+                  className={cn(
+                    "relative text-sm font-medium transition-colors hover:text-primary",
+                    pathname === item.href.split("/")[1] ? "text-primary" : "text-text-muted"
+                  )}
+                >
+                  {item.name}
+                </TransitionLink>
+              )
+            })}
           </div>
 
           {/* Mobile Menu Button */}
