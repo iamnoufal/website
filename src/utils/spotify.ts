@@ -38,7 +38,10 @@ const getLastPlayed = async (token: string): Promise<SpotifyData> => {
 		},
 		cache: "no-store"
 	});
-	if (response.status !== 200) return { is_playing: null } as SpotifyData;
+	if (response.status !== 200) {
+		console.log("##SPOTIFYNODATA: ", response.status, await response.text())
+		return { is_playing: null } as SpotifyData;
+	}
 	const data = await response.json();
 	const track = data.items[0].track
 	return {
