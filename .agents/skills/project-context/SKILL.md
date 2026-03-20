@@ -35,6 +35,7 @@ description: Everything about Noufal and his personal website — identity, tech
 | Styling      | **Tailwind CSS v4** (PostCSS plugin)      |
 | Typography   | `@tailwindcss/typography` plugin          |
 | Animations   | **Framer Motion 12**                      |
+| Smooth Scroll | **Lenis**                                |
 | Icons        | **lucide-react**                          |
 | Linter       | **Biome 2.2** (replaces ESLint/Prettier)  |
 | CMS          | **Ghost** (headless, for blog posts)      |
@@ -103,7 +104,7 @@ src/
 │   ├── layout.tsx          # Root layout (TransitionProvider, Navbar, PageTransitionWrapper, Subscribe, Footer)
 │   ├── globals.css         # Design tokens, Tailwind config, prose overrides
 │   ├── page.tsx            # Home page (Hero, AtAGlance, FeaturedBlogs)
-│   ├── life/page.tsx       # Life page (SpotifyWidget, RandomFacts, TravelLogs, Library)
+│   ├── life/page.tsx       # Life page (SpotifyWidget, RandomFacts, TravelLogs, RecentMovies, Library)
 │   ├── blog/               # Blog listing + [slug] dynamic route
 │   └── docs/page.tsx       # Resume/docs page (About, Experience, Education, Skills, Projects)
 ├── components/

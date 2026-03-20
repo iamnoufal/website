@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import Subscribe from "@/components/layout/Subscribe";
+import SmoothScroll from "@/components/layout/SmoothScroll";
 import TransitionProvider from "@/components/transition/TransitionProvider";
 
 const inter = Inter({
@@ -77,12 +78,14 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${outfit.variable} antialiased min-h-screen flex flex-col font-sans`}
       >
-        <TransitionProvider>
-          <Navbar />
-          <main className="grow flex flex-col">{children}</main>
-          <Subscribe />
-          <Footer />
-        </TransitionProvider>
+        <SmoothScroll>
+          <TransitionProvider>
+            <Navbar />
+            <main className="grow flex flex-col">{children}</main>
+            <Subscribe />
+            <Footer />
+          </TransitionProvider>
+        </SmoothScroll>
       </body>
     </html>
   );
