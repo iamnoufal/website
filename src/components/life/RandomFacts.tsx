@@ -1,19 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Lightbulb, Terminal } from "lucide-react";
+import { Lightbulb } from "lucide-react";
 
-const facts = [
-  { icon: "☕️", text: "Turning coffee into clean code since 2020." },
-  { icon: "🍋", text: "Obsessed with making UIs fresh, zesty, and pixel-perfect." },
-  { icon: "🎶", text: "Coding to a soundtrack of synthwave and rain sounds." },
-  { icon: "🗺️", text: "Exploring the world, one commit at a time." },
-  { icon: "✨", text: "I believe the best features often come from happy accidents." },
-  { icon: "📋", text: "My bucket list is longer than my git history." },
-  { icon: "🚀", text: "Always delivering 110% (even if it causes a stack overflow)." },
-];
+interface RandomFactsProps {
+  facts: Fact[];
+}
 
-export default function RandomFacts() {
+export default function RandomFacts({ facts }: RandomFactsProps) {
+  if (!facts.length) return null;
+
   return (
     <section className="h-full">
       <div className="flex items-center gap-4 mb-8">

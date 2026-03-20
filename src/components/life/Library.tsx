@@ -4,38 +4,13 @@ import { motion } from "framer-motion";
 import { BookOpen, Star } from "lucide-react";
 import Image from "next/image";
 
-const books = [
-  {
-    id: 1,
-    title: "Zero to One",
-    author: "Peter Thiel",
-    cover: "https://covers.openlibrary.org/b/isbn/9780804139298-L.jpg",
-    rating: 5,
-  },
-  {
-    id: 2,
-    title: "Psychology of Money",
-    author: "Morgan Housel",
-    cover: "https://covers.openlibrary.org/b/isbn/9780857197689-L.jpg",
-    rating: 5,
-  },
-  {
-    id: 3,
-    title: "The Art of Letting Go",
-    author: "Daphne Rose Kingma",
-    cover: "https://covers.openlibrary.org/b/isbn/9781401945015-L.jpg",
-    rating: 4,
-  },
-  {
-    id: 4,
-    title: "The Subtle Art of Not Giving a F*ck",
-    author: "Mark Manson",
-    cover: "https://covers.openlibrary.org/b/isbn/9780062457714-L.jpg",
-    rating: 5,
-  },
-];
+interface LibraryProps {
+  books: Book[];
+}
 
-export default function Library() {
+export default function Library({ books }: LibraryProps) {
+  if (!books.length) return null;
+
   return (
     <section className="mb-32">
       <div className="flex items-center gap-4 mb-8">
@@ -55,7 +30,7 @@ export default function Library() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {books.map((book, index) => (
           <motion.div
-            key={book.id}
+            key={book.title}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.1 }}

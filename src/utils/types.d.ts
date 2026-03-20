@@ -39,3 +39,36 @@ interface FlowData {
 		alternativeText: string;
 	}
 }
+
+interface TravelLog {
+	location: string;
+	latestDate: string;
+	visits: {
+		date: string;
+		status: string;
+		link?: string;
+	}[];
+}
+
+interface CurrentLocation {
+	location: string;
+	type: "weekday" | "weekend" | "override";
+}
+
+interface Movie {
+	title: string;
+	year: string;
+	youtubeId: string;
+}
+
+interface Book {
+	title: string;
+	author: string;
+	cover: string;
+	rating: number;
+}
+
+interface Fact {
+	icon: string;
+	text: string;
+}
