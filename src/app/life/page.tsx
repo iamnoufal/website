@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import RandomFacts from "@/components/life/RandomFacts";
 import Library from "@/components/life/Library";
 import TravelLogs from "@/components/life/TravelLogs";
+import RecentMovies from "@/components/life/RecentMovies";
+import { getTravelLogs, getRecentMovies, getLibrary, getRandomFacts } from "@/utils/sheets";
 import dynamic from "next/dynamic";
 
 export const metadata: Metadata = {
@@ -21,7 +23,18 @@ const SpotifyWidget = dynamic(() => import("@/components/life/SpotifyWidget"), {
   loading: () => null
 })
 
-export default function LifePage() {
+export default async function LifePage() {
+  const [
+    { logs: travelLogs, currentLocation },
+    movies,
+    books,
+    facts,
+  ] = await Promise.all([
+    getTravelLogs(),
+    getRecentMovies(),
+    getLibrary(),
+    getRandomFacts(),
+  ]);
 
   return (
     <div className="min-h-screen pt-32 pb-24 relative overflow-hidden">
@@ -60,16 +73,21 @@ export default function LifePage() {
 
         {/* Random Facts Section */}
         <div className="mb-32">
-          <RandomFacts />
+          <RandomFacts facts={facts} />
         </div>
 
         {/* Travel Logs Section */}
         <div className="mb-32">
-          <TravelLogs />
+          <TravelLogs logs={travelLogs} currentLocation={currentLocation} />
+        </div>
+
+        {/* Recently Watched Section */}
+        <div className="mb-32">
+          <RecentMovies movies={movies} />
         </div>
 
         {/* Library Section */}
-        <Library />
+        <Library books={books} />
 
       </div>
     </div>
