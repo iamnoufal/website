@@ -1,21 +1,41 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Navigation } from "lucide-react";
+import { MapPin, Navigation, ArrowRight } from "lucide-react";
+import TravelLogsModal from "./TravelLogsModal";
 
-const logs = [
-  { id: 1, location: "Bangalore, India", date: "2024", status: "Current Base" },
-  { id: 2, location: "Coimbatore, India", date: "2020-2024", status: "Education" },
-  { id: 3, location: "Chennai, India", date: "2018", status: "Visit" },
-  { id: 4, location: "Kerala, India", date: "Origin", status: "Home" },
-];
+interface TravelLogsProps {
+  logs: TravelLog[];
+  currentLocation: CurrentLocation;
+}
 
-export default function TravelLogs() {
+const SUMMARY_COUNT = 5;
+
+export default function TravelLogs({ logs, currentLocation }: TravelLogsProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Filter out current base locations (Madurai/Karur) from the recent list
+  const recentLogs = logs
+    .filter(
+      (log) =>
+        log.location.toLowerCase() !== "madurai" &&
+        log.location.toLowerCase() !== "karur"
+    )
+    .slice(0, SUMMARY_COUNT);
+
+  const currentLabel =
+    currentLocation.type === "override"
+      ? "Currently here"
+      : currentLocation.type === "weekend"
+        ? "Weekend · Home"
+        : "Weekday · Work";
+
   return (
     <section>
       <div className="flex items-center gap-4 mb-8">
-        <div className="h-12 w-12 rounded-xl bg-orange-500/10 flex items-center justify-center border border-orange-500/20">
-          <Navigation className="text-orange-500 h-6 w-6" />
+        <div className="h-12 w-12 rounded-xl bg-secondary/10 flex items-center justify-center border border-secondary/20">
+          <Navigation className="text-secondary h-6 w-6" />
         </div>
         <div>
           <h2 className="font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
@@ -27,35 +47,69 @@ export default function TravelLogs() {
         </div>
       </div>
 
-      <div className="relative border-l border-white/10 ml-6 space-y-8">
-        {logs.map((log, index) => (
+      {/* Current Location */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        viewport={{ once: true }}
+        className="mb-6 p-4 rounded-xl bg-primary/5 border border-primary/20 flex items-center gap-4"
+      >
+        <div className="relative">
+          <MapPin className="h-5 w-5 text-primary" />
+          <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-primary animate-ping" />
+          <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-primary" />
+        </div>
+        <div className="flex-1">
+          <p className="text-white font-bold text-sm">
+            {currentLocation.location}
+          </p>
+          <p className="text-[11px] text-primary/80">{currentLabel}</p>
+        </div>
+        <span className="text-[10px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full border border-primary/20">
+          📍 Now
+        </span>
+      </motion.div>
+
+      {/* Recent Places */}
+      <div className="space-y-3">
+        {recentLogs.map((log, index) => (
           <motion.div
-            key={log.id}
+            key={log.location}
             initial={{ opacity: 0, x: -10 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.1 }}
+            transition={{ duration: 0.3, delay: index * 0.08 }}
             viewport={{ once: true }}
-            className="relative pl-8"
+            className="flex items-center gap-4 p-3 rounded-xl bg-surface/50 border border-white/10 backdrop-blur-sm hover:border-primary/20 transition-colors"
           >
-            <span className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-surface border border-white/20 ring-4 ring-surface" />
-
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-orange-500/30 transition-colors">
-              <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-text-muted shrink-0 mt-0.5" />
-                <div>
-                  <h3 className="text-white font-bold">{log.location}</h3>
-                  <p className="text-xs text-text-muted">{log.status}</p>
-                </div>
-              </div>
-              <div className="pl-8 sm:pl-0">
-                <span className="text-xs font-sans py-1 px-2 rounded bg-black/20 text-orange-400 border border-orange-500/10">
-                  {log.date}
-                </span>
-              </div>
-            </div>
+            <MapPin className="h-4 w-4 text-text-muted shrink-0" />
+            <span className="text-white font-bold text-sm flex-1">
+              {log.location}
+            </span>
+            <span className="text-xs text-text-muted">{log.latestDate}</span>
           </motion.div>
         ))}
       </div>
+
+      {/* View All Button */}
+      {logs.length > SUMMARY_COUNT && (
+        <motion.button
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          onClick={() => setIsModalOpen(true)}
+          className="mt-4 w-full py-3 rounded-xl border border-white/10 bg-surface/30 hover:border-primary/30 hover:bg-surface/50 transition-all text-sm text-text-muted hover:text-white flex items-center justify-center gap-2 group cursor-pointer"
+        >
+          cat gps_logs
+          <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
+        </motion.button>
+      )}
+
+      <TravelLogsModal
+        logs={logs}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }
