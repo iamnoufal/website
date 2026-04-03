@@ -30,9 +30,9 @@ export default function RandomFacts({ facts }: RandomFactsProps) {
         {facts.map((fact, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3, delay: index * 0.06 }}
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ duration: 0.3 }}
             viewport={{ once: true }}
             className="group px-4 py-3 rounded-xl bg-surface/50 border border-white/5 hover:border-yellow-500/30 transition-all duration-300 hover:bg-surface/80 hover:shadow-[0_0_16px_rgba(255,200,0,0.06)] flex items-center gap-2.5"
           >

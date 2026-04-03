@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Outfit, Manrope } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
@@ -7,8 +7,8 @@ import Subscribe from "@/components/layout/Subscribe";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import TransitionProvider from "@/components/transition/TransitionProvider";
 
-const inter = Inter({
-  variable: "--font-inter",
+const manrope = Manrope({
+  variable: "--font-body",
   subsets: ["latin"],
 });
 
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s | Noufal Rahman",
   },
   description:
-    "Full Stack Developer & Creative Thinker. Building stuff that matters with React, Next.js, and TypeScript. Currently at Zoho Corporation.",
+    "Full Stack Developer & Creative Thinker. Building stuff that matters at Zoho Corporation.",
   keywords: [
     "Noufal Rahman",
     "Full Stack Developer",
@@ -37,6 +37,7 @@ export const metadata: Metadata = {
     "Web Developer",
     "Zoho",
     "IIT Madras",
+    "GCT Coimbatore"
   ],
   authors: [{ name: "Noufal Rahman", url: siteUrl }],
   creator: "Noufal Rahman",
@@ -76,7 +77,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${outfit.variable} antialiased min-h-screen flex flex-col font-sans`}
+        className={`${manrope.variable} ${outfit.variable} antialiased min-h-screen flex flex-col font-sans`}
       >
         <SmoothScroll>
           <TransitionProvider>

@@ -117,20 +117,20 @@ export async function getTravelLogs(): Promise<{
 
   const logs: TravelLog[] = [];
   for (const [, group] of grouped) {
-    const first = group.entries[0];
-    const visits: TravelLog["visits"] = group.entries.map((e) => ({
+    const sortedEntries = [...group.entries].sort(
+      (a, b) => getEntryTimestamp(b) - getEntryTimestamp(a)
+    );
+
+    const first = sortedEntries[0];
+    const visits: TravelLog["visits"] = sortedEntries.map((e) => ({
       date: formatTravelDate(e),
       status: e.status,
       link: e.link || undefined,
     }));
 
-    const sortedEntries = [...group.entries].sort(
-      (a, b) => getEntryTimestamp(b) - getEntryTimestamp(a)
-    );
-
     logs.push({
       location: first.location,
-      latestDate: formatTravelDate(sortedEntries[0]),
+      latestDate: formatTravelDate(first),
       visits,
     });
   }
@@ -202,11 +202,20 @@ export async function getRecentMovies(): Promise<Movie[]> {
 
   const rows = await fetchSheetCsv(gid);
   return rows
-    .map((cols) => ({
-      title: cols[0] || "",
-      year: cols[1] || "",
-      youtubeId: cols[2].split("/")[3].split("?")[0] || "",
-    }))
+    .map((cols) => {
+      let youtubeId = cols[2] || "";
+      const match = youtubeId.match(
+        /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/
+      );
+      if (match && match[1]) {
+        youtubeId = match[1];
+      }
+      return {
+        title: cols[0] || "",
+        year: cols[1] || "",
+        youtubeId: youtubeId,
+      };
+    })
     .filter((m) => m.title && m.youtubeId);
 }
 

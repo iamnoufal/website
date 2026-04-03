@@ -79,7 +79,7 @@ All colors are defined as CSS custom properties in `src/app/globals.css`:
 
 | Role     | Font Family | CSS Variable     | Usage                    |
 |----------|-------------|------------------|--------------------------|
-| Body     | **Inter**   | `--font-inter`   | All body text (`font-sans`) |
+| Body     | **Manrope** | `--font-body`    | All body text (`font-sans`) |
 | Headings | **Outfit**  | `--font-outfit`  | Headings (`font-heading`)  |
 
 Both loaded from Google Fonts in `layout.tsx`.

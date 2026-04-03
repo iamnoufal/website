@@ -37,7 +37,7 @@ export default async function LifePage() {
   ]);
 
   return (
-    <div className="min-h-screen pt-32 pb-24 relative overflow-hidden">
+    <div className="min-h-screen py-24 relative overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 h-96 w-96 rounded-full bg-secondary/10 blur-3xl filter -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute top-40 right-0 h-72 w-72 rounded-full bg-accent/5 blur-3xl filter translate-x-1/3" />
@@ -45,7 +45,7 @@ export default async function LifePage() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* OfflineMode.exe Hero */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-12 mb-32 border-b border-white/5 pb-16">
+        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-12 py-32 border-b border-white/5">
 
           {/* Left: Title & Status */}
           <div>
@@ -72,7 +72,7 @@ export default async function LifePage() {
         </div>
 
         {/* Random Facts Section */}
-        <div className="mb-32">
+        <div className="my-32">
           <RandomFacts facts={facts} />
         </div>
 

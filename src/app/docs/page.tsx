@@ -59,13 +59,13 @@ const education = [
     institution: "IIT Madras",
     degree: "B.S. Data Science and Applications",
     period: "2020 – 2024",
-    note: "CGPA 7.7 · Head of WebOps",
+    note: "Head of WebOps",
   },
   {
     institution: "GCT Coimbatore",
     degree: "B.E. Computer Science",
     period: "2020 – 2024",
-    note: "CGPA 7.8 · Web Lead, Coding Club",
+    note: "Web Lead, Coding Club",
   },
 ];
 
