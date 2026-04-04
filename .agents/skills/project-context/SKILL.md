@@ -186,3 +186,7 @@ All pages use `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8` for consistent horizontal
 - `lh3.googleusercontent.com` — Google profile images
 - `i.scdn.co` — Spotify album art
 - `covers.openlibrary.org` — Book covers (Library section)
+
+### Commit instructions
+- Add single line commit texts
+- Don't add co-author information in commit texts

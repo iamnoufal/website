@@ -97,7 +97,8 @@ export async function getTravelLogs(): Promise<{
       link: cols[5] || "",
       isCurrent:
         (cols[6] || "").toUpperCase() === "TRUE" ||
-        (cols[6] || "").toUpperCase() === "YES",
+        (cols[6] || "").toUpperCase() === "YES" ||
+        (new Date(cols[3]).getTime() > Date.now() && new Date(cols[2]).getTime() < Date.now()),
     }))
     .filter((e) => e.location);
 
