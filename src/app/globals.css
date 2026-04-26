@@ -1,223 +1,115 @@
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-* {
-  box-sizing: border-box !important;
+/* Ghost Styles */
+.prose .kg-image {
+  @apply rounded-xl mx-auto;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  padding: 0;
-  margin: 0;
+.prose .kg-gallery-container {
+  @apply flex flex-col gap-4 my-8;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.prose .kg-gallery-row {
+  @apply grid gap-4;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 
-@keyframes rotate-circle {
-  to {
-    transform: rotate(1turn);
+.prose iframe {
+  @apply !rounded-xl w-full aspect-video !h-auto !min-h-[350px];
+}
+
+.prose figcaption {
+  @apply text-center mt-0.5 text-xs;
+}
+
+/* Prism Overrides */
+.prose pre {
+  @apply !rounded-xl !border !border-white/10 !bg-[#0d1117];
+  text-shadow: none !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+}
+
+.prose code {
+  @apply !font-sans !text-sm;
+  background: transparent !important;
+}
+
+/* Inline code only (not inside pre) */
+.prose :not(pre)>code {
+  @apply !bg-white/10 !text-primary !px-0.5 !py-0.5 !rounded-md !font-medium;
+}
+
+:root {
+  /* User Provided Palette */
+  --color-brand-primary: #4FFFB0;
+  --color-brand-primary-hover: #3DDB93;
+  --color-brand-primary-glow: #80FFCE;
+
+  --color-brand-accent: #1C8C6E;
+
+  --color-bg-dark: #052640;
+  --color-bg-darker: #02121F;
+
+  --color-surface: #0B3655;
+  --color-surface-glass: rgba(11, 54, 85, 0.7);
+  --color-border: #1E4C6E;
+
+  --color-text-main: #F5F9FC;
+  --color-text-muted: #9FBCCF;
+
+  /* Semantic Mappings */
+  --background: var(--color-bg-dark);
+  --foreground: var(--color-text-main);
+
+  --color-primary: var(--color-brand-primary);
+  --color-secondary: var(--color-brand-accent);
+  --color-accent: var(--color-brand-primary-glow);
+}
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-surface: var(--color-surface);
+  --color-surface-glass: var(--color-surface-glass);
+  --color-border: var(--color-border);
+
+  --color-text-main: var(--color-text-main);
+  --color-text-muted: var(--color-text-muted);
+
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-outfit);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--color-bg-dark);
+    --foreground: var(--color-text-main);
   }
 }
 
-#spotifyPlayingWidgetWrapper * {
-  transition: 0.6s;
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
 }
 
-#spotifyPlayingWidgetWrapper svg {
-  animation-duration: 10s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  padding: 10px;
-  cursor: pointer;
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-#spotifyPlayingWidgetWrapper:hover svg {
-  padding: 0px;
-}
-
-#spotifyPlayingWidgetWrapper img {
-  position: absolute;
-  border-radius: 50%;
-  width: 100%;
-  padding: 30px;
-}
-
-#spotifyPlayingWidgetWrapper:hover img {
-  opacity: 0.5;
-}
-
-#spotifyPlayingWidgetWrapper span {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  padding: 50px;
-  text-align: center;
-  line-height: 1.2rem;
-  font-size: 0.8rem;
-  font-weight: bold;
-  opacity: 0;
-}
-
-#spotifyPlayingWidgetWrapper:hover span {
-  opacity: 1;
-}
-
-.post img {
-  width: 100% !important;
-  height: auto !important;
-  margin-top: 1rem;
-}
-
-.post figure {
-  margin: auto 0;
-}
-
-.post figure.kg-embed-card {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%;
-}
-
-.post figure.kg-embed-card > iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.post p > code {
-  background-color: #2d2d2d;
-  padding: 0 5px;
-  border-radius: 5px;
-}
-
-.post figcaption {
-  text-align: center;
-  font-size: 0.8rem;
-}
-
-.post pre {
-  border-radius: 8px;
-  border: none !important;
-  background-color: hsl(0, 0%, 8%) !important;
-  margin-top: 1rem !important;
-  font-size: 0.8rem !important;
-}
-
-.post pre::-webkit-scrollbar {
-  height: 10px;
-}
-
-.post pre::-webkit-scrollbar-track {
-  background-color: #353535;
-  padding: 1px 0;
-}
-
-.post pre::-webkit-scrollbar-thumb {
-  background-color: #555555;
-  height: 8px;
-  border-radius: 1vw;
-}
-
-.post .toolbar-item {
-  font-family: montserrat;
-}
-
-.post .toolbar-item > span, .post .toolbar-item > button {
-  margin: 5px;
-  padding: 2px 10px !important
-}
-
-.post p, .post li {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-.post p {
-  text-align: justify;
-  margin-bottom: 0;
-}
-
-.post li {
-  margin-top: 0.5rem;
-}
-
-.post a {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.post h1, .post h2, .post h3, .post h4, .post h5, .post h6 {
-  font-family: var(--font-lora);
-  font-weight: 500;
-  margin-bottom: 0;
-}
-
-.post h1 {
-  font-size: 2.0rem;
-}
-
-.post h2 {
-  font-size: 1.8rem;
-}
-
-.post h3 {
-  font-size: 1.6rem;
-  margin-top: 2.5rem;
-}
-
-.post h4 {
-  font-size: 1.2rem;
-  margin-top: 1rem;
-}
-
-.post h5 {
-  font-size: 1rem;
-}
-
-.featuredPostCardContent {
-  opacity: 0;
-  transition: 0.5s;
-}
-
-.swiper-slide-active .featuredPostCardContent {
-  opacity: 1;
-  transition: 0.5s;
-}
-
-.swiper-wrapper {
-  transition-timing-function: cubic-bezier(0.45, 0.03, 0.56, 0.99) !important;
-}
-
-.swiper-slide-shadow-right, .swiper-slide-shadow-left {
-  scale: 0.9
-}
-
-.material-symbols-rounded {
-  font-size: 2rem;
-}
-
-.MuiTimelineOppositeContent-root, .MuiTimelineContent-root {
-  margin-top: 2rem !important;
-  margin-bottom: 2rem !important;
-}
-
-.MuiTimelineItem-root > .MuiTimelineOppositeContent-root > .MuiBox-root {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-.MuiTimelineItem-root:nth-of-type(odd) > .MuiTimelineOppositeContent-root > .MuiBox-root {
-  justify-content: end;
+a[aria-current="page"] {
+  color: var(--color-primary);
 }
