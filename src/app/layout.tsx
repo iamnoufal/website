@@ -6,6 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import Subscribe from "@/components/layout/Subscribe";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import TransitionProvider from "@/components/transition/TransitionProvider";
+import Script from "next/script";
 
 const manrope = Manrope({
   variable: "--font-body",
@@ -92,6 +93,15 @@ export default function RootLayout({
           <TransitionProvider>
             <Navbar />
             <main className="grow flex flex-col">{children}</main>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`} />
+            <Script id="google-analytics">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
+              `}
+            </Script>
             <Subscribe />
             <Footer />
           </TransitionProvider>
