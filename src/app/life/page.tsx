@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
-import RandomFacts from "@/components/life/RandomFacts";
 import Library from "@/components/life/Library";
-import TravelLogs from "@/components/life/TravelLogs";
+import PhotoGallery from "@/components/life/PhotoGallery";
+import RandomFacts from "@/components/life/RandomFacts";
 import RecentMovies from "@/components/life/RecentMovies";
-import { getTravelLogs, getRecentMovies, getLibrary, getRandomFacts } from "@/utils/sheets";
+import TravelLogs from "@/components/life/TravelLogs";
+import { getLibrary, getRandomFacts, getRecentMovies, getTravelLogs } from "@/utils/sheets";
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 
 export const metadata: Metadata = {
@@ -37,7 +38,7 @@ export default async function LifePage() {
   ]);
 
   return (
-    <div className="min-h-screen py-24 relative overflow-hidden">
+    <div id="life-page-root" className="min-h-screen py-24 pb-40 md:pb-24 relative overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 h-96 w-96 rounded-full bg-secondary/10 blur-3xl filter -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute top-40 right-0 h-72 w-72 rounded-full bg-accent/5 blur-3xl filter translate-x-1/3" />
@@ -71,8 +72,13 @@ export default async function LifePage() {
           </div>
         </div>
 
+        {/* Photo Gallery Section */}
+        <div className="mt-20 mb-32">
+          <PhotoGallery />
+        </div>
+
         {/* Random Facts Section */}
-        <div className="my-32">
+        <div className="mb-32">
           <RandomFacts facts={facts} />
         </div>
 

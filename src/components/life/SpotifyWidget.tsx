@@ -7,11 +7,51 @@ import Image from "next/image"
 import Link from "next/link"
 import { useCallback, useEffect, useRef, useState } from "react"
 
+function MarqueeText({ text, className }: { text: string; className?: string }) {
+  const containerRef = useRef<HTMLDivElement | null>(null)
+  const contentRef = useRef<HTMLSpanElement | null>(null)
+  const [shouldMarquee, setShouldMarquee] = useState(false)
+
+  useEffect(() => {
+    const checkOverflow = () => {
+      if (!containerRef.current || !contentRef.current) return
+      setShouldMarquee(contentRef.current.scrollWidth > containerRef.current.clientWidth)
+    }
+
+    checkOverflow()
+    window.addEventListener("resize", checkOverflow)
+
+    return () => {
+      window.removeEventListener("resize", checkOverflow)
+    }
+  }, [text])
+
+  if (!shouldMarquee) {
+    return (
+      <div ref={containerRef} className={`overflow-hidden ${className || ""}`}>
+        <span ref={contentRef} className="truncate block">
+          {text}
+        </span>
+      </div>
+    )
+  }
+
+  return (
+    <div ref={containerRef} className={`overflow-hidden ${className || ""}`}>
+      <div className="flex min-w-full animate-[marquee_12s_linear_infinite] whitespace-nowrap">
+        <span ref={contentRef} className="pr-8">{text}</span>
+        <span aria-hidden className="pr-8">{text}</span>
+      </div>
+    </div>
+  )
+}
+
 export default function SpotifyWidget() {
   const [spotifyData, setSpotifyData] = useState<SpotifyData | null>(null)
   const [currentTime, setCurrentTime] = useState<number>(0)
   const [lastFetchTime, setLastFetchTime] = useState<number>(Date.now())
   const [isLoading, setIsLoading] = useState(true)
+  const [bottomReleaseOffset, setBottomReleaseOffset] = useState(0)
 
   // Use a single timer for all updates to reduce memory overhead
   const masterTimerRef = useRef<NodeJS.Timeout | null>(null)
@@ -100,6 +140,32 @@ export default function SpotifyWidget() {
     }
   }, [])
 
+  // Keep the mobile widget docked to viewport bottom until the page end is reached.
+  useEffect(() => {
+    const updateBottomReleaseOffset = () => {
+      const doc = document.documentElement
+      const pageRoot = document.getElementById("life-page-root")
+      const viewportBottom = window.scrollY + window.innerHeight
+      const pageBottom = pageRoot
+        ? pageRoot.getBoundingClientRect().bottom + window.scrollY
+        : doc.scrollHeight
+      const releaseThreshold = 120
+      const releaseStart = pageBottom - releaseThreshold
+      const overlap = Math.max(0, viewportBottom - releaseStart)
+
+      setBottomReleaseOffset(overlap)
+    }
+
+    updateBottomReleaseOffset()
+    window.addEventListener("scroll", updateBottomReleaseOffset, { passive: true })
+    window.addEventListener("resize", updateBottomReleaseOffset)
+
+    return () => {
+      window.removeEventListener("scroll", updateBottomReleaseOffset)
+      window.removeEventListener("resize", updateBottomReleaseOffset)
+    }
+  }, [])
+
   const formatTime = (ms: number) => {
     const minutes = Math.floor(ms / 60000)
     const seconds = Math.floor((ms % 60000) / 1000)
@@ -113,17 +179,7 @@ export default function SpotifyWidget() {
 
   // No data / Error state
   if (!spotifyData || spotifyData.is_playing === null) {
-    return (
-      <div className="flex items-center gap-4 p-5 rounded-3xl bg-surface/50 border border-border backdrop-blur-md w-full max-w-sm">
-        <div className="h-16 w-16 rounded-2xl bg-surface flex items-center justify-center text-text-muted shadow-inner shrink-0">
-          <Music size={24} />
-        </div>
-        <div>
-          <p className="text-text-main font-bold font-heading text-lg">Spotify Offline</p>
-          <p className="text-sm text-text-muted">Unable to fetch status</p>
-        </div>
-      </div>
-    );
+    return null
   }
 
   const statusText = spotifyData.is_playing ? "Now Playing" : "Last Played"
@@ -131,11 +187,12 @@ export default function SpotifyWidget() {
   const progressPercentage = spotifyData.duration ? Math.min((displayCurrentTime / spotifyData.duration) * 100, 100) : 0
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      className="relative w-[320px] bg-surface/80 backdrop-blur-xl border border-border rounded-3xl p-4 shadow-2xl transition-all hover:border-primary/30 hover:shadow-[0_0_30px_rgba(79,255,176,0.15)] group"
-    >
+    <>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="relative hidden lg:block w-[320px] bg-surface/80 backdrop-blur-xl border border-border rounded-3xl p-4 shadow-2xl transition-all hover:border-primary/30 hover:shadow-[0_0_30px_rgba(79,255,176,0.15)] group"
+      >
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
@@ -157,6 +214,7 @@ export default function SpotifyWidget() {
                 src={spotifyData.album_art}
                 alt={spotifyData.album || "Album Art"}
                 fill
+                sizes="64px"
                 className="object-cover"
               />
             ) : (
@@ -214,6 +272,52 @@ export default function SpotifyWidget() {
           <span>{formatTime(spotifyData.duration || 0)}</span>
         </div>
       </div>
-    </motion.div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="fixed left-3 right-3 z-40 lg:hidden"
+        style={{ bottom: `${12 + bottomReleaseOffset}px` }}
+      >
+        <div className="rounded-full border border-border bg-surface/90 backdrop-blur-xl px-3 py-2.5 shadow-xl">
+          <div className="flex items-center gap-3">
+            <div className="relative h-11 w-11 shrink-0">
+              <div className="relative h-full w-full rounded-full overflow-hidden border border-white/10">
+                {spotifyData.album_art ? (
+                  <Image
+                    src={spotifyData.album_art}
+                    alt={spotifyData.album || "Album Art"}
+                    fill
+                    sizes="44px"
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-surface flex items-center justify-center">
+                    <Music className="text-text-muted" size={16} />
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="min-w-0 flex-1">
+              <p className="text-[10px] uppercase tracking-widest text-primary mb-0.5">{statusText}</p>
+              <MarqueeText
+                text={`${spotifyData.title || "Unknown"} • ${spotifyData.artist || "Unknown Artist"}`}
+                className="text-sm font-semibold font-heading text-text-main"
+              />
+            </div>
+
+            <Link
+              href={spotifyData.url || "#"}
+              target="_blank"
+              className="h-8 w-8 rounded-full bg-white/5 hover:bg-white/10 transition-colors text-text-main flex items-center justify-center shrink-0"
+            >
+              <ExternalLink size={13} />
+            </Link>
+          </div>
+        </div>
+      </motion.div>
+    </>
   )
 }

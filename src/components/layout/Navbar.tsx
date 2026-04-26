@@ -4,7 +4,7 @@ import TransitionLink from "@/components/transition/TransitionLink";
 import { cn } from "@/utils/tailwind";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const navItems = [
   { name: "home", href: "/" },
@@ -18,14 +18,20 @@ export default function Navbar() {
   const pathname = usePathname().split("/")[1];
 
   // Prevent scrolling when menu is open
-  if (typeof window !== "undefined") {
+  useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      window.__lenis?.stop();
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
+      window.__lenis?.start();
     }
-  }
-  console.log(pathname, pathname === "")
+
+    return () => {
+      document.body.style.overflow = "";
+      window.__lenis?.start();
+    };
+  }, [isOpen]);
 
   return (
     <>
@@ -41,15 +47,12 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:gap-8">
             {navItems.map((item) => {
-              console.log("==> debug", item.href, pathname, pathname === item.href.split("/")[1])
               return (
                 <TransitionLink
                   key={item.name}
                   href={item.href}
-                  className={cn(
-                    "relative text-sm font-medium transition-colors hover:text-primary",
-                    pathname === item.href.split("/")[1] ? "text-primary" : "text-text-muted"
-                  )}
+                  aria-current={pathname === item.href.split("/")[1] ? "page" : undefined}
+                  className={"relative text-sm font-medium transition-colors hover:text-primary"}
                 >
                   {item.name}
                 </TransitionLink>
@@ -97,6 +100,7 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
+                  aria-current={pathname === item.href.split("/")[1] ? "page" : undefined}
                   className={cn(
                     "text-3xl font-bold transition-colors hover:text-primary font-heading",
                     pathname === item.href.split("/")[1] ? "text-primary" : "text-white"

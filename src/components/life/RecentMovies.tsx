@@ -48,6 +48,7 @@ export default function RecentMovies({ movies }: RecentMoviesProps) {
                   src={`https://img.youtube.com/vi/${movie.youtubeId}/hqdefault.jpg`}
                   alt={`${movie.title} Trailer`}
                   fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors flex items-center justify-center">
