@@ -49,12 +49,21 @@ export const metadata: Metadata = {
     title: "Noufal Rahman — Full Stack Developer & Creative Thinker",
     description:
       "Full Stack Developer & Creative Thinker. Building stuff that matters with React, Next.js, and TypeScript.",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Noufal Rahman website preview",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Noufal Rahman — Full Stack Developer & Creative Thinker",
     description:
       "Full Stack Developer & Creative Thinker. Building stuff that matters with React, Next.js, and TypeScript.",
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,
