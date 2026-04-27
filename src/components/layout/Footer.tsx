@@ -37,7 +37,7 @@ export default function Footer() {
               <Instagram className="h-5 w-5 text-text-muted transition-colors group-hover:text-pink-600" />
             </a>
             <a
-              href="https://linkedin.com/iamnoufal"
+              href="https://linkedin.com/in/iamnoufal"
               target="_blank"
               rel="noopener noreferrer"
               className="group rounded-full bg-white/5 p-2 transition-colors hover:bg-white/10"

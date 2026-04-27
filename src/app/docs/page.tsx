@@ -137,10 +137,10 @@ export default function DocsPage() {
             <Link href="mailto:iam@noufal.dev" className="inline-flex items-center gap-2 text-sm text-primary border border-primary/30 bg-primary/10 px-4 py-2 rounded-full hover:bg-primary/20 transition-colors">
               iam@noufal.dev <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
-            <Link href="https://github.com/noufal" target="_blank" className="inline-flex items-center gap-2 text-sm text-text-muted border border-white/10 bg-white/5 px-4 py-2 rounded-full hover:bg-white/10 transition-colors">
+            <Link href="https://github.com/iamnoufal" target="_blank" className="inline-flex items-center gap-2 text-sm text-text-muted border border-white/10 bg-white/5 px-4 py-2 rounded-full hover:bg-white/10 transition-colors">
               GitHub <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
-            <Link href="https://linkedin.com/in/noufal" target="_blank" className="inline-flex items-center gap-2 text-sm text-text-muted border border-white/10 bg-white/5 px-4 py-2 rounded-full hover:bg-white/10 transition-colors">
+            <Link href="https://linkedin.com/in/iamnoufal" target="_blank" className="inline-flex items-center gap-2 text-sm text-text-muted border border-white/10 bg-white/5 px-4 py-2 rounded-full hover:bg-white/10 transition-colors">
               LinkedIn <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
           </div>
