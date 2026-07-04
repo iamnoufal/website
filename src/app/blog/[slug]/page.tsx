@@ -1,8 +1,8 @@
 import { getPostBySlug } from "@/utils/ghost";
 import { Calendar, Clock } from "lucide-react";
-import PrismLoader from "@/components/blog/PrismLoader";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import Post from "@/components/blog/Post";
 
 export const revalidate = 60;
 
@@ -55,7 +55,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <article className="min-h-screen bg-background pb-24">
-      <PrismLoader />
 
       <div className="relative min-h-screen w-full flex flex-col justify-end overflow-hidden pb-16">
         {post.feature_image && (
@@ -104,7 +103,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       <div className="relative z-20 py-16 md:py-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto prose prose-invert prose-lg prose-headings:font-heading prose-headings:font-bold prose-headings:text-foreground prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-2xl prose-blockquote:border-primary prose-blockquote:bg-white/5 prose-blockquote:px-6 prose-blockquote:py-2 prose-blockquote:rounded-r-lg prose-code:text-primary">
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+          <Post html={post.html} />
         </div>
       </div>
     </article>
