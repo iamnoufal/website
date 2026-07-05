@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import renderMathInElement from "katex/contrib/auto-render";
+import renderMathInElement, { RenderMathInElementOptions } from "katex/contrib/auto-render";
 import "katex/dist/katex.min.css";
 
-const KATEX_OPTIONS = {
+const KATEX_OPTIONS: RenderMathInElementOptions = {
   delimiters: [
     { left: "$$", right: "$$", display: true },
     { left: "\\[", right: "\\]", display: true },
@@ -23,7 +23,7 @@ export default function LatexRenderer({ html }: { html: string }) {
 
   useEffect(() => {
     if (ref.current) {
-      renderMathInElement(ref.current, KATEX_OPTIONS as any);
+      renderMathInElement(ref.current, KATEX_OPTIONS);
     }
   }, [html]);
 
