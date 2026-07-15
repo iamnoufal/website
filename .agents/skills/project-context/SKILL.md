@@ -173,7 +173,6 @@ All pages use `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8` for consistent horizontal
 - Uses JWT auth with `jsonwebtoken`
 - Featured posts fetched on homepage, full posts on blog pages
 - Prose styling customized in `globals.css` (images, galleries, iframes, code blocks)
-- Blog post hero tag chips in `src/app/blog/[slug]/page.tsx` include bottom spacing (`mb-8 md:mb-10`) to keep clear separation from the title on mobile and desktop
 
 ### Spotify API
 - Shows currently playing / last played track on the Life page
