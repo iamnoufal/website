@@ -74,7 +74,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center mt-12 animate-in fade-in zoom-in-95 duration-700">
 
           {post.tags && post.tags.length > 0 && (
-            <div className="flex flex-wrap items-center justify-center gap-2 mt-6">
+            <div className="flex flex-wrap items-center justify-center gap-2 mt-6 mb-8 md:mb-10">
               {post.tags
                 .filter(t => t.name.toLowerCase() !== 'blog')
                 .map(tag => (
