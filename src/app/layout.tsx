@@ -7,6 +7,7 @@ import Subscribe from "@/components/layout/Subscribe";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import TransitionProvider from "@/components/transition/TransitionProvider";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 
 const manrope = Manrope({
   variable: "--font-body",
@@ -106,6 +107,7 @@ export default function RootLayout({
             <Footer />
           </TransitionProvider>
         </SmoothScroll>
+        <Analytics />
       </body>
     </html>
   );
