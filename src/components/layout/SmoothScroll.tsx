@@ -12,7 +12,9 @@ declare global {
 
 export default function SmoothScroll({
   children,
-}: { children: React.ReactNode }) {
+}: {
+  children: React.ReactNode;
+}) {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {

@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     "Web Developer",
     "Zoho",
     "IIT Madras",
-    "GCT Coimbatore"
+    "GCT Coimbatore",
   ],
   authors: [{ name: "Noufal Rahman", url: siteUrl }],
   creator: "Noufal Rahman",
@@ -94,7 +94,9 @@ export default function RootLayout({
           <TransitionProvider>
             <Navbar />
             <main className="grow flex flex-col">{children}</main>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`} />
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+            />
             <Script id="google-analytics">
               {`
                 window.dataLayer = window.dataLayer || [];

@@ -55,7 +55,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <article className="min-h-screen bg-background pb-24">
-
       <div className="relative min-h-screen w-full flex flex-col justify-end overflow-hidden pb-16">
         {post.feature_image && (
           <>
@@ -69,16 +68,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
           </>
         )}
-        {!post.feature_image && <div className="absolute inset-0 bg-linear-to-br from-gray-900 to-black" />}
+        {!post.feature_image && (
+          <div className="absolute inset-0 bg-linear-to-br from-gray-900 to-black" />
+        )}
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center mt-12 animate-in fade-in zoom-in-95 duration-700">
-
           {post.tags && post.tags.length > 0 && (
             <div className="flex flex-wrap items-center justify-center gap-2 mt-6 mb-8 md:mb-10">
               {post.tags
-                .filter(t => t.name.toLowerCase() !== 'blog')
-                .map(tag => (
-                  <span key={tag.id} className="bg-white/10 hover:bg-white/20 border border-white/10 text-primary px-4 py-1.5 rounded-full backdrop-blur-md transition-colors text-xs font-bold tracking-wider lowercase">
+                .filter((t) => t.name.toLowerCase() !== "blog")
+                .map((tag) => (
+                  <span
+                    key={tag.id}
+                    className="bg-white/10 hover:bg-white/20 border border-white/10 text-primary px-4 py-1.5 rounded-full backdrop-blur-md transition-colors text-xs font-bold tracking-wider lowercase"
+                  >
                     {tag.name}
                   </span>
                 ))}
@@ -94,9 +97,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-300 font-bold tracking-wide">
-            <span className="flex items-center gap-1.5"><Clock size={14} className="text-primary" /> {post.reading_time} min read</span>
+            <span className="flex items-center gap-1.5">
+              <Clock size={14} className="text-primary" /> {post.reading_time}{" "}
+              min read
+            </span>
             <span className="w-1 h-1 bg-gray-500 rounded-full" />
-            <span className="flex items-center gap-1.5"><Calendar size={14} className="text-primary" /> {new Date(post.published_at).toLocaleDateString("en-US", { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+            <span className="flex items-center gap-1.5">
+              <Calendar size={14} className="text-primary" />{" "}
+              {new Date(post.published_at).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </span>
           </div>
         </div>
       </div>

@@ -20,7 +20,7 @@ export default function TravelLogs({ logs, currentLocation }: TravelLogsProps) {
     .filter(
       (log) =>
         log.location.toLowerCase() !== "madurai" &&
-        log.location.toLowerCase() !== "karur"
+        log.location.toLowerCase() !== "karur",
     )
     .slice(0, SUMMARY_COUNT);
 

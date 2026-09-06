@@ -5,7 +5,6 @@ export default function Footer() {
 
   return (
     <footer className="relative pt-64 pb-12 overflow-hidden">
-
       <div className="absolute inset-0 bg-size-[64px_64px] bg-[repeating-linear-gradient(45deg,#4FFFB020_0,#4FFFB020_2px,transparent_0,transparent_50%),repeating-linear-gradient(-45deg,#4FFFB020_0,#4FFFB020_2px,transparent_0,transparent_50%)] blur-[1px] mask-[linear-gradient(to_bottom,transparent,black_50%,black_50%)]"></div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

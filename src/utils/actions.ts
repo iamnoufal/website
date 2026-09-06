@@ -15,7 +15,10 @@ export async function subscribe(prevState: any, formData: FormData) {
     if (res && !res.errors) {
       return { success: true, message: "Successfully subscribed!" };
     } else {
-      return { success: false, message: "Failed to subscribe. Please try again." };
+      return {
+        success: false,
+        message: "Failed to subscribe. Please try again.",
+      };
     }
   } catch (error) {
     return { success: false, message: "An unexpected error occurred." };

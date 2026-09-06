@@ -44,11 +44,15 @@ export default function Subscribe() {
             Stay in the loop
           </h2>
           <p className="mb-8 text-lg text-text-muted max-w-2xl mx-auto">
-            Get the latest insights on web development, design systems, and tech trends delivered straight to your inbox.
+            Get the latest insights on web development, design systems, and tech
+            trends delivered straight to your inbox.
           </p>
 
           {!state.success ? (
-            <form action={formAction} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <form
+              action={formAction}
+              className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
+            >
               <input
                 type="email"
                 name="email"

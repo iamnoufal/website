@@ -17,7 +17,7 @@ interface TransitionContextType {
 }
 
 const TransitionContext = createContext<TransitionContextType>({
-  navigateTo: () => { },
+  navigateTo: () => {},
   isTransitioning: false,
 });
 
@@ -66,7 +66,9 @@ const EXIT_DURATION = 0.7;
 
 export default function TransitionProvider({
   children,
-}: { children: React.ReactNode }) {
+}: {
+  children: React.ReactNode;
+}) {
   const router = useRouter();
   const pathname = usePathname();
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -87,10 +89,13 @@ export default function TransitionProvider({
       // Brief hold then exit
       const timer = setTimeout(() => {
         setPhase("exit");
-        const exitTimer = setTimeout(() => {
-          setPhase("idle");
-          setIsTransitioning(false);
-        }, EXIT_DURATION * 1000 + 150);
+        const exitTimer = setTimeout(
+          () => {
+            setPhase("idle");
+            setIsTransitioning(false);
+          },
+          EXIT_DURATION * 1000 + 150,
+        );
         return () => clearTimeout(exitTimer);
       }, 350);
       return () => clearTimeout(timer);

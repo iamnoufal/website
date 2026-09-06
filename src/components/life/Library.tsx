@@ -48,7 +48,10 @@ export default function Library({ books }: LibraryProps) {
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                 <div className="flex gap-0.5">
                   {[...Array(book.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                    <Star
+                      key={i}
+                      className="w-4 h-4 text-yellow-400 fill-yellow-400"
+                    />
                   ))}
                 </div>
               </div>

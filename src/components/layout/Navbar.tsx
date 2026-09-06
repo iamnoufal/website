@@ -38,7 +38,11 @@ export default function Navbar() {
       <nav className="fixed top-0 z-50 w-full backdrop-blur-lg transition-all duration-300">
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
-          <TransitionLink href="/" className="flex items-center gap-2 z-50" onClick={() => setIsOpen(false)}>
+          <TransitionLink
+            href="/"
+            className="flex items-center gap-2 z-50"
+            onClick={() => setIsOpen(false)}
+          >
             <span className="text-lg font-bold tracking-tight text-white font-heading">
               noufal<span className="text-primary">.dev</span>
             </span>
@@ -51,12 +55,16 @@ export default function Navbar() {
                 <TransitionLink
                   key={item.name}
                   href={item.href}
-                  aria-current={pathname === item.href.split("/")[1] ? "page" : undefined}
-                  className={"relative text-sm font-medium transition-colors hover:text-primary"}
+                  aria-current={
+                    pathname === item.href.split("/")[1] ? "page" : undefined
+                  }
+                  className={
+                    "relative text-sm font-medium transition-colors hover:text-primary"
+                  }
                 >
                   {item.name}
                 </TransitionLink>
-              )
+              );
             })}
           </div>
 
@@ -100,10 +108,14 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  aria-current={pathname === item.href.split("/")[1] ? "page" : undefined}
+                  aria-current={
+                    pathname === item.href.split("/")[1] ? "page" : undefined
+                  }
                   className={cn(
                     "text-3xl font-bold transition-colors hover:text-primary font-heading",
-                    pathname === item.href.split("/")[1] ? "text-primary" : "text-white"
+                    pathname === item.href.split("/")[1]
+                      ? "text-primary"
+                      : "text-white",
                   )}
                 >
                   {item.name}

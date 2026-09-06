@@ -3,8 +3,7 @@
 import type { AnchorHTMLAttributes } from "react";
 import { usePageTransition } from "./TransitionProvider";
 
-interface TransitionLinkProps
-  extends AnchorHTMLAttributes<HTMLAnchorElement> {
+interface TransitionLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
 }
 
@@ -21,7 +20,12 @@ export default function TransitionLink({
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 
     // Allow external links and anchors to behave normally
-    if (href.startsWith("http") || href.startsWith("#") || href.startsWith("mailto:")) return;
+    if (
+      href.startsWith("http") ||
+      href.startsWith("#") ||
+      href.startsWith("mailto:")
+    )
+      return;
 
     e.preventDefault();
 

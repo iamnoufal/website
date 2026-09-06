@@ -36,31 +36,32 @@
 }
 
 /* Inline code only (not inside pre) */
-.prose :not(pre)>code {
+.prose :not(pre) > code {
   @apply bg-white/10 text-primary py-0.5! rounded-md font-medium;
 }
 
-.prose :not(pre)>code::before, .prose :not(pre)>code::after {
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
   @apply invisible;
 }
 
 :root {
   /* User Provided Palette */
-  --color-brand-primary: #4FFFB0;
-  --color-brand-primary-hover: #3DDB93;
-  --color-brand-primary-glow: #80FFCE;
+  --color-brand-primary: #4fffb0;
+  --color-brand-primary-hover: #3ddb93;
+  --color-brand-primary-glow: #80ffce;
 
-  --color-brand-accent: #1C8C6E;
+  --color-brand-accent: #1c8c6e;
 
   --color-bg-dark: #052640;
-  --color-bg-darker: #02121F;
+  --color-bg-darker: #02121f;
 
-  --color-surface: #0B3655;
+  --color-surface: #0b3655;
   --color-surface-glass: rgba(11, 54, 85, 0.7);
-  --color-border: #1E4C6E;
+  --color-border: #1e4c6e;
 
-  --color-text-main: #F5F9FC;
-  --color-text-muted: #9FBCCF;
+  --color-text-main: #f5f9fc;
+  --color-text-muted: #9fbccf;
 
   /* Semantic Mappings */
   --background: var(--color-bg-dark);

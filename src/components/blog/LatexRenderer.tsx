@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import renderMathInElement, { RenderMathInElementOptions } from "katex/contrib/auto-render";
+import renderMathInElement, {
+  RenderMathInElementOptions,
+} from "katex/contrib/auto-render";
 import "katex/dist/katex.min.css";
 
 const KATEX_OPTIONS: RenderMathInElementOptions = {
@@ -9,7 +11,7 @@ const KATEX_OPTIONS: RenderMathInElementOptions = {
     { left: "$$", right: "$$", display: true },
     { left: "\\[", right: "\\]", display: true },
     { left: "$", right: "$", display: false },
-    { left: "\\(", right: "\\)", display: false }
+    { left: "\\(", right: "\\)", display: false },
   ],
   throwOnError: false,
   errorColor: "#cc0000",

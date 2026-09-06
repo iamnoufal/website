@@ -48,7 +48,12 @@ export function BlogGrid({ posts }: BlogGridProps) {
               <div className="absolute top-4 left-4 flex flex-wrap gap-2">
                 {post.tags &&
                   post.tags
-                    .filter((tag) => !["blog", "featured", "roundup"].includes(tag.name.toLowerCase()))
+                    .filter(
+                      (tag) =>
+                        !["blog", "featured", "roundup"].includes(
+                          tag.name.toLowerCase(),
+                        ),
+                    )
                     .slice(0, 3)
                     .map((tag) => (
                       <span
@@ -88,7 +93,11 @@ export function BlogGrid({ posts }: BlogGridProps) {
               </p>
 
               <div className="flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-primary/80 transition-colors mt-auto">
-                Read Article <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                Read Article{" "}
+                <ArrowRight
+                  size={16}
+                  className="transition-transform group-hover:translate-x-1"
+                />
               </div>
             </div>
           </TransitionLink>

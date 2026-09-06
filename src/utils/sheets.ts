@@ -80,8 +80,7 @@ export async function getTravelLogs(): Promise<{
   currentLocation: CurrentLocation;
 }> {
   const gid = process.env.SHEET_GID_TRAVEL;
-  if (!gid)
-    return { logs: [], currentLocation: getDefaultCurrentLocation() };
+  if (!gid) return { logs: [], currentLocation: getDefaultCurrentLocation() };
 
   const rows = await fetchSheetCsv(gid);
   if (!rows.length)
@@ -98,7 +97,8 @@ export async function getTravelLogs(): Promise<{
       isCurrent:
         (cols[6] || "").toUpperCase() === "TRUE" ||
         (cols[6] || "").toUpperCase() === "YES" ||
-        (new Date(cols[3]).getTime() > Date.now() && new Date(cols[2]).getTime() < Date.now()),
+        (new Date(cols[3]).getTime() > Date.now() &&
+          new Date(cols[2]).getTime() < Date.now()),
     }))
     .filter((e) => e.location);
 
@@ -119,7 +119,7 @@ export async function getTravelLogs(): Promise<{
   const logs: TravelLog[] = [];
   for (const [, group] of grouped) {
     const sortedEntries = [...group.entries].sort(
-      (a, b) => getEntryTimestamp(b) - getEntryTimestamp(a)
+      (a, b) => getEntryTimestamp(b) - getEntryTimestamp(a),
     );
 
     const first = sortedEntries[0];
@@ -138,10 +138,10 @@ export async function getTravelLogs(): Promise<{
 
   logs.sort((a, b) => {
     const aLatest = getLatestTimestamp(
-      grouped.get(a.location.toLowerCase())!.entries
+      grouped.get(a.location.toLowerCase())!.entries,
     );
     const bLatest = getLatestTimestamp(
-      grouped.get(b.location.toLowerCase())!.entries
+      grouped.get(b.location.toLowerCase())!.entries,
     );
     return bLatest - aLatest;
   });
@@ -206,7 +206,7 @@ export async function getRecentMovies(): Promise<Movie[]> {
     .map((cols) => {
       let youtubeId = cols[2] || "";
       const match = youtubeId.match(
-        /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/
+        /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/,
       );
       if (match && match[1]) {
         youtubeId = match[1];

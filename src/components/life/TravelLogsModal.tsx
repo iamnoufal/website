@@ -150,9 +150,21 @@ export default function TravelLogsModal({
                             </span>
                             {visit.link && (
                               <Link
-                                href={visit.link.startsWith("http") ? visit.link : `/blog/${visit.link}`}
-                                target={visit.link.startsWith("http") ? "_blank" : undefined}
-                                rel={visit.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                                href={
+                                  visit.link.startsWith("http")
+                                    ? visit.link
+                                    : `/blog/${visit.link}`
+                                }
+                                target={
+                                  visit.link.startsWith("http")
+                                    ? "_blank"
+                                    : undefined
+                                }
+                                rel={
+                                  visit.link.startsWith("http")
+                                    ? "noopener noreferrer"
+                                    : undefined
+                                }
                                 className="text-primary hover:text-accent transition-colors ml-auto"
                               >
                                 <ExternalLink className="h-3 w-3" />

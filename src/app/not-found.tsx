@@ -46,7 +46,8 @@ export default function NotFound() {
           transition={{ delay: 0.3, duration: 0.5 }}
           className="text-2xl md:text-3xl font-heading font-bold text-white mb-4"
         >
-          You&apos;re lost, aren&apos;t you<span className="text-primary">?</span>
+          You&apos;re lost, aren&apos;t you
+          <span className="text-primary">?</span>
         </motion.h2>
 
         <motion.p
@@ -75,9 +76,7 @@ export default function NotFound() {
             <span className="text-primary">$</span> curl -I{" "}
             <span className="text-white/70">noufal.dev/???</span>
           </p>
-          <p className="text-red-400/90 mt-1">
-            HTTP/1.1 404 Not Found
-          </p>
+          <p className="text-red-400/90 mt-1">HTTP/1.1 404 Not Found</p>
           <p className="text-text-muted/60 mt-1">
             Connection: lost in the void
           </p>
