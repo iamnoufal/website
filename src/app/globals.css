@@ -16,7 +16,7 @@
 }
 
 .prose iframe {
-  @apply !rounded-xl w-full aspect-video !h-auto !min-h-[350px];
+  @apply rounded-xl! w-full aspect-video h-auto! min-h-87.5!;
 }
 
 .prose figcaption {
@@ -25,20 +25,23 @@
 
 /* Prism Overrides */
 .prose pre {
-  @apply !rounded-xl !border !border-white/10 !bg-[#0d1117];
+  @apply rounded-xl border border-white/10 bg-[#0d1117]!;
   text-shadow: none !important;
   font-size: 0.875rem !important;
   line-height: 1.5 !important;
 }
 
 .prose code {
-  @apply !font-sans !text-sm;
-  background: transparent !important;
+  @apply text-sm!;
 }
 
 /* Inline code only (not inside pre) */
 .prose :not(pre)>code {
-  @apply !bg-white/10 !text-primary !px-0.5 !py-0.5 !rounded-md !font-medium;
+  @apply bg-white/10 text-primary py-0.5! rounded-md font-medium;
+}
+
+.prose :not(pre)>code::before, .prose :not(pre)>code::after {
+  @apply invisible;
 }
 
 :root {
