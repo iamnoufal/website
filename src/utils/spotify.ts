@@ -41,6 +41,10 @@ const getAccessToken = async (): Promise<string> => {
     cache: "no-store",
   });
   const data = await response.json();
+  if(response.status != 200)
+  {
+    console.log("##SPOTIFYACCESSTOKEN: Failed to get access token. Status: ", response.status, data);
+  }
   cachedAccessToken = data.access_token as string;
   tokenExpirationTime = Date.now() + 3600 * 1000;
   return cachedAccessToken;
